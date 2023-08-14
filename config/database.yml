@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: amazonFSP_production
-  username: amazonFSP
-  password: <%= ENV["AMAZONFSP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

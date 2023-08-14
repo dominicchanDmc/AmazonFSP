@@ -14,14 +14,14 @@ puts "Resetting primary keys..."
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
 puts "Creating users..."
-mike = User.create!(username: 'mike', email: 'mike@google.com', password: 'password')
-paulo = User.create!(username: 'paulo', email: 'paulo@google.com', password: 'password')
-peter = User.create!(username: 'peter', email: 'peter@google.com', password: 'password')
-john = User.create!(username: 'john', email: 'john@google.com', password: 'password')
-mary = User.create!(username: 'mary', email: 'mary@google.com', password: 'password')
-joe = User.create!(username: 'joe', email: 'joe@google.com', password: 'password')
-peter = User.create!(username: 'peter', email: 'peter@google.com', password: 'password')
-peter = User.create!(username: 'peter', email: 'peter@google.com', password: 'password')
+mike = User.create!(username: 'mike', email: 'mike@google.com', password: '123456')
+paulo = User.create!(username: 'paulo', email: 'paulo@google.com', password: '123456')
+peter = User.create!(username: 'peter', email: 'peter@google.com', password: '123456')
+john = User.create!(username: 'john', email: 'john@google.com', password: '123456')
+mary = User.create!(username: 'mary', email: 'mary@google.com', password: '123456')
+joe = User.create!(username: 'joe', email: 'joe@google.com', password: '123456')
+george = User.create!(username: 'george', email: 'george@google.com', password: '123456')
+thomas = User.create!(username: 'thomas', email: 'thomas@google.com', password: '123456')
 
 puts "Seeding complete!"
 end

@@ -1,0 +1,32 @@
+.profile-dropdown {
+    position: absolute;
+  }
+.nav-base {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: white;
+}
+
+#nav-logo {
+  width: auto; 
+  height: 60px;
+}
+
+.nav-select-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navLinks-login{
+  display: flex; 
+  /* align-items: center; */
+  gap: 10px;
+  color: white;
+}
+.link-cart,.link-login{
+  color: white;
+}

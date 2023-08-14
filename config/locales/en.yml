@@ -37,6 +37,6 @@ en:
         user:
           attributes:
             username:
-              taken: "This %{attribute} already in use."
+              taken: "already in use."
             email:
-              taken: "This %{attribute} already in use."
+              taken: "already in use."

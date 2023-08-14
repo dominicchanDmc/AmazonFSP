@@ -1,34 +1,42 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
+import { useDispatch, useSelector } from 'react-redux';
 import './Navigation.css';
 import logo from '../../assets/Yellow_Arrow_1.png';
 import SearchBar from './SearchBar';                       
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import * as sessionActions from '../../store/session';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+
   const categories =  [
     'All',
     'Amazon Devices',
     'Amazon Warehouse',
     'Apps & Games'
   ]
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+  };
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+      <p>
+      Hello, {sessionUser.username}
+      </p>
+      <button onClick={logout}>Log Out</button>
+      </>
     );
   } else {
     sessionLinks = (
       <>
-        {/* <LoginFormModal /> */}
         <p>
-        Welcome Guest, <NavLink to="/login" className='link-login'>Login</NavLink> for shopping
-        {/* Welcome Guest, <NavLink to="/login">Login</NavLink> for shopping */}
+        Welcome, <NavLink to="/login" className='link-login'>Login</NavLink> for shopping
         </p>
       </>
     );

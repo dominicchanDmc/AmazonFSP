@@ -2,27 +2,45 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
-import ProductIndex from './components/ProductIndex/ProductIndex';
+import ProductIndex from './components/ProductIndex';
 import LoginFormPage from './components/LoginFormPage';
 import './App.css'
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
+import CartIndex from './components/CartIndex/CartIndex';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 
 function App() {
+  const location = useLocation();
+  const isNavigationVisible = ['/', '/cart','/404'].includes(location.pathname);
+
   return (
     <>
-      <Navigation />
+       {isNavigationVisible && <Navigation />}
       <Switch>
         <Route exact path="/">
           <ProductIndex />
         </Route>
-        <Route path="/login">
-            <LoginFormPage />
-        </Route>
         <Route path="/signup">
             <SignupFormPage />
         </Route>
+        <Route path="/login">
+            <LoginFormPage />
+        </Route>
+        <Route path="/cart">
+            <CartIndex />
+        </Route>
+        <Route path="/404" component={NotFoundPage} />
+        <Route component={NotFoundPageWithNavigation} />
       </Switch>     
     </>
   );
 }
-
+function NotFoundPageWithNavigation() {
+  return (
+    <>
+      <Navigation />
+      <NotFoundPage />
+    </>
+  );
+}
 export default App;

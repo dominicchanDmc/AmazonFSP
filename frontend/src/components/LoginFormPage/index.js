@@ -74,7 +74,7 @@ function LoginForm() {
             <br/>
             <button className='submitBtnDemo'
             onClick={(e)=>{
-              setPassword('password');
+              setPassword('123456');
               setCredential('peter');
             }}>
             Login with Demo User</button>

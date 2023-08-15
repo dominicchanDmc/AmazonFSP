@@ -1,6 +1,10 @@
 .content {
     padding-top: 80px; 
   }
+
+html, body {
+    font-family: Arial, sans-serif;
+}
   /* .modal-overlay {
     position: fixed;
     top: 0;

@@ -8,7 +8,7 @@ import './App.css'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import CartIndex from './components/CartIndex/CartIndex';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
-import AccountModal from './components/Model/accountModel';
+// import AccountModal from './components/Model/accountModel';
 
 function App() {
   const location = useLocation();

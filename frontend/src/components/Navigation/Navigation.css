@@ -74,7 +74,7 @@ a {
 	box-sizing: border-box;
 	width: 50vw;
 	display: flex;
-	flex: 1 1 ;
+	/* flex: 1 1 ; */
 	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 	overflow: hidden;
 }
@@ -82,7 +82,7 @@ a {
 #nav-search-bar-form {
 	box-sizing: border-box;
 	display: flex;
-  width: 70vw;
+  width: 50vw;
 	flex: 1 1 1 auto;
 	border-radius: var(--border-radius);
 	overflow: hidden;
@@ -169,12 +169,14 @@ a {
 #nav-belt > .nav-right {
 	box-sizing: border-box;
 	display: flex;
-  width: 50vh;
+  width: 35vw;
 }
 
 #nav-tools {
 	display: flex;
 	flex: 1 1 auto;
+  justify-content:space-around;
+  width: 5%;
 	padding: 0.5rem 0.5rem 0.5rem 0;
 }
 
@@ -186,19 +188,34 @@ a {
 	padding: 0 0.5rem 0 0.5rem;
 	margin: 0.1rem;
 }
-#nav-tools a.link-login{
-  display: inline-block;
-  text-decoration: none;
+#nav-tools .link-login{
+	box-sizing: border-box;
+	display: flex;
+  
 }
-#nav-tools a.link-login .vertical-align {
+#nav-tools .link-login .vertical-align {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
+  padding-left: 20px;
 }
+/* #nav-tools a.link-login .icon{
+  font-size: 2.5rem;
+} */
+
+/* #nav-tools > .vertical-align{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+
 #nav-tools > .div-logout {
 	box-sizing: border-box;
 	display: flex;
 	flex: 1 1 auto;
+  justify-content: space-evenly;
 	align-items: center;
 	padding: 0 0.5rem 0 0.5rem;
 	margin: 0.1rem;
@@ -221,6 +238,52 @@ font-size: 40;
 	color: var(--main-text);
 	box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
 }
+/* .div-logout .icon{
+  font-size: 2.5rem;
+  cursor: pointer;
+} */
+.cart {
+  display: flex;
+}
+
+.cart .cart-icon {
+  font-size: 2.5rem
+}
+
+.cart p {
+  margin-top: 20px;
+  font-weight: 500;
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 0.5;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
 /* .modal-overlay {
   position: fixed;
   top: 0;

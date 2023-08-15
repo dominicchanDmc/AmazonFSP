@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Navigation.css';
 import logo from '../../assets/Yellow_Arrow_1.png';
 import SearchBar from './SearchBar';                       
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import * as sessionActions from '../../store/session';
-import AccountModal from '../Model/accountModel';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
+// import AccountModal from '../Model/accountModel';
 
 function Navigation({ setIsModalOpen,isModalOpen }) {
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
   // const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleMouseOver = () => {
@@ -34,37 +34,69 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div className='div-logout' onClick={logout}>
-        <div className="vertical-align" >
-          <span> 
-            Hello, {sessionUser.username}  
-          </span>
-          <span>
-            <i class="fa-solid fa-right-from-bracket" ></i>     
-          </span> 
+      <div className='div-logout' >
+        <div class="dropdown">
+          <div className="vertical-align" >
+            <span> 
+              Hello, {sessionUser.username}  
+            </span>
+            <span >
+              Account & List
+            </span> 
+          </div>
+          <div class="dropdown-content">
+            <NavLink to="">Order History</NavLink>
+            <NavLink to="">Review List</NavLink>
+            <NavLink to="" onClick={logout}>Logout</NavLink>
+          </div>
         </div>
-      {/* <button onClick={logout}>Log Out</button> */}
+        <NavLink to="" >
+          <div className="vertical-align">
+              <span> 
+                Returns 
+              </span>
+              <span>
+                <b>& Orders</b>
+              </span> 
+          </div>
+        </NavLink>
+        {/* <div className="icon" onClick={logout}>
+          <i class="fa-solid fa-right-from-bracket" ></i>     
+        </div> */}
       </div>
     );
   } else {
     sessionLinks = (
       <div        
        onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}>
-      <NavLink to="/login" className='link-login'>
+      onMouseOut={handleMouseOut}
+      className='link-login'>
+        <div class="dropdown">
+          <NavLink to="/login" >
 
-        <div className="vertical-align">
-          <span> 
-            Welcome 
-          </span>
-          <span>
-            Account & Login
-          </span> 
+            <div className="vertical-align">
+              <span> 
+                Welcome 
+              </span>
+              <span>
+                <b>Account & Login</b>
+              </span> 
+            </div>
+          </NavLink>
+          <div class="dropdown-content">
+            <NavLink to="/login">Login</NavLink>
+          </div>
         </div>
-      </NavLink>
-        {/* <p>
-        Welcome, <NavLink to="/login" className='link-login'>Login</NavLink> for shopping
-        </p> */}
+        <NavLink to="/login" >
+          <div className="vertical-align">
+              <span> 
+                Returns 
+              </span>
+              <span>
+                <b>& Orders</b>
+              </span> 
+          </div>
+        </NavLink>
       </div>
     );
   }
@@ -83,9 +115,11 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
         </div>
         <div className="nav-right">
           <div id="nav-tools">
-            {/* <a href="/">Log in</a> */}
             {sessionLinks}
-            <a href="/">Cart</a>
+            <div class="cart">
+              <Link to="/cart" className='link-cart'><i className="fa-solid fa-cart-shopping cart-icon"></i></Link>
+              <p><b>Cart</b></p>
+            </div>
           </div>
           {/* {isModalOpen  && (
             <div className="modal-overlay">

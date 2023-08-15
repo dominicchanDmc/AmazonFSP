@@ -34,7 +34,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
@@ -46,5 +47,8 @@
   "bugs": {
     "url": "https://github.com/dominicchanDmc/AmazonFSP/issues"
   },
-  "homepage": "https://github.com/dominicchanDmc/AmazonFSP#readme"
+  "homepage": "https://github.com/dominicchanDmc/AmazonFSP#readme",
+  "engines": {
+    "node": "16.x"
+  }
 }

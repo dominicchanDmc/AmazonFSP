@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 import logo from '../../assets/Yellow_Arrow_1.png';
 import { NavLink } from 'react-router-dom';
 import './SignupForm.css';
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -39,77 +39,144 @@ function SignupFormPage() {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
-  const handleLoginClick = () => {
+  const handleLoginClick = (e) => {
+    e.preventDefault()
     history.push('/login');
   };
 
   return (
-    <div className="signup-base">
-     <NavLink exact to="/"><img id='signup-logo' src={logo} alt=""></img></NavLink>
-        <div className="signup-container">
-        <h2>Sign Up</h2>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="usernameInput">
-              <b>Username</b>
-              </label>
-              <br/>
-              <input
-               id="usernameInput"
+    <section className="section-signUp">
+    <div className="logo">
+    <NavLink exact to="/"><img id='signUp-logo' src={logo} alt=""></img></NavLink>
+    </div>
+    <div className="card-signUp">
+      <h1>Sign Up</h1>
+      <div className="form-signUp"> 
+      <form onSubmit={handleSubmit}>  
+        <label htmlFor="usernameInput">Your name</label>
+        <input id="usernameInput"
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
-              <br/>
-            <label htmlFor="emailInput"><b>Email</b> </label>
-            <br/>
-              <input
-              id="emailInput"
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <br/>
-            <label htmlFor="passwordInput">
-              <b>Password</b>
-              </label>
-              <br/>
-              <input
-                id="passwordInput"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <br/>
-            <label htmlFor="confirmPasswordInput">
-              <b>Confirm Password</b>
-              </label>
-              <br/>
-              <input
-              id="confirmPasswordInput"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-              <br/>
-            <ul className="errorUl">
-              {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
-            <button type="submit" className='submitBtn'>Sign Up</button>
-          </form>
-        </div>
-        <div>
-            Already have an account?<br/>
-            <button className='submitBtn'
-              onClick={handleLoginClick}
-              >
-              Login
-              </button>
-        </div>
+        <label htmlFor="emailInput"><b>Email</b> </label>
+        <br/>
+          <input
+          id="emailInput"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        <label htmlFor="passwordInput">
+          <b>Password</b>
+          </label>
+          <br/>
+          <input
+            id="passwordInput"
+            type="password"
+            placeholder="At least 6 characters"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        <label htmlFor="confirmPasswordInput">
+          <b>Confirm Password</b>
+          </label>
+          <br/>
+          <input
+          id="confirmPasswordInput"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        <button type="submit" className='submitBtn'>Sign Up</button>
+      <ul className="errorUl">
+         {errors.map(error => <li key={error}><b>{error}</b></li>)}
+      </ul>
+      </form>
+      </div>
+      <p>
+        By creating an account, you agree to Yellow Arrow's<Link to="">Conditions of Use</Link> and <Link to="">Privacy Notice</Link>.
+      </p>
+      <div className="breck">
+      </div>
+      <div >
+        <p>Already have an account?  
+          <Link to="" onClick={handleLoginClick} className="loginDisplayStr">Login</Link>
+        </p> 
+      </div>
     </div>
+  </section> 
+
+    // <div className="signup-base">
+    //  <NavLink exact to="/"><img id='signup-logo' src={logo} alt=""></img></NavLink>
+    //     <div className="signup-container">
+    //     <h2>Sign Up</h2>
+    //       <form onSubmit={handleSubmit}>
+    //         <label htmlFor="usernameInput">
+    //           <b>Username</b>
+    //           </label>
+    //           <br/>
+              // <input
+              //  id="usernameInput"
+              //   type="text"
+              //   value={username}
+              //   onChange={(e) => setUsername(e.target.value)}
+              //   required
+              // />
+    //           <br/>
+            // <label htmlFor="emailInput"><b>Email</b> </label>
+            // <br/>
+            //   <input
+            //   id="emailInput"
+            //     type="text"
+            //     value={email}
+            //     onChange={(e) => setEmail(e.target.value)}
+            //     required
+            //   />
+    //           <br/>
+            // <label htmlFor="passwordInput">
+            //   <b>Password</b>
+            //   </label>
+            //   <br/>
+            //   <input
+            //     id="passwordInput"
+            //     type="password"
+            //     value={password}
+            //     onChange={(e) => setPassword(e.target.value)}
+            //     required
+            //   />
+    //           <br/>
+            // <label htmlFor="confirmPasswordInput">
+            //   <b>Confirm Password</b>
+            //   </label>
+            //   <br/>
+            //   <input
+            //   id="confirmPasswordInput"
+            //     type="password"
+            //     value={confirmPassword}
+            //     onChange={(e) => setConfirmPassword(e.target.value)}
+            //     required
+            //   />
+    //           <br/>
+    //         <ul className="errorUl">
+    //           {errors.map(error => <li key={error}>{error}</li>)}
+    //         </ul>
+    //         <button type="submit" className='submitBtn'>Sign Up</button>
+    //       </form>
+    //     </div>
+        // <div>
+        //     Already have an account?<br/>
+        //     <button className='submitBtn'
+        //       onClick={handleLoginClick}
+        //       >
+        //       Login
+        //       </button>
+        // </div>
+    // </div>
 
   );
 }

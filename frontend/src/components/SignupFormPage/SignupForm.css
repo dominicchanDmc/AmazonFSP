@@ -1,4 +1,4 @@
-.signup-base{
+/* .signup-base{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,4 +31,142 @@
 .errorUl{
     list-style: none;
     color: red;
+} */
+
+
+.card-signUp{
+  width: 296px;
+  height: 460px;
+  padding: 20px 26px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 20px auto 25px auto;
+}
+
+.card-signUp h1{
+  font-weight: 400;
+  font-size: 28px;
+  margin-top: 0px
+}
+
+.card-signUp label{
+  font-weight: 700;
+  font-size: 13px;
+  padding-left: 2px;
+  padding-bottom: 2px;
+}
+
+.card-signUp input{
+  width: 272px;
+  height: 25px;
+  padding: 3px 7px;
+  margin-top: 3px;
+  background-color: #fff;
+  border: 1px solid #a6a6a6;
+  border-radius: 3px;
+}
+
+.card-signUp button{
+  width: 288px;
+  height: 31px;
+  margin-top: 15px;
+  border-top-color: 1px solid #949494;
+  border: 1px solid #a6a6a6;
+  background-color: #f0c14b;
+  background-image: linear-gradient(#f7da90,#e2b33b);
+  border-radius: 3px;
+}
+
+.card-signUp p,.card-signUp p a{
+  font-size: 12px;
+  line-height: 1.5;
+}
+.section-signUp a{
+  text-decoration: none;
+  color: #0066c0;
+}
+
+.card-signUp a{
+  margin-top: 10px;
+  font-size: 13px;
+}
+.icon::before{
+  display: inline-block;
+  content: "";
+  border-top: 4px solid transparent;
+  border-left: 4px solid #949494;
+  border-bottom: 4px solid transparent;
+  margin-right: 10px;
+}
+
+.breck p{
+  line-height: 1;
+  font-size: 12px;
+  color: #767676;
+  font-weight: 400;
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  padding: 0 8px 0 7px;
+}
+.breck, .btn{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.breck::before,.breck::after{
+  content: "";
+  position: relative;
+  top: 5px;
+  display: inline-block;
+  width: 120px;
+  border-top: 1px solid#e7e7e7;
+}
+
+.btn button{
+  width: 348px;
+  height: 31px;
+  margin: 15px auto;
+  /* background-color: #e7e9ec; */
+  background-image: linear-gradient(#f9f9fa,#e7e9ec);
+  border: 1px solid #a6a6a6;
+  border-top-color: #949494;
+  border-radius: 3px;
+  background-color: #f0c14b;
+}
+
+footer .links{
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  margin: 25px auto 15px auto;
+}
+
+footer .links a{
+  font-size: 12px;
+}
+
+footer ::before{
+  content: "";
+  display:flex;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  height: 44px;
+  margin-top: -35px;
+  border-top: 1px solid transparent;
+  box-shadow: 0 10px 15px -20px #333;
+}
+footer p{
+  font-size: 11px;
+  color: #555;
+  text-align: center;
+}
+
+.loginDisplayStr{
+  padding: 20px;
 }

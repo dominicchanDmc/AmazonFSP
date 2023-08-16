@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Navigation.css';
 import logo from '../../assets/Yellow_Arrow_1.png';
 import SearchBar from './SearchBar';                       
-import * as sessionActions from '../../store/session';
+import * as sessionActions from '../../store/sessionReducer';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 // import AccountModal from '../Model/accountModel';
 
@@ -35,7 +35,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
   if (sessionUser) {
     sessionLinks = (
       <div className='div-logout' >
-        <div class="dropdown">
+        <div className="dropdown">
           <div className="vertical-align" >
             <span> 
               Hello, {sessionUser.username}  
@@ -44,7 +44,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
               Account & List
             </span> 
           </div>
-          <div class="dropdown-content">
+          <div className="dropdown-content">
             <NavLink to="">Order History</NavLink>
             <NavLink to="">Review List</NavLink>
             <NavLink to="" onClick={logout}>Logout</NavLink>
@@ -60,9 +60,6 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
               </span> 
           </div>
         </NavLink>
-        {/* <div className="icon" onClick={logout}>
-          <i class="fa-solid fa-right-from-bracket" ></i>     
-        </div> */}
       </div>
     );
   } else {
@@ -71,7 +68,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
        onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       className='link-login'>
-        <div class="dropdown">
+        <div className="dropdown">
           <NavLink to="/login" >
 
             <div className="vertical-align">
@@ -83,7 +80,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
               </span> 
             </div>
           </NavLink>
-          <div class="dropdown-content">
+          <div className="dropdown-content">
             <NavLink to="/login">Login</NavLink>
           </div>
         </div>
@@ -116,7 +113,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
         <div className="nav-right">
           <div id="nav-tools">
             {sessionLinks}
-            <div class="cart">
+            <div className="cart">
               <Link to="/cart" className='link-cart'><i className="fa-solid fa-cart-shopping cart-icon"></i></Link>
               <p><b>Cart</b></p>
             </div>
@@ -128,18 +125,6 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
           )} */}
         </div>
       </div>
-      {/* <div id="nav-main">
-        <ul>
-          <li><a href="/">xxx</a></li>
-          <li><a href="#">Two</a>
-            <ul class="dropdown">
-              <li><a href="#">Sub-1</a></li>
-              <li><a href="#">Sub-2</a></li>
-              <li><a href="#">Sub-3</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div> */}
     </div>
   </header>
   );

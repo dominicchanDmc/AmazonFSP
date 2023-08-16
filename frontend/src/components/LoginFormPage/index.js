@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
+import * as sessionActions from "../../store/sessionReducer";
 import { useDispatch, useSelector } from "react-redux";
 import logo from '../../assets/Yellow_Arrow_1.png';
 import { NavLink } from 'react-router-dom';

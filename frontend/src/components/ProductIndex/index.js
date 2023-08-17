@@ -18,7 +18,7 @@ const ProductIndex = () => {
   },[dispatch])
 
   const handleCategoryElectronic = (e) => {
-    history.push('/category');
+    history.push('/productList');
   };
 
   const handleSignInClick = () => {

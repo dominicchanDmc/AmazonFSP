@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts, selectAllproducts } from '../../store/productsReducer'
 import audioIndex from '../../assets/products/audio-index.jpg';
-import './CategorieIndex.css'
+import './ProductListPage.css'
 import { useEffect } from 'react'
 import ProductItem from '../ProductItem';
 
-const CategoryIndex = () => {
+const ProductListPage = () => {
   const products = useSelector(selectAllproducts)
   const dispatch = useDispatch()
 
@@ -36,4 +36,4 @@ const CategoryIndex = () => {
   )
 }
 
-export default CategoryIndex
+export default ProductListPage

@@ -35,7 +35,8 @@ img.medium {
   background: #f0c14b;
   border: 1px solid;
   margin-top: 10px;
-  width: 180px;
+  width: 200px;
+  height: 30px;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
   position: absolute; 
@@ -63,7 +64,7 @@ img.medium {
 
 .price {
   position: absolute; 
-  bottom: 40px;
+  bottom: 45px;
   left: 25px;
 }
 

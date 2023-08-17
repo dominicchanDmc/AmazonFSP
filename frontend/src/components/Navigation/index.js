@@ -42,6 +42,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
             </span>
             <span >
               Account & List
+              <i class="fa fa-caret-down leftPadding" aria-hidden="true"></i>
             </span> 
           </div>
           <div className="dropdown-content">
@@ -76,7 +77,8 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
                 Welcome 
               </span>
               <span>
-                <b>Account & Login</b>
+                <b>Account</b>
+                <i class="fa fa-caret-down leftPadding" aria-hidden="true"></i>
               </span> 
             </div>
           </NavLink>

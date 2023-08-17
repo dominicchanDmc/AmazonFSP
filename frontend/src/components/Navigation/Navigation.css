@@ -226,11 +226,12 @@ a {
   flex-direction: column;
   align-items: center;
 }
-#nav-tools .div-logout i {
-height: 30px;
+/* #nav-tools .div-logout i {
+height: 20px;
 width: auto;
 font-size: 40;
-}
+} */
+
 #nav-tools > a:hover {
 	border: 0.1rem solid var(--main-border);
 	border-radius: var(--border-radius);
@@ -277,7 +278,9 @@ font-size: 40;
   text-decoration: none;
   display: block;
 }
-
+.leftPadding{
+	padding-left: 5px;
+}
 .dropdown-content a:hover {background-color: #ddd;}
 
 .dropdown:hover .dropdown-content {display: block;}

@@ -45,7 +45,7 @@ function SignupFormPage() {
   };
 
   return (
-    <section className="section-signUp">
+    <section className="section-signUp bgcolor-white">
     <div className="logo">
     <NavLink exact to="/"><img id='signUp-logo' src={logo} alt=""></img></NavLink>
     </div>

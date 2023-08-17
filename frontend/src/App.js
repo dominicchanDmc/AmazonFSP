@@ -8,11 +8,12 @@ import './App.css'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import CartIndex from './components/CartIndex/CartIndex';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
+import CategoryIndex from './components/CategorieIndex';
 // import AccountModal from './components/Model/accountModel';
 
 function App() {
   const location = useLocation();
-  const isNavigationVisible = ['/', '/cart','/404'].includes(location.pathname);
+  const isNavigationVisible = ['/', '/cart','/404','/category'].includes(location.pathname);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/cart">
             <CartIndex />
+        </Route>
+        <Route path="/category">
+            <CategoryIndex />
         </Route>
         <Route path="/404" component={NotFoundPage} />
         <Route component={NotFoundPageWithNavigation} />

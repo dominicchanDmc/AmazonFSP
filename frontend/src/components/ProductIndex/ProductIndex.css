@@ -50,3 +50,26 @@ body {
     padding: 8px;
     border-radius: 10px;
 }
+
+.section-3 {
+  background-color: white;
+}
+.section-3 .section-3-container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  
+}
+.section-3 .section-3-container .product-detail-cards {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+.cursor-pointer{
+  cursor:pointer
+}

@@ -5,7 +5,7 @@ import './CategorieIndex.css'
 import { useEffect } from 'react'
 import ProductItem from '../ProductItem';
 
-const CategorieIndex = () => {
+const CategoryIndex = () => {
   const products = useSelector(selectAllproducts)
   const dispatch = useDispatch()
 
@@ -36,4 +36,4 @@ const CategorieIndex = () => {
   )
 }
 
-export default CategorieIndex
+export default CategoryIndex

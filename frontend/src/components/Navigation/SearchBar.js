@@ -41,7 +41,9 @@ import React, {useState} from 'react'
                     value={searchInput} />
                 </div>
                 <div className="nav-right">
-                    <button type="submit">Search</button>
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </div>
             </form>
         </div>

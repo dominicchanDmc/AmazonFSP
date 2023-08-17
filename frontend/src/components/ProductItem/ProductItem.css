@@ -1,0 +1,114 @@
+/* .product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+  max-height: 400px;
+  min-width: 100px;
+  background-color: white;
+  z-index: 1;
+}
+
+.product__rating {
+  display: flex;
+}
+
+.product > img {
+  max-height: 200px;
+  width: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+
+
+.product__price {
+  margin-top: 5px;
+}
+
+.product__info {
+  height: 100px;
+  margin-bottom: 15px;
+} */
+/* a.brand {
+  color: #ffffff;
+  font-size: 20%;
+  font-weight: bold;
+} */
+
+.card button {
+  background: #f0c14b;
+  border: 1px solid;
+  margin-top: 10px;
+  width: 200px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  position: absolute; 
+  bottom: 20px;
+}
+
+img {
+  border-radius: 0.5rem;
+  
+}
+img.medium {
+  max-height: 100px;
+  width: 65%;
+  object-fit: contain;
+  /* margin-bottom: 15px; */
+}
+
+.card {
+  max-height: 330px;
+  max-width: 230px;
+  border: 0.1rem #c0c0c0 solid;
+  background-color: white;
+
+  margin: 1rem;
+  z-index: 100;
+  border-radius: 0.5rem;
+  position: relative;
+}
+.card-body {
+  padding: 1rem;
+
+}
+.card-body > * {
+  margin-bottom: 0.5rem;
+}
+
+.card a {
+  margin-bottom: 0.5rem;
+  color: black;
+  font-size: 10px;
+}
+
+.rating span {
+  color: #f0c040;
+  margin: 0.1rem;
+}
+
+/* .price {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+
+
+/* 
+.price small {
+  font-size: 50%;
+}
+
+.price strong {
+  font-size: 150%;
+}
+ */
+
+
+

@@ -15,10 +15,11 @@ function ProductShowPage() {
     }, [dispatch,productId]);
     
     let productInfo; 
+    let finalPrice;
     if (product){
         let priceSpan;
             if (product.discount){
-                let finalPrice = Number(product.price * (100-product.discount)/100).toFixed(2);
+                finalPrice = Number(product.price * (100-product.discount)/100).toFixed(2);
                 priceSpan =    (<>
                     <span>
                         <span className="colorRed price-fontSize-mid">
@@ -80,11 +81,27 @@ function ProductShowPage() {
 
                 </div>
                 <div className="item-cart-parent">
-                    <div className="form"> 
-                    <form>
-   
-                    <button>Add toCart</button>
-                    </form>
+                    <div className="item-cart-form"> 
+                        <span className="colorBlack price-fontSize-large">
+                            {"$"+ finalPrice}
+                        </span>                        
+                        <span className="colorGrayBlue price-fontSize-14">FREE Returns</span>
+                        <span className="colorGrayBlue price-fontSize-14">FREE delivery <strong className="colorBlack">Wednesday, August 23</strong></span>
+                        <span className=" price-fontSize-14">Or fastest delivery <strong className="colorBlack">Tomorrow, August 19.</strong></span>
+                        <span className="colorGreen price-fontSize-18">In Stock</span>
+                        <div>
+                            <label htmlFor="quantity">Qty: </label>
+                            <select id="quantity" name="quantity" className="showQuantitySelect">
+                                <option key="0" value="0">0 (Delete)</option>
+                                <option key="1" value="1" selected>1 </option>
+                                {Array.from({ length: 14 }, (_, index) => index + 2).map((qty) => (
+                                    <option key={qty} value={qty}>
+                                        {qty}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <button>Add toCart</button>
                     </div>
                 </div>
             </section>

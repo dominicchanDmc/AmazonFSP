@@ -27,9 +27,17 @@ body {
 .colorGray{
   color: gray;
 }
-
-.bgColorRed{
+.colorGrayBlue{
+  color: #007185
+}
+.colorGreen{
+  color: #007600;
+}
+/* .bgColorRed{
   background: red;
+} */
+.bgColorBloodRed{
+  background: #CC0C39;
 }
 .price-fontSize-mid{
   font-size: 24px;
@@ -39,6 +47,9 @@ body {
 }
 .price-fontSize-18{
   font-size: 18px;
+}
+.price-fontSize-14{
+  font-size: 14px;
 }
 .price-fontSize-samll{
   font-size: 12px;

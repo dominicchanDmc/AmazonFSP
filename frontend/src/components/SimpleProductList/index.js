@@ -7,7 +7,7 @@ function SimpleProductList({ product}) {
         let finalPrice = Number(product.price * (100-product.discount)/100).toFixed(2);
         priceSpan =    (<>
             <span>
-                <span className="colorWhite price-fontSize-samll bgColorRed">
+                <span className="colorWhite price-fontSize-samll bgColorBloodRed">
                     {product.discount +"% off"}
                 </span>
             </span>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
+import * as sessionActions from "../../store/sessionReducer";
 import { useDispatch, useSelector } from "react-redux";
 import logo from '../../assets/Yellow_Arrow_1.png';
 import { NavLink } from 'react-router-dom';
@@ -66,11 +66,11 @@ function LoginForm() {
 
 
   return (
-    <section className="section-login">
+    <section className="section-login bgcolor-white">
       <div className="logo">
       <NavLink exact to="/"><img id='login-logo' src={logo} alt=""></img></NavLink>
       </div>
-      <div className="card">
+      <div className="card-login">
         <h1>Sign in</h1>
         <div className="form"> 
         <form>
@@ -123,68 +123,7 @@ function LoginForm() {
       <div className="btn">
         <button onClick={handleSignupClick}>Create your Yellow Arrow account</button>
       </div>
-      {/* <footer>
-        <div className="links">
-          <a href="">Conditions of Use</a>
-          <a href="">Privacy Notice</a>
-          <a href="">Help</a>
-        </div>
-        <p>© 1996-2023, Amazon.com, Inc. or its affiliates</p>
-      </footer> */}
     </section> 
-
-
-      // <div className="login-base">
-      //   <NavLink exact to="/"><img id='login-logo' src={logo} alt=""></img></NavLink>
-      //   <div className="login-container">
-      //     <h2>Log In</h2>
-      //     <form onSubmit={handleSubmit}>
-      //       <label htmlFor="nameEmail">
-      //         <b>Username or Email</b>
-      //         </label>
-      //         <br/>
-      //         <input
-      //           id="nameEmail"
-      //           type="text"
-      //           value={credential}
-      //           onChange={(e) => setCredential(e.target.value)}
-      //           required
-      //         />
-      //       <br/>
-      //       <label htmlFor="passwordInput">
-      //         <b>Password</b>
-      //       </label>
-      //         <br/>
-              // <input
-              //   id="passwordInput"
-              //   type="password"
-              //   value={password}
-              //   onChange={(e) => setPassword(e.target.value)}
-              //   required
-              // />
-      //       <ul className="errorUl">
-      //         {errors.map(error => <li key={error}><b>{error}</b></li>)}
-      //       </ul>
-      //       <button className='submitBtn' type="submit">Login</button>
-      //       <br/>
-      //       <br/>
-            // <button className='submitBtnDemo'
-            // onClick={(e)=>{
-            //   setPassword('123456');
-            //   setCredential('peter');
-            // }}>
-      //       Login with Demo User</button>
-      //     </form>
-      //   </div>
-      //   <div>
-      //         New to Yellow Arrow?<br/>
-      //         <button className='submitBtn'
-      //         onClick={handleSignupClick}
-      //         >
-      //           Create your account
-      //         </button>
-      //   </div>
-      // </div>
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/session";
+import * as sessionActions from "../../store/sessionReducer";
 import logo from '../../assets/Yellow_Arrow_1.png';
 import { NavLink } from 'react-router-dom';
 import './SignupForm.css';
@@ -45,7 +45,7 @@ function SignupFormPage() {
   };
 
   return (
-    <section className="section-signUp">
+    <section className="section-signUp bgcolor-white">
     <div className="logo">
     <NavLink exact to="/"><img id='signUp-logo' src={logo} alt=""></img></NavLink>
     </div>
@@ -110,74 +110,6 @@ function SignupFormPage() {
       </div>
     </div>
   </section> 
-
-    // <div className="signup-base">
-    //  <NavLink exact to="/"><img id='signup-logo' src={logo} alt=""></img></NavLink>
-    //     <div className="signup-container">
-    //     <h2>Sign Up</h2>
-    //       <form onSubmit={handleSubmit}>
-    //         <label htmlFor="usernameInput">
-    //           <b>Username</b>
-    //           </label>
-    //           <br/>
-              // <input
-              //  id="usernameInput"
-              //   type="text"
-              //   value={username}
-              //   onChange={(e) => setUsername(e.target.value)}
-              //   required
-              // />
-    //           <br/>
-            // <label htmlFor="emailInput"><b>Email</b> </label>
-            // <br/>
-            //   <input
-            //   id="emailInput"
-            //     type="text"
-            //     value={email}
-            //     onChange={(e) => setEmail(e.target.value)}
-            //     required
-            //   />
-    //           <br/>
-            // <label htmlFor="passwordInput">
-            //   <b>Password</b>
-            //   </label>
-            //   <br/>
-            //   <input
-            //     id="passwordInput"
-            //     type="password"
-            //     value={password}
-            //     onChange={(e) => setPassword(e.target.value)}
-            //     required
-            //   />
-    //           <br/>
-            // <label htmlFor="confirmPasswordInput">
-            //   <b>Confirm Password</b>
-            //   </label>
-            //   <br/>
-            //   <input
-            //   id="confirmPasswordInput"
-            //     type="password"
-            //     value={confirmPassword}
-            //     onChange={(e) => setConfirmPassword(e.target.value)}
-            //     required
-            //   />
-    //           <br/>
-    //         <ul className="errorUl">
-    //           {errors.map(error => <li key={error}>{error}</li>)}
-    //         </ul>
-    //         <button type="submit" className='submitBtn'>Sign Up</button>
-    //       </form>
-    //     </div>
-        // <div>
-        //     Already have an account?<br/>
-        //     <button className='submitBtn'
-        //       onClick={handleLoginClick}
-        //       >
-        //       Login
-        //       </button>
-        // </div>
-    // </div>
-
   );
 }
 

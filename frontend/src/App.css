@@ -5,6 +5,62 @@
 html, body {
     font-family: Arial, sans-serif;
 }
+
+* {
+  margin: 0;
+}
+
+body {
+  background-color: rgb(234, 237, 237);
+  margin: 0;
+}
+
+.colorBlack{
+  color: black;
+}
+.colorRed{
+  color: red;
+}
+.colorWhite{
+  color: white;
+}
+.colorGray{
+  color: gray;
+}
+.colorGrayBlue{
+  color: #007185
+}
+.colorGreen{
+  color: #007600;
+}
+/* .bgColorRed{
+  background: red;
+} */
+.bgColorBloodRed{
+  background: #CC0C39;
+}
+.price-fontSize-mid{
+  font-size: 24px;
+}
+.price-fontSize-large{
+  font-size: 28px;
+}
+.price-fontSize-18{
+  font-size: 18px;
+}
+.price-fontSize-14{
+  font-size: 14px;
+}
+.price-fontSize-samll{
+  font-size: 12px;
+}
+.description-fontSize-mid{
+  font-size: 16px;
+}
+.description-fontSize-samll{
+  font-size: 13px;
+}
+
   /* .modal-overlay {
     position: fixed;
     top: 0;

@@ -8,11 +8,13 @@ import './App.css'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import CartIndex from './components/CartIndex/CartIndex';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
+import ProductListPage from './components/ProductListPage';
+import ProductShowPage from './components/ProductShowPage';
 // import AccountModal from './components/Model/accountModel';
 
 function App() {
   const location = useLocation();
-  const isNavigationVisible = ['/', '/cart','/404'].includes(location.pathname);
+  const isNavigationVisible = ['/', '/cart','/404','/products/:productId','/products'].includes(location.pathname);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -31,6 +33,15 @@ function App() {
         <Route path="/cart">
             <CartIndex />
         </Route>
+        {/* <Route path="/products/:productId">
+            <ProductShowPage />
+        </Route> */}
+        <Route path="/products/:productId" component={ProductShowPageWithNavigation} />
+
+        <Route path="/products">
+            <ProductListPage />
+        </Route>
+ 
         <Route path="/404" component={NotFoundPage} />
         <Route component={NotFoundPageWithNavigation} />
       </Switch>   
@@ -42,6 +53,7 @@ function App() {
   );
 }
 function NotFoundPageWithNavigation() {
+  
   return (
     <>
       <Navigation />
@@ -49,4 +61,14 @@ function NotFoundPageWithNavigation() {
     </>
   );
 }
+function ProductShowPageWithNavigation() {
+  
+  return (
+    <>
+      <Navigation />
+      <ProductShowPage />
+    </>
+  );
+}
+
 export default App;

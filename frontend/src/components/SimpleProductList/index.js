@@ -6,7 +6,7 @@ function SimpleProductList({ product}) {
     return(
         <>
             <div  className="product-detail-card">
-                <Link className="product-detail-link" to="">    
+                <Link className="product-detail-link" to={`/products/${product.id}`}>    
                     <div className="product-detail-img">
                             <img src={product.photoUrls[0]} alt="product" />  
                     </div>

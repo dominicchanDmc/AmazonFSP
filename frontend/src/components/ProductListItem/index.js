@@ -6,11 +6,11 @@ function ProductItem({ product}) {
   return (
 
     <div className="productItem-card">
-      <Link to="">
+      <Link to={`/products/${product.id}`}>
         <img className="medium"src={product.photoUrls[0]} alt="product" />
       </Link>
       <div className="productItem-card-body">
-        <Link to="" className="a-product-Name">
+        <Link to={`/products/${product.id}`} className="a-product-Name">
              <h2>{product.productName.length > 50 ? product.productName.slice(0, 50) + "..." : product.productName}</h2>
         </Link>
         <div className="rating">

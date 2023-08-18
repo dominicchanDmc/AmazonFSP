@@ -13,17 +13,29 @@ html, body {
 body {
   background-color: rgb(234, 237, 237);
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif; */
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
+.colorBlack{
+  color: black;
+}
+.colorRed{
+  color: red;
+}
+.price-fontSize-mid{
+  font-size: 24px;
+}
+.price-fontSize-large{
+  font-size: 28px;
+}
+.price-fontSize-samll{
+  font-size: 12px;
+}
+.description-fontSize-mid{
+  font-size: 16px;
+}
+.description-fontSize-samll{
+  font-size: 13px;
+}
 
   /* .modal-overlay {
     position: fixed;

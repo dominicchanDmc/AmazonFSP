@@ -21,11 +21,24 @@ body {
 .colorRed{
   color: red;
 }
+.colorWhite{
+  color: white;
+}
+.colorGray{
+  color: gray;
+}
+
+.bgColorRed{
+  background: red;
+}
 .price-fontSize-mid{
   font-size: 24px;
 }
 .price-fontSize-large{
   font-size: 28px;
+}
+.price-fontSize-18{
+  font-size: 18px;
 }
 .price-fontSize-samll{
   font-size: 12px;

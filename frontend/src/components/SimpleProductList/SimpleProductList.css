@@ -16,7 +16,7 @@
     justify-content: center;
 }
 .section-3 .section-3-container .product-detail-cards .product-detail-card img {
-    width: 100%;
+    /* width: 100%; */
     height: auto;
     max-width: 160px;
     max-height: 140px;
@@ -36,5 +36,8 @@
 
 .section-3 .section-3-container .product-detail-cards .product-detail-card .product-price {
     position:absolute; 
-    bottom: 20px;
+    bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }

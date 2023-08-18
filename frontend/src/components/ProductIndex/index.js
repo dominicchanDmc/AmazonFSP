@@ -6,12 +6,18 @@ import { useEffect } from 'react'
 import { fetchProducts, selectAllproducts } from '../../store/productsReducer'
 import "./ProductIndex.css";
 import SimpleProductList from '../SimpleProductList';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
 
 const ProductIndex = () => {
   const products = useSelector(selectAllproducts)
   const dispatch = useDispatch()
   const history = useHistory();
+  const location = useLocation();
+  const { pathname } = location;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     dispatch(fetchProducts())

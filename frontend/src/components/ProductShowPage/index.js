@@ -33,9 +33,11 @@ function ProductShowPage() {
             }
             else
             {
-                priceSpan =  (<>
-                {"$"+ product.price}
-                </>)
+                priceSpan =  (
+                <span className="colorBlack price-fontSize-large">
+                    {"$"+ product.price}
+                </span>
+                )
             }
 
         productInfo = (<>

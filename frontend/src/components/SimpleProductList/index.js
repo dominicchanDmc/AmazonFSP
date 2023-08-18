@@ -5,7 +5,7 @@ function SimpleProductList({ product}) {
 
     return(
         <>
-            <div className="product-detail-card">
+            <div  className="product-detail-card">
                 <Link className="product-detail-link" to="">    
                     <div className="product-detail-img">
                             <img src={product.photoUrls[0]} alt="product" />  

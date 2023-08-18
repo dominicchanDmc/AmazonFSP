@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductItem.css";
+import "./ProductListItem.css";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 
 function ProductItem({ product}) {

@@ -18,7 +18,7 @@ const ProductIndex = () => {
   },[dispatch])
 
   const handleCategoryElectronic = (e) => {
-    history.push('/productList');
+    history.push('/products');
   };
 
   const handleSignInClick = () => {
@@ -50,13 +50,15 @@ const ProductIndex = () => {
           </div>
         </div>
       </section>
-      <section class="section-3">
-        <section class="section-3-container">
+      <section className="section-3">
+        <section className="section-3-container">
             <h3>Inspired by your browsing history</h3>
-            <div class="product-detail-cards">
+            <div className="product-detail-cards">
               {Object.values(products).map((product, index) => (
                 index <=5 && (
-                  <SimpleProductList product={product} />
+                  <div key={product.id}>
+                    <SimpleProductList product={product} />
+                  </div>
                 )
               ))}
             </div>

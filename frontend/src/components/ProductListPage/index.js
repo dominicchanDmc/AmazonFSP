@@ -3,7 +3,7 @@ import { fetchProducts, selectAllproducts } from '../../store/productsReducer'
 import audioIndex from '../../assets/products/audio-index.jpg';
 import './ProductListPage.css'
 import { useEffect } from 'react'
-import ProductItem from '../ProductItem';
+import ProductListItem from '../ProductListItem';
 
 const ProductListPage = () => {
   const products = useSelector(selectAllproducts)
@@ -25,7 +25,7 @@ const ProductListPage = () => {
         <div className="row center">
             {Object.values(products).map(product => (
             <ul key={product.id} >
-              <ProductItem product={product} />
+              <ProductListItem product={product} />
             </ul>
           ))}
         </div>

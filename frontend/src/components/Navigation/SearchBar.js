@@ -42,7 +42,7 @@ import React, {useState} from 'react'
                 </div>
                 <div className="nav-right">
                     <button type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i className="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </form>

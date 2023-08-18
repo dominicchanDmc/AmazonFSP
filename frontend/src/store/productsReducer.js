@@ -33,7 +33,7 @@ export const fetchProduct = productId => (dispatch) => (
 // SELECTORS
 export const selectAllproducts = state => state.entities.products
 
-export const getProducts = (state) => selectAllproducts(state) ? Object.values(selectAllproducts(state)) : [];
+// export const getProducts = (state) => selectAllproducts(state) ? Object.values(selectAllproducts(state)) : [];
 
 export const getProduct = (productId) => (state) => selectAllproducts(state) ? selectAllproducts(state)[productId] : null;
 // REDUCER
@@ -42,8 +42,8 @@ const productReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_PRODUCT:
-      nextState[action.product.id] = action.product
-      return nextState
+      // nextState[action.product.id] = action.product
+      return {...state, ...action.product}
     case RECEIVE_PRODUCTS:
       return Object.assign(nextState, action.products)
     default:

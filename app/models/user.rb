@@ -26,6 +26,10 @@ class User < ApplicationRecord
   
   before_validation :ensure_session_token
 
+  has_many :cartItems,
+  class_name: :CartItem,
+  dependent: :destroy
+
   def self.find_by_credentials(credential, password)
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username
     user = User.find_by(field => credential)

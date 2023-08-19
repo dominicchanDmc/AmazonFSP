@@ -16,6 +16,10 @@ class Product < ApplicationRecord
     has_many_attached :photos
     before_destroy :purge_photos
 
+    has_many :cartItems,
+    class_name: :CartItem,
+    dependent: :destroy
+
     private
     def purge_photos
       photos.purge

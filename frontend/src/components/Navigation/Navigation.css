@@ -200,16 +200,6 @@ a {
   color: white;
   padding-left: 20px;
 }
-/* #nav-tools a.link-login .icon{
-  font-size: 2.5rem;
-} */
-
-/* #nav-tools > .vertical-align{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
 
 #nav-tools > .div-logout {
 	box-sizing: border-box;
@@ -226,11 +216,6 @@ a {
   flex-direction: column;
   align-items: center;
 }
-/* #nav-tools .div-logout i {
-height: 20px;
-width: auto;
-font-size: 40;
-} */
 
 #nav-tools > a:hover {
 	border: 0.1rem solid var(--main-border);
@@ -239,10 +224,7 @@ font-size: 40;
 	color: var(--main-text);
 	box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
 }
-/* .div-logout .icon{
-  font-size: 2.5rem;
-  cursor: pointer;
-} */
+
 .cart {
   display: flex;
 }

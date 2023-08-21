@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Navigation.css';
 import logo from '../../assets/Yellow_Arrow_1.png';
+import shoppingCart from "../../assets/cart.png";
 import SearchBar from './SearchBar';                       
 import * as sessionActions from '../../store/sessionReducer';
 import { fetchCartItemsByUserId, selectUserCartItems} from '../../store/cartItemsReducer'
@@ -15,9 +16,8 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
   const sessionUser = useSelector(state => state.session.user);
   const cartItems = useSelector(selectUserCartItems)
   let cartItemsCount;
-  if (cartItems && cartItems.products 
-    && Object.keys(cartItems.products).length > 0)
-    cartItemsCount = Object.keys(cartItems.products).length
+  if (cartItems && Object.keys(cartItems).length > 0)
+    cartItemsCount = Object.keys(cartItems).length
 
   // const [cartItems, setCartItems] = useState([]);
   // const [isHovered, setIsHovered] = useState(false);
@@ -29,15 +29,6 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
       // fetchUserCartItems(sessionUser.id);
     }
   }, [sessionUser]);
-
-  // const fetchUserCartItems = async (userId) => {
-  //   try {
-  //     const fetchedCartItems  = await dispatch(fetchCartItemsByUserId(userId));
-  //     setCartItems(fetchedCartItems);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   const handleMouseOver = () => {
     // if (!isHovered)
@@ -142,9 +133,15 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
             {sessionLinks}
             <div className="cart">
               <Link to="/cart" className='link-cart'>
-                <div className='.cart-count-div'>
-                  <i className="fa-solid fa-cart-shopping cart-icon"></i>
-                  <span className="cart-count">{cartItemsCount}</span>
+                <div>
+                  {cartItemsCount && cartItemsCount > 0 && (
+                  <div className="cart-count">{cartItemsCount}</div>
+                  )}
+                  <img
+                  src={shoppingCart}
+                  alt="shopping cart"
+                  className="cart-icon"
+                />
                 </div>
               </Link>
               <p><b>Cart</b>

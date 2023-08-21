@@ -230,7 +230,9 @@ a {
 }
 
 .cart .cart-icon {
-  font-size: 2.5rem
+  /* font-size: 2.5rem */
+  width: 3em;
+  filter: invert(1);
 }
 
 .cart p {
@@ -242,7 +244,7 @@ a {
 	position: relative
 }
 .cart-count{
-	height: 20px;
+	/* height: 20px;
 	width: 20px;
 	text-align: center;
 	background-color: red;
@@ -250,7 +252,13 @@ a {
     font-size: 18px;
 	position: absolute;
 	right: 48px;
-	top:10px;
+	top:10px; */
+	position: absolute;
+	transform: translateX(-40%);
+	right: 5%;
+	top: 1%;
+	font-size: 1.1em;
+	color: #f08806;
 }
 
 .dropdown {

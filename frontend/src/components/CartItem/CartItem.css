@@ -1,0 +1,37 @@
+.cartItem-products {
+  padding: 1em;
+}
+
+.cartItem-product {
+  display: flex;
+  gap: .5em;
+  border-bottom: 0.05em solid #d3d3d3;
+  padding: .5em;
+}
+
+.cartItem-productImg {
+  height: 10em;
+  width: 12.5em;
+  background: rgb(250, 250, 250);
+  display: flex;
+  justify-content: center;
+}
+
+.cartItem-productImg > img {
+  object-fit: contain;
+}
+
+.cartItem-productInfo {
+  flex: 1;
+}
+
+.cartItem-productTitlePrice {
+  flex: 1;
+  display: flex;
+  font-size: 1.25em;
+  justify-content: space-between;
+}
+
+.cartItem-productPrice {
+  font-weight: bold;
+}

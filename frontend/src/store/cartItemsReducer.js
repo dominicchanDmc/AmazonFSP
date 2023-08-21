@@ -3,6 +3,7 @@ import * as cartItemApiUtils from '../utils/cartItemApiUtils'
 // CONSTANTS
 export const RECEIVE_CARTITEMS = 'RECEIVE_CARTITEMS'
 export const RESET_CARTITEMS  = 'RESET_CARTITEMS '
+export const REMOVE_FROM_CART  = 'REMOVE_FROM_CART '
 
 // ACTION CREATORS
 export const receiveCartItems = cartItems => ({
@@ -12,6 +13,13 @@ export const receiveCartItems = cartItems => ({
 export const resetCartItems = () => ({
 type: RESET_CARTITEMS
 });
+export const removeFromCart = (cartId) => {
+  return {
+    type: REMOVE_FROM_CART,
+    cartId
+  };
+};
+
 // THUNK ACTION CREATORS
 export const fetchCartItemsByUserId = (userId) => async (dispatch) => {
     const cartItems = await cartItemApiUtils.fetchCartItemsByUserId(userId)

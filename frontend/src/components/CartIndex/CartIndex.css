@@ -11,6 +11,7 @@
   
   .cartIndex-left {
     margin-top: 1em;
+    width: 75%;
   }
   .cartIndex-right {
     height: fit-content;

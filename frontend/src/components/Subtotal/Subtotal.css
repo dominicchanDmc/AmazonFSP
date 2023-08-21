@@ -5,19 +5,11 @@
     flex-direction: column;
   }
   
-  .subtotal__title > strong {
+  .subtotal-title > strong {
     font-weight: 700;
   }
   
-  .subtotal__gift {
-    font-size: .85rem;
-    display: flex;
-    align-items: center;
-    gap: .5em;
-    margin-bottom: 1em;
-  }
-  
-  .subtotal__button {
+  .subtotal-button {
     font-size: .9em;
     width: 100%;
     margin: 0 .5em .5em .5em;
@@ -29,16 +21,11 @@
     box-shadow: 0 .1em .25em rgb(235, 235, 235);
   }
   
-  .subtotal__button:hover {
+  .subtotal-button:hover {
     background: rgb(243, 206, 18);
   }
   
-  .subtotal__error {
+  .subtotal-error {
     font-size: .8em;
     color: rgb(255, 114, 21);
-  }
-  
-  @media screen and (max-width: 840px) {
-    .subtotal__button:active {background: rgb(243, 206, 18);}
-    .subtotal__button:hover {background : rgb(255,215,18);}
   }

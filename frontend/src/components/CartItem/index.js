@@ -25,17 +25,29 @@ if (props.item){
         <div className="cartItem-productInfo">
           <div className="cartItem-productTitlePrice">
             <div className="cartItem-productTitle">
-            {product.productName.length > 50 ? product.productName.slice(0, 50) + "..." : product.productName}
+            {product.productName.length > 100 ? product.productName.slice(0, 100) + "..." : product.productName}
             </div>
             <div className="cartItem-productPrice">
               <PriceSpan product={product}/>
             </div>
+            <span className="colorGreen price-fontSize-samll">In Stock</span>
+          </div>
+          <div className="cartItem-quantity-productButtons">
+            <label htmlFor="quantity">Qty: </label>
+            <select id="quantity" name="quantity" className="showQuantitySelect">
+                <option key="0" value="0">0 (Delete)</option>
+                <option key="1" value="1" selected>1 </option>
+                {Array.from({ length: 14 }, (_, index) => index + 2).map((qty) => (
+                    <option key={qty} value={qty}>
+                        {qty}
+                    </option>
+                ))}
+            </select>
+            <div className="cartItem-productButtons">
+              <button type="button">Delete</button>
+            </div>
           </div>
 
-          <div className="cartItem-productButtons">
-            {/* <button type="button" onClick={handleRemoveClick}>Delete</button> */}
-
-          </div>
         </div>
       </div>
     </>

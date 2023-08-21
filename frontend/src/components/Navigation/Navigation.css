@@ -244,18 +244,9 @@ a {
 	position: relative
 }
 .cart-count{
-	/* height: 20px;
-	width: 20px;
-	text-align: center;
-	background-color: red;
-    border-radius: 2rem;
-    font-size: 18px;
-	position: absolute;
-	right: 48px;
-	top:10px; */
 	position: absolute;
 	transform: translateX(-40%);
-	right: 5%;
+	right: 53px;
 	top: 1%;
 	font-size: 1.1em;
 	color: #f08806;

@@ -3,7 +3,7 @@ img.medium {
   width: 75%;
   object-fit: contain;
   position: absolute; 
-  bottom: 180px;
+  bottom: 200px;
   left: 30px;
 }
 
@@ -13,7 +13,7 @@ img.medium {
   margin: 1rem;
   border-radius: 0.5rem;
   width: 200px;
-  height: 280px;
+  height: 300px;
   padding: 20px 26px;
   display: flex;
   justify-content: space-around;
@@ -37,7 +37,7 @@ img.medium {
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
   position: absolute; 
-  bottom: 10px;
+  bottom: 30px;
   left: 25px;
 }
 
@@ -47,7 +47,7 @@ img.medium {
   color: black;
   font-size: 9px;
   position: absolute; 
-  bottom: 100px;
+  bottom: 120px;
   left: 25px;
 }
 
@@ -55,13 +55,18 @@ img.medium {
   color: #f0c040;
   margin: 0.1rem;
   position: absolute; 
-  bottom: 75px;
+  bottom: 100px;
   left: 25px;
 }
 
 .price {
   position: absolute; 
-  bottom: 45px;
+  bottom: 65px;
   left: 25px;
 }
 
+.list-message{
+  color: green;
+  position: absolute; 
+  bottom: 5px;
+}

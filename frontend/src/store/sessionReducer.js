@@ -1,4 +1,6 @@
 import csrfFetch from "./csrf.js";
+import {resetCartItems} from './cartItemsReducer'
+
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
@@ -64,6 +66,7 @@ export const logout = () => async (dispatch) => {
   });
   storeCurrentUser(null);
   dispatch(removeCurrentUser());
+  dispatch(resetCartItems());
   return response;
 };
 

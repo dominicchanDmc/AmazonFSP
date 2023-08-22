@@ -55,4 +55,8 @@ product_Jabra_Elite_7_Pro_2 = File.open('frontend/src/assets/products/audio/Jabr
 product_Jabra_Elite_7_Pro.photos.attach(io: product_Jabra_Elite_7_Pro_1, filename: 'Jabra_Elite_7_Pro_1.jpg')
 product_Jabra_Elite_7_Pro.photos.attach(io: product_Jabra_Elite_7_Pro_2, filename: 'Jabra_Elite_7_Pro_2.jpg')
 
+puts "Creating cartItems..."
+# cartItem1 = CartItem.create!(quantity:1,user_id:peter.id,product_id:product_Sony_WH_CH720N.id)
+# cartItem2 = CartItem.create!(quantity:1,user_id:peter.id,product_id:product_JBL_Vibe_200TWS.id)
+
 puts "Seeding complete!"

@@ -1,18 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Navigation.css';
 import logo from '../../assets/Yellow_Arrow_1.png';
+import shoppingCart from "../../assets/cart.png";
 import SearchBar from './SearchBar';                       
 import * as sessionActions from '../../store/sessionReducer';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { fetchCartItemsByUserId, selectUserCartItems} from '../../store/cartItemsReducer'
+
 // import AccountModal from '../Model/accountModel';
 
 function Navigation({ setIsModalOpen,isModalOpen }) {
-  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
+  const cartItems = useSelector(selectUserCartItems)
+  let cartItemsCount;
+  if (cartItems && Object.keys(cartItems).length > 0)
+    cartItemsCount = Object.values(cartItems).reduce
+    ((total, cartItem) => total + cartItem.quantity, 0);
+
+  // const [cartItems, setCartItems] = useState([]);
   // const [isHovered, setIsHovered] = useState(false);
   // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (sessionUser) {
+      dispatch(fetchCartItemsByUserId(sessionUser.id))
+      // fetchUserCartItems(sessionUser.id);
+    }
+  }, [sessionUser]);
 
   const handleMouseOver = () => {
     // if (!isHovered)
@@ -116,8 +133,20 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
           <div id="nav-tools">
             {sessionLinks}
             <div className="cart">
-              <Link to="/cart" className='link-cart'><i className="fa-solid fa-cart-shopping cart-icon"></i></Link>
-              <p><b>Cart</b></p>
+              <Link to="/cart" className='link-cart'>
+                <div>
+                  {cartItemsCount && cartItemsCount > 0 && (
+                  <div className="cart-count">{cartItemsCount}</div>
+                  )}
+                  <img
+                  src={shoppingCart}
+                  alt="shopping cart"
+                  className="cart-icon"
+                />
+                </div>
+              </Link>
+              <p><b>Cart</b>
+              </p>
             </div>
           </div>
           {/* {isModalOpen  && (

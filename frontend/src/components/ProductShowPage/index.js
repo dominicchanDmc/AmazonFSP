@@ -1,22 +1,52 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom/cjs/react-router-dom";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import './ProductShowPage.css'
+import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
 
 function ProductShowPage() {
     const { productId } = useParams();
     const product = useSelector(getProduct(productId));
-
+    const [quantity, setQuantity] = useState(1); 
+    const [message, setMessage] = useState({ content: '', visible: false })
+    const history = useHistory();
     const dispatch = useDispatch();
+    const cartItems = useSelector(selectUserCartItems);
+    const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
         dispatch(fetchProduct(productId));
     }, [dispatch,productId]);
-    
+
+    const handleAddToCart = () => {
+        if (sessionUser){
+            const existingCartItem = Object.values(cartItems) ? 
+            Object.values(cartItems).find(item => item.productId === product.id):0;
+            if (existingCartItem) {
+                const updatedQuantity = existingCartItem.quantity + quantity;
+                dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
+            } else {
+                dispatch(fetchAddToCart(product.id, quantity));
+            }
+            setMessage({ content: 'Item Added to Cart', visible: true });
+            setTimeout(() => {
+            setMessage({ ...message, visible: false });
+            }, 2000);
+        }
+        else {
+            history.push('/login');
+        }
+    };
+
+    const handleQuantityChange = (event) => {
+        const newQuantity = parseInt(event.target.value);
+        setQuantity(newQuantity);
+    };
+
     let productInfo; 
-    let finalPrice;
     if (product){
+        let finalPrice = product.price;
         let priceSpan;
             if (product.discount){
                 finalPrice = Number(product.price * (100-product.discount)/100).toFixed(2);
@@ -91,9 +121,9 @@ function ProductShowPage() {
                         <span className="colorGreen price-fontSize-18">In Stock</span>
                         <div>
                             <label htmlFor="quantity">Qty: </label>
-                            <select id="quantity" name="quantity" className="showQuantitySelect">
-                                <option key="0" value="0">0 (Delete)</option>
-                                <option key="1" value="1" selected>1 </option>
+                            <select id="quantity" onChange={handleQuantityChange}
+                             name="quantity" className="showQuantitySelect" defaultValue={"1"}>
+                                <option key="1" value="1">1 </option>
                                 {Array.from({ length: 14 }, (_, index) => index + 2).map((qty) => (
                                     <option key={qty} value={qty}>
                                         {qty}
@@ -101,7 +131,12 @@ function ProductShowPage() {
                                 ))}
                             </select>
                         </div>
-                        <button>Add toCart</button>
+                        <button onClick={handleAddToCart}>Add toCart</button>
+                        {message.visible && (
+                            <div className="cart-message">
+                            <b>{message.content}</b>
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>

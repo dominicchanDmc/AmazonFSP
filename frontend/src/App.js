@@ -6,7 +6,7 @@ import ProductIndex from './components/ProductIndex';
 import LoginFormPage from './components/LoginFormPage';
 import './App.css'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
-import CartIndex from './components/CartIndex/CartIndex';
+import CartIndex from './components/CartIndex';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 import ProductListPage from './components/ProductListPage';
 import ProductShowPage from './components/ProductShowPage';

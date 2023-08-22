@@ -20,6 +20,17 @@ class Api::CartItemsController < ApplicationController
       
       end
     end
+
+    def destroy
+      @cart_item = CartItem.find_by(id: params[:id])
+  
+      if @cart_item
+        @cart_item.destroy
+      else
+        render json: { error: "Cart item not found" }, status: :not_found
+      end
+    end
+
     private
     def cartItems_params
       params.require(:cartItems).permit(:quantity)

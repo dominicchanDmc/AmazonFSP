@@ -1,3 +1,4 @@
+import { removeFromCart } from "../store/cartItemsReducer";
 import csrfFetch from "../store/csrf";
 
 export const fetchCartItemsByUserId = async userId => {
@@ -30,5 +31,21 @@ export const fetchAddToCart = async(product_id, quantity) => {
     }
   } catch (error) {
     // Handle error
+  }
+};
+
+export const fetchRemoveFromCart = (cartItemId) => async (dispatch) =>{
+  try {
+    const response = await csrfFetch(`/api/cart_items/${cartItemId}`, {
+      method: 'DELETE'
+    }); 
+
+    if (response.ok) {
+      dispatch(removeFromCart(cartItemId))
+    } else {
+      throw new Error('Failed to remove item from cart');
+    }
+  } catch (error) {
+    throw error;
   }
 };

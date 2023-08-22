@@ -26,11 +26,9 @@ const CartIndex = () => {
 
         <div className="cartIndex-products">
           {cartItems ? (Object.values(cartItems).map(item => 
-            <>
-              <div key={cartItems.id}>
+              <div key={item.id}>
                 <CartItem item={item}/>
               </div>
-            </>
           )):null}
         </div>
       </div>

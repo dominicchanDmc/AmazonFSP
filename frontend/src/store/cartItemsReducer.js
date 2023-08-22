@@ -3,9 +3,9 @@ import * as cartItemApiUtils from '../utils/cartItemApiUtils'
 // CONSTANTS
 export const RECEIVE_CARTITEMS = 'RECEIVE_CARTITEMS'
 export const RECEIVE_CARTITEM = 'RECEIVE_CARTITEM'
-export const RESET_CARTITEMS  = 'RESET_CARTITEMS '
-export const REMOVE_FROM_CART  = 'REMOVE_FROM_CART '
-export const ADD_TO_CART  = 'ADD_TO_CART '
+export const RESET_CARTITEMS  = 'RESET_CARTITEMS'
+export const REMOVE_FROM_CART  = 'REMOVE_FROM_CART'
+export const ADD_TO_CART  = 'ADD_TO_CART'
 
 
 // ACTION CREATORS
@@ -20,7 +20,7 @@ export const receiveCartItem = cartItem => ({
 export const resetCartItems = () => ({
 type: RESET_CARTITEMS
 });
-export const removeFromCart = (cartId) => ({
+export const removeFromCart = cartId => ({
     type: REMOVE_FROM_CART,
     cartId
 });
@@ -31,13 +31,33 @@ export const addToCart = (cartItem) => ({
 
 // THUNK ACTION CREATORS
 export const fetchCartItemsByUserId = (userId) => async (dispatch) => {
+  try {
     const cartItems = await cartItemApiUtils.fetchCartItemsByUserId(userId)
     return dispatch(receiveCartItems(cartItems))
+  }catch (error) {
+
+  }
 }
 export const fetchAddToCart = (productId, quantity) => async (dispatch) => {
-  const cartItem = await cartItemApiUtils.fetchAddToCart(productId,quantity)
-  return dispatch(addToCart(cartItem))
+  try{
+    const cartItem = await cartItemApiUtils.fetchAddToCart(productId,quantity)
+    return dispatch(addToCart(cartItem))
+  }catch (error) {
+
+  }
 }
+
+// export const fetchRemoveFromCart = (cartId) => async (dispatch) => {
+//   try {
+//     await cartItemApiUtils.fetchRemoveFromCart(cartId);
+//     // console.log("fetchRemoveFromCart API call completed");
+
+//     dispatch(removeFromCart(cartId))
+//     // console.log("dispatch(removeFromCart) dispatched");
+
+//   } catch (error) {
+//   }
+// };
 
 // SELECTORS
 export const selectUserCartItems = state => state.entities.cartItems
@@ -55,19 +75,19 @@ const cartItemsReducer = (state = {}, action) => {
         // const cartItems = { ...state.cartItems };
       
       if (nextState[cartId]) {
-        nextState[cartId].quantity += action.actionquantity;
+        nextState[cartId].quantity += action.action.quantity;
       } else {
         nextState[cartId] = action.cartItem;
       }
-
-      // return { ...state,  cartItems };
       return Object.assign(nextState)
-      // return [...state, action.cartItem];
     case RECEIVE_CARTITEMS:
         return Object.assign(nextState, action.cartItems)
-      // return { ...state, ...action.cartItems };
     case RESET_CARTITEMS:
         return {};
+    case REMOVE_FROM_CART:
+        const updatedCartItems = { ...nextState };
+        delete updatedCartItems[action.cartId];
+        return { ...updatedCartItems };
       default:
         return state
     }

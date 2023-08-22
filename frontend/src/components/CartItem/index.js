@@ -1,22 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/sessionReducer';
-import { fetchCartItemsByUserId,resetCartItems, selectUserCartItems} from '../../store/cartItemsReducer'
+import {resetCartItems, selectUserCartItems} from '../../store/cartItemsReducer'
 import './CartItem.css'
 import PriceSpan from "../PriceSpan";
+import { fetchRemoveFromCart } from "../../utils/cartItemApiUtils";
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const cartItems = useSelector(selectUserCartItems)
-
-  const handleDeselectClick = () => {
-    dispatch(resetCartItems());
+  
+  const handleRemoveClick = () => {
+    dispatch(fetchRemoveFromCart(props.item.id));
   };
+
 let itemInfo;
 if (props.item){
   const product = props.item.products[props.item.productId]; 
 
-  itemInfo = (<>
+  itemInfo = (
     <div key={product.id} className="cartItem-product">
         <div className="cartItem-productImg">
           <img src={product.photoUrls[0]} alt="product" />  
@@ -34,9 +36,10 @@ if (props.item){
           </div>
           <div className="cartItem-quantity-productButtons">
             <label htmlFor="quantity">Qty: </label>
-            <select id="quantity" name="quantity" className="showQuantitySelect">
+            <select id="quantity" name="quantity" className="showQuantitySelect"
+            defaultValue={1}>
                 <option key="0" value="0">0 (Delete)</option>
-                <option key="1" value="1" selected>1 </option>
+                <option key="1" value="1">1 </option>
                 {Array.from({ length: 14 }, (_, index) => index + 2).map((qty) => (
                     <option key={qty} value={qty}>
                         {qty}
@@ -44,13 +47,12 @@ if (props.item){
                 ))}
             </select>
             <div className="cartItem-productButtons">
-              <button type="button">Delete</button>
+              <button type="button" onClick={handleRemoveClick}> Delete</button>
             </div>
           </div>
 
         </div>
       </div>
-    </>
   )
 }else
 {

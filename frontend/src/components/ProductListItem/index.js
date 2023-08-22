@@ -1,27 +1,34 @@
 import React, { useState } from "react";
 import "./ProductListItem.css";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
 import { useDispatch, useSelector } from "react-redux";
 
 function ProductItem({ product}) {
   const [message, setMessage] = useState({ content: '', visible: false });
+  const history = useHistory();
   const dispatch = useDispatch();
   const cartItems = useSelector(selectUserCartItems);
+  const sessionUser = useSelector(state => state.session.user);
 
   const handleAddToCart = () => {
-    const existingCartItem = Object.values(cartItems) ? 
-    Object.values(cartItems).find(item => item.productId === product.id):0;
-    if (existingCartItem) {
-        const updatedQuantity = existingCartItem.quantity + 1;
-        dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
-    } else {
-        dispatch(fetchAddToCart(product.id, 1));
+    if (sessionUser){
+        const existingCartItem = Object.values(cartItems) ? 
+        Object.values(cartItems).find(item => item.productId === product.id):0;
+        if (existingCartItem) {
+            const updatedQuantity = existingCartItem.quantity + 1;
+            dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
+        } else {
+            dispatch(fetchAddToCart(product.id, 1));
+        }
+        setMessage({ content: 'Item Added to Cart', visible: true });
+        setTimeout(() => {
+          setMessage({ ...message, visible: false });
+        }, 2000);
     }
-    setMessage({ content: 'Item Added to Cart', visible: true });
-    setTimeout(() => {
-      setMessage({ ...message, visible: false });
-    }, 2000);
+    else {
+      history.push('/login');
+    }
 };
 
   let priceSpan;

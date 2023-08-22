@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import "./Subtotal.css";
-import { useSelector } from "react-redux";
-import { selectUserCartItems } from "../../store/cartItemsReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteAllCartItems, selectUserCartItems } from "../../store/cartItemsReducer";
 
 function Subtotal() {
+  const dispatch = useDispatch();
   const cartItems = useSelector(selectUserCartItems)
+  const sessionUser = useSelector(state => state.session.user);
+
+  const handleDeselectClick = () => {
+    dispatch(deleteAllCartItems(sessionUser.id));
+  };
+
   let cartItemsCount,cartItemsList;
   if (cartItems && Object.keys(cartItems).length > 0){
     cartItemsList = Object.values(cartItems);
@@ -32,6 +39,7 @@ function Subtotal() {
       <button
         className="subtotal-button"
         type="button"
+        onClick={handleDeselectClick}
       >
         Proceed to checkout
       </button>

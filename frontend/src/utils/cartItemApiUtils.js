@@ -67,3 +67,20 @@ export const fetchUpdateCartItemQuantity = async (cartItemId, newQuantity) => {
     throw error;
   }
 };
+
+export const fetchDeleteAllCartItems = async (userId) => {
+  try {
+    const response = await csrfFetch(`/api/cart_items/delete_all`, {
+      method: 'DELETE',
+      body: JSON.stringify({ user_id: userId }),
+    });
+
+    if (response.ok) {
+      return;
+    } else {
+      // Handle error
+    }
+  } catch (error) {
+    // Handle error
+  }
+};

@@ -34,6 +34,12 @@ class Api::CartItemsController < ApplicationController
       end
     end
 
+    def delete_all
+      user = User.find_by(id: params[:user_id])
+      user.cartItems.destroy_all
+      render json: { message: "All cart items deleted successfully" }
+    end
+    
     def destroy
       @cart_item = CartItem.find_by(id: params[:id])
   

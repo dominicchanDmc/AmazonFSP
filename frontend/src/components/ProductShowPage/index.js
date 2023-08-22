@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom/cjs/react-router-dom";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import './ProductShowPage.css'
 import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
@@ -9,27 +9,34 @@ function ProductShowPage() {
     const { productId } = useParams();
     const product = useSelector(getProduct(productId));
     const [quantity, setQuantity] = useState(1); 
-    const [message, setMessage] = useState({ content: '', visible: false });
+    const [message, setMessage] = useState({ content: '', visible: false })
+    const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector(selectUserCartItems);
- 
+    const sessionUser = useSelector(state => state.session.user);
+
     useEffect(() => {
         dispatch(fetchProduct(productId));
     }, [dispatch,productId]);
 
     const handleAddToCart = () => {
-        const existingCartItem = Object.values(cartItems) ? 
-        Object.values(cartItems).find(item => item.productId === product.id):0;
-        if (existingCartItem) {
-            const updatedQuantity = existingCartItem.quantity + quantity;
-            dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
-        } else {
-            dispatch(fetchAddToCart(product.id, quantity));
+        if (sessionUser){
+            const existingCartItem = Object.values(cartItems) ? 
+            Object.values(cartItems).find(item => item.productId === product.id):0;
+            if (existingCartItem) {
+                const updatedQuantity = existingCartItem.quantity + quantity;
+                dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
+            } else {
+                dispatch(fetchAddToCart(product.id, quantity));
+            }
+            setMessage({ content: 'Item Added to Cart', visible: true });
+            setTimeout(() => {
+            setMessage({ ...message, visible: false });
+            }, 2000);
         }
-        setMessage({ content: 'Item Added to Cart', visible: true });
-        setTimeout(() => {
-          setMessage({ ...message, visible: false });
-        }, 2000);
+        else {
+            history.push('/login');
+        }
     };
 
     const handleQuantityChange = (event) => {

@@ -9,10 +9,12 @@ Rails.application.routes.draw do
     resources :users, only: [:create] do
       resources :cart_items, only: [:index]
     end
+    delete '/cart_items/delete_all', to: 'cart_items#delete_all'
 
     resource :session, only: [:show, :create, :destroy]
     resources :products, only: [:index,:show]
     resources :cart_items, only: [:create,:update,:destroy]
+
   end
 
 

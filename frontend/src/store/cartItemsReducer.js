@@ -60,6 +60,15 @@ export const fetchUpdateCartItemQuantity = (cartItemId, newQuantity) => async (d
   }
 };
 
+export const deleteAllCartItems = (userId) => async (dispatch) => {
+  try {
+    await cartItemApiUtils.fetchDeleteAllCartItems(userId);
+    dispatch(resetCartItems()); 
+  } catch (error) {
+    // Handle error
+  }
+};
+
 // SELECTORS
 export const selectUserCartItems = state => state.entities.cartItems
 
@@ -68,17 +77,14 @@ const cartItemsReducer = (state = {}, action) => {
     const nextState = { ...state }
   
     switch (action.type) {
-      // case RECEIVE_CARTITEM:
-      //   nextState[action.cartItem.id] = action.cartItem
-      //   return {...state, ...action.product}
       case ADD_TO_CART:
-      const cartId = action.cartItem.id;
-      if (nextState[cartId]) {
-        nextState[cartId].quantity += action.action.quantity;
-      } else {
-        nextState[cartId] = action.cartItem;
-      }
-      return Object.assign(nextState)
+        const cartId = action.cartItem.id;
+        if (nextState[cartId]) {
+          nextState[cartId].quantity += action.action.quantity;
+        } else {
+          nextState[cartId] = action.cartItem;
+        }
+        return Object.assign(nextState)
     case RECEIVE_CARTITEMS:
         return Object.assign(nextState, action.cartItems)
     case RESET_CARTITEMS:

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/sessionReducer';
-import { fetchCartItemsByUserId,resetCartItems, selectUserCartItems} from '../../store/cartItemsReducer'
+import { deleteAllCartItems, fetchCartItemsByUserId,resetCartItems, selectUserCartItems} from '../../store/cartItemsReducer'
 import './CartIndex.css'
 import CartItem from "../CartItem";
 import Subtotal from "../Subtotal";
@@ -8,12 +8,13 @@ import Subtotal from "../Subtotal";
 const CartIndex = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectUserCartItems)
+  const sessionUser = useSelector(state => state.session.user);
   let cartItemsCount;
   if (cartItems && Object.keys(cartItems).length > 0)
     cartItemsCount = Object.keys(cartItems).length
   
   const handleDeselectClick = () => {
-    dispatch(resetCartItems());
+    dispatch(deleteAllCartItems(sessionUser.id));
   };
 
   return (
@@ -21,7 +22,7 @@ const CartIndex = () => {
       <div className="cartIndex-left">
         <div className="cartIndex-header">
           <h2 className="cartIndex-title">Shopping Cart</h2>
-          {/* <button onClick={handleDeselectClick}>Deselect all items</button> */}
+          <button onClick={handleDeselectClick}>Delete all items</button>
         </div>
 
         <div className="cartIndex-products">

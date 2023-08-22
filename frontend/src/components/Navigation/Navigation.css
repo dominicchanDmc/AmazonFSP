@@ -246,9 +246,9 @@ a {
 .cart-count{
 	position: absolute;
 	transform: translateX(-40%);
-	right: 53px;
+	right: 51px;
 	top: 1%;
-	font-size: 1.1em;
+	font-size: 15px;
 	color: #f08806;
 }
 

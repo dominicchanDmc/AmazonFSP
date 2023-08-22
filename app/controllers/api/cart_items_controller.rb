@@ -10,7 +10,6 @@ class Api::CartItemsController < ApplicationController
       if product
         @cart_item = CartItem.new(quantity:params[:quantity],
           user_id:current_user.id,product_id:product.id)
-        # @cart_item = current_user.cart_items.build(product: product, quantity: params[:quantity])
   
         if @cart_item.save
           render :cart_item_abrev
@@ -18,6 +17,20 @@ class Api::CartItemsController < ApplicationController
           render json: @cart_item.errors.full_messages, status: :unprocessable_entity
         end
       
+      end
+    end
+
+    def update
+      @cart_item = CartItem.find_by(id: params[:id])
+      
+      if @cart_item
+        if @cart_item.update(quantity: params[:quantity])
+          render json: @cart_item
+        else
+          render json: @cart_item.errors.full_messages, status: :unprocessable_entity
+        end
+      else
+        render json: { error: "Cart item not found" }, status: :not_found
       end
     end
 

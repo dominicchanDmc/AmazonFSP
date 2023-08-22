@@ -60,7 +60,9 @@ body {
 .description-fontSize-samll{
   font-size: 13px;
 }
-
+.cart-message{
+  color: green;
+}
   /* .modal-overlay {
     position: fixed;
     top: 0;

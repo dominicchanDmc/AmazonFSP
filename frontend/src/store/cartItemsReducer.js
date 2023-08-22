@@ -6,7 +6,7 @@ export const RECEIVE_CARTITEM = 'RECEIVE_CARTITEM'
 export const RESET_CARTITEMS  = 'RESET_CARTITEMS'
 export const REMOVE_FROM_CART  = 'REMOVE_FROM_CART'
 export const ADD_TO_CART  = 'ADD_TO_CART'
-
+export const UPDATE_CART_ITEM_QUANTITY  = 'UPDATE_CART_ITEM_QUANTITY'
 
 // ACTION CREATORS
 export const receiveCartItems = cartItems => ({
@@ -29,6 +29,11 @@ export const addToCart = (cartItem) => ({
     cartItem
 });
 
+export const updateCartItemQuantity = (cartItem) => ({
+  type: UPDATE_CART_ITEM_QUANTITY,
+  cartItem
+});
+
 // THUNK ACTION CREATORS
 export const fetchCartItemsByUserId = (userId) => async (dispatch) => {
   try {
@@ -46,6 +51,14 @@ export const fetchAddToCart = (productId, quantity) => async (dispatch) => {
 
   }
 }
+export const fetchUpdateCartItemQuantity = (cartItemId, newQuantity) => async (dispatch) => {
+  try {
+    const cartItem = await cartItemApiUtils.fetchUpdateCartItemQuantity(cartItemId, newQuantity); 
+    dispatch(updateCartItemQuantity(cartItem)); 
+  } catch (error) {
+    throw error;
+  }
+};
 
 // export const fetchRemoveFromCart = (cartId) => async (dispatch) => {
 //   try {
@@ -71,9 +84,7 @@ const cartItemsReducer = (state = {}, action) => {
       //   nextState[action.cartItem.id] = action.cartItem
       //   return {...state, ...action.product}
       case ADD_TO_CART:
-        const cartId = action.cartItem.id;
-        // const cartItems = { ...state.cartItems };
-      
+      const cartId = action.cartItem.id;
       if (nextState[cartId]) {
         nextState[cartId].quantity += action.action.quantity;
       } else {
@@ -88,6 +99,11 @@ const cartItemsReducer = (state = {}, action) => {
         const updatedCartItems = { ...nextState };
         delete updatedCartItems[action.cartId];
         return { ...updatedCartItems };
+    case UPDATE_CART_ITEM_QUANTITY:
+      const cartItemId = action.cartItem.id;
+
+      nextState[cartItemId].quantity = action.cartItem.quantity;
+      return nextState;
       default:
         return state
     }

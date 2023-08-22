@@ -10,6 +10,7 @@ import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
 
 const ProductIndex = () => {
   const products = useSelector(selectAllproducts)
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch()
   const history = useHistory();
   const location = useLocation();
@@ -50,10 +51,12 @@ const ProductIndex = () => {
               <img src={CategoryTools} alt=""/>
               <p>Shop tools, lighting & more</p>
           </div>
-          <div className="section-1-column">
-              <h3>Sign in for your best experience</h3>
-              <button onClick={handleSignInClick} className='cursor-pointer'>Sign in securely</button>
-          </div>
+            {!sessionUser && (<>
+              <div className="section-1-column">
+                <h3>Sign in for your best experience</h3>
+                <button onClick={handleSignInClick} className='cursor-pointer'>Sign in securely</button>       
+              </div>
+            </>)}
         </div>
       </section>
       <section className="section-3">

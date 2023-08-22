@@ -49,3 +49,21 @@ export const fetchRemoveFromCart = (cartItemId) => async (dispatch) =>{
     throw error;
   }
 };
+
+export const fetchUpdateCartItemQuantity = async (cartItemId, newQuantity) => {
+  try {
+    const response = await csrfFetch(`/api/cart_items/${cartItemId}`, {
+      method: 'PATCH', 
+      body: JSON.stringify({ quantity: newQuantity }), 
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to update cart item quantity');
+    }
+  } catch (error) {
+    throw error;
+  }
+};

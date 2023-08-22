@@ -1,23 +1,47 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/sessionReducer';
-import {resetCartItems, selectUserCartItems} from '../../store/cartItemsReducer'
+import {selectUserCartItems,fetchAddToCart, fetchUpdateCartItemQuantity, updateCartItemQuantity}
+ from '../../store/cartItemsReducer'
 import './CartItem.css'
 import PriceSpan from "../PriceSpan";
 import { fetchRemoveFromCart } from "../../utils/cartItemApiUtils";
+import { useState } from "react";
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const cartItems = useSelector(selectUserCartItems)
-  
+  const [quantity, setQuantity] = useState(1); 
+
   const handleRemoveClick = () => {
     dispatch(fetchRemoveFromCart(props.item.id));
   };
 
+  // const handleQuantityChange = async (event) => {
+    // const newQuantity = parseInt(event.target.value);
+    // setQuantity(newQuantity);
+    // try {
+    //   await dispatch(fetchUpdateCartItemQuantity(props.item.id, newQuantity));
+    //   setMessage({ content: 'Quantity updated', visible: true });
+    //   setTimeout(() => {
+    //     setMessage({ ...message, visible: false });
+    //   }, 2000);
+    // } catch (error) {
+    //   // Handle error
+    // }
+    const handleQuantityChange =  (event) => {
+      const newQuantity = parseInt(event.target.value);
+      if (newQuantity >= 0) {
+        // const updatedCartItem = await fetchUpdateCartItemQuantity(props.item.id, newQuantity);
+        dispatch(fetchUpdateCartItemQuantity(props.item.id,newQuantity));
+      }
+
+    };
+
 let itemInfo;
 if (props.item){
   const product = props.item.products[props.item.productId]; 
-
+  console.log(props.item);
   itemInfo = (
     <div key={product.id} className="cartItem-product">
         <div className="cartItem-productImg">
@@ -37,10 +61,9 @@ if (props.item){
           <div className="cartItem-quantity-productButtons">
             <label htmlFor="quantity">Qty: </label>
             <select id="quantity" name="quantity" className="showQuantitySelect"
-            defaultValue={1}>
+            value={props.item.quantity} onChange={handleQuantityChange}>
                 <option key="0" value="0">0 (Delete)</option>
-                <option key="1" value="1">1 </option>
-                {Array.from({ length: 14 }, (_, index) => index + 2).map((qty) => (
+                {Array.from({ length: 15 }, (_, index) => index + 1).map((qty) => (
                     <option key={qty} value={qty}>
                         {qty}
                     </option>

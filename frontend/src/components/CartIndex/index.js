@@ -21,7 +21,7 @@ const CartIndex = () => {
       <div className="cartIndex-left">
         <div className="cartIndex-header">
           <h2 className="cartIndex-title">Shopping Cart</h2>
-          <button onClick={handleDeselectClick}>Deselect all items</button>
+          {/* <button onClick={handleDeselectClick}>Deselect all items</button> */}
         </div>
 
         <div className="cartIndex-products">

@@ -17,7 +17,8 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
   const cartItems = useSelector(selectUserCartItems)
   let cartItemsCount;
   if (cartItems && Object.keys(cartItems).length > 0)
-    cartItemsCount = Object.keys(cartItems).length
+    cartItemsCount = Object.values(cartItems).reduce
+    ((total, cartItem) => total + cartItem.quantity, 0);
 
   // const [cartItems, setCartItems] = useState([]);
   // const [isHovered, setIsHovered] = useState(false);

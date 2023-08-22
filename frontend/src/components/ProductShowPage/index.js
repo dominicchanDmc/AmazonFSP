@@ -9,6 +9,7 @@ function ProductShowPage() {
     const { productId } = useParams();
     const product = useSelector(getProduct(productId));
     const [quantity, setQuantity] = useState(1); 
+    const [message, setMessage] = useState({ content: '', visible: false });
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -17,6 +18,10 @@ function ProductShowPage() {
 
     const handleAddToCart = () => {
         dispatch(fetchAddToCart(product.id,quantity));
+        setMessage({ content: 'Item Added to Cart', visible: true });
+        setTimeout(() => {
+          setMessage({ ...message, visible: false });
+        }, 2000);
     };
 
     const handleQuantityChange = (event) => {
@@ -25,8 +30,8 @@ function ProductShowPage() {
     };
 
     let productInfo; 
-    let finalPrice;
     if (product){
+        let finalPrice = product.price;
         let priceSpan;
             if (product.discount){
                 finalPrice = Number(product.price * (100-product.discount)/100).toFixed(2);
@@ -113,6 +118,11 @@ function ProductShowPage() {
                             </select>
                         </div>
                         <button onClick={handleAddToCart}>Add toCart</button>
+                        {message.visible && (
+                            <div className="cart-message">
+                            <b>{message.content}</b>
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>

@@ -25,7 +25,7 @@ if (props.item){
         <div className="cartItem-productInfo">
           <div className="cartItem-productTitlePrice">
             <div className="cartItem-productTitle">
-            {product.productName.length > 100 ? product.productName.slice(0, 100) + "..." : product.productName}
+            {product.productName.length > 150 ? product.productName.slice(0, 150) + "..." : product.productName}
             </div>
             <div className="cartItem-productPrice">
               <PriceSpan product={product}/>

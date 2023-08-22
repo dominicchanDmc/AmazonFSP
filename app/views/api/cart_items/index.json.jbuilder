@@ -4,7 +4,7 @@
 
 @cart_items.each do |cartItem|
   json.set! cartItem.id do
-    json.partial! 'cart_items', cart_items: cartItem
+    json.partial! 'cart_item', cart_item: cartItem
     json.products do
       json.set! cartItem.product.id do
           json.extract! cartItem.product, :id, :product_name,:price,:discount

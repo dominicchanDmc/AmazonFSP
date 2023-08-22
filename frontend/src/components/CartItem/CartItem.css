@@ -11,14 +11,21 @@
 
 .cartItem-productImg {
   height: 10em;
-  width: 12.5em;
+  width: 200px;
   background: rgb(250, 250, 250);
   display: flex;
   justify-content: center;
+  /* max-height: 400px; */
+  /* display: flex; */
+  /* justify-content: center; */
 }
 
 .cartItem-productImg > img {
   object-fit: contain;
+  width: fit-content;
+  /* height: fit-content; */
+  max-height: 400px;
+  max-width: 200px;
 }
 
 .cartItem-productInfo {

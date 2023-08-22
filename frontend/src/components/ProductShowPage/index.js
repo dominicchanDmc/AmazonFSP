@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import './ProductShowPage.css'
-import { fetchAddToCart } from "../../store/cartItemsReducer";
+import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
 
 function ProductShowPage() {
     const { productId } = useParams();
@@ -11,13 +11,21 @@ function ProductShowPage() {
     const [quantity, setQuantity] = useState(1); 
     const [message, setMessage] = useState({ content: '', visible: false });
     const dispatch = useDispatch();
-
+    const cartItems = useSelector(selectUserCartItems);
+ 
     useEffect(() => {
         dispatch(fetchProduct(productId));
     }, [dispatch,productId]);
 
     const handleAddToCart = () => {
-        dispatch(fetchAddToCart(product.id,quantity));
+        const existingCartItem = Object.values(cartItems) ? 
+        Object.values(cartItems).find(item => item.productId === product.id):0;
+        if (existingCartItem) {
+            const updatedQuantity = existingCartItem.quantity + quantity;
+            dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
+        } else {
+            dispatch(fetchAddToCart(product.id, quantity));
+        }
         setMessage({ content: 'Item Added to Cart', visible: true });
         setTimeout(() => {
           setMessage({ ...message, visible: false });
@@ -108,7 +116,6 @@ function ProductShowPage() {
                             <label htmlFor="quantity">Qty: </label>
                             <select id="quantity" onChange={handleQuantityChange}
                              name="quantity" className="showQuantitySelect" defaultValue={"1"}>
-                                <option key="0" value="0">0 (Delete)</option>
                                 <option key="1" value="1">1 </option>
                                 {Array.from({ length: 14 }, (_, index) => index + 2).map((qty) => (
                                     <option key={qty} value={qty}>

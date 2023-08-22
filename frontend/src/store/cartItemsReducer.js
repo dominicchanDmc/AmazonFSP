@@ -60,18 +60,6 @@ export const fetchUpdateCartItemQuantity = (cartItemId, newQuantity) => async (d
   }
 };
 
-// export const fetchRemoveFromCart = (cartId) => async (dispatch) => {
-//   try {
-//     await cartItemApiUtils.fetchRemoveFromCart(cartId);
-//     // console.log("fetchRemoveFromCart API call completed");
-
-//     dispatch(removeFromCart(cartId))
-//     // console.log("dispatch(removeFromCart) dispatched");
-
-//   } catch (error) {
-//   }
-// };
-
 // SELECTORS
 export const selectUserCartItems = state => state.entities.cartItems
 

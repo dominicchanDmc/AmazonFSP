@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProductListItem.css";
 import { Link } from "react-router-dom/cjs/react-router-dom";
+import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 function ProductItem({ product}) {
+  const [message, setMessage] = useState({ content: '', visible: false });
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectUserCartItems);
+
+  const handleAddToCart = () => {
+    const existingCartItem = Object.values(cartItems) ? 
+    Object.values(cartItems).find(item => item.productId === product.id):0;
+    if (existingCartItem) {
+        const updatedQuantity = existingCartItem.quantity + 1;
+        dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
+    } else {
+        dispatch(fetchAddToCart(product.id, 1));
+    }
+    setMessage({ content: 'Item Added to Cart', visible: true });
+    setTimeout(() => {
+      setMessage({ ...message, visible: false });
+    }, 2000);
+};
+
   let priceSpan;
   if (product && product.discount){
       let finalPrice = Number(product.price * (100-product.discount)/100).toFixed(2);
@@ -51,7 +72,12 @@ function ProductItem({ product}) {
         <div className="price">
           <span>{priceSpan}</span>
         </div>
-        <button>Add to Cart</button>
+        <button onClick={handleAddToCart}>Add toCart</button>
+          {message.visible && (
+              <div className="list-message">
+              <b>{message.content}</b>
+              </div>
+          )}
       </div>
     </div>
   );

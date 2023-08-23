@@ -113,7 +113,11 @@ function ProductShowPage() {
                         <h4>{product.productName}</h4>
                         <div className="star-rating">
                             <span className="price-fontSize-14">{averageRating} out of 5 stars</span>
+                             <div className='star-container'>
+                                 <div className="star-widget">
                                 <RatingPart averageRating={averageRating} caller={"show"}/>
+                                </div>
+                            </div>
                             <span className="price-fontSize-14"> {totalRatingCount} ratings</span >            
                         </div>
                         <p><span className="showItem-price">{priceSpan}</span></p>
@@ -158,8 +162,6 @@ function ProductShowPage() {
                     </div>
                 </div>
             </section>
-
-            <section id="review-section"></section>
         </>)
     }
     else

@@ -3,7 +3,6 @@
     margin: 0 auto;
     align-items: center;
 }
-
 .item-image-parent {
     width: 40%;
     display: flex;
@@ -143,3 +142,4 @@
 .showQuantitySelect{
     width: 50px;
 }
+

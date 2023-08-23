@@ -1,34 +1,53 @@
+import RatingPart from '../RatingPart';
 import './ReviewItem.css'
 function ReviewItem(props) {
-    const reviewInfo = Object.values(props);
-    const totalRatingCount = reviewInfo['0'].length;
-    const sumOfRatings = reviewInfo['0'].reduce((sum, rating) => sum + rating.overallRating, 0);
-    const averageRating = sumOfRatings / totalRatingCount;
+    const reviewItem = props.reviewItem;
+    const reviewer = reviewItem.reviewer[reviewItem.reviewerId]
 
     return (<>
-            <div className="review-review">
-                <div className="testimonial-box">
-                    <div className="box-top">
-                        <div className="profile">
-                            <div className="name-user">
-                                <strong>Touseeq Ijaz</strong>
-                                <span>@touseeqijazweb</span>
-                            </div>
-                        </div>
-                        <div className="reviews">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="far fa-star"></i>
-                            <i className="fa-solid fa-star-half"></i>
+          <div class="review-item">
+          <div class="thumbnail"></div>
+              <div class="review-item-comment-content">
+                <div class="review-item-comment-top">
+                  <div class="review-item-title">
+                    <i class="fa-solid fa-user"></i>
+                  {"  "+reviewer.username}</div>
+                  <div class="review-item-rating"> 
+                    <div className='review-star-container'>
+                        <div className='review-star-widget'>
+                            <RatingPart averageRating={reviewItem.overallRating} 
+                            caller={"reviewItem"} callerId={reviewItem.id}/>
                         </div>
                     </div>
-                    <div className="client-comment">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                    </div>
+                  </div>
+                </div>
+                <span class="review-item-subtitle">{reviewItem.reviewHeadline}</span>
+                <p className='price-fontSize-14'>
+                    {reviewItem.review}
+                </p>
+              </div>
+            </div>
+
+
+        {/* <div className="box-top">
+            <div className="profile">
+                <div className="name-user">
+                    <span>{reviewer.username}</span>
                 </div>
             </div>
+            <div className="reviews">
+                <RatingPart averageRating={reviewItem.overallRating} 
+                caller={"reviewItem"} callerId={reviewItem.id}/>
+            </div>
+            <div>
+                <span>{reviewItem.reviewHeadline}</span>
+            </div>
+        </div>
+        <div className="client-comment">
+            <p>
+                {reviewItem.review}
+            </p>
+        </div> */}
     </>
     )
 }

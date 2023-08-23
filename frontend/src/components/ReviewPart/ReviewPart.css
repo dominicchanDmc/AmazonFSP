@@ -1,7 +1,6 @@
 #review-section {
     display: flex;
-    margin: 0 auto;
-    align-items: center;
+    background-color: white;
 }
 .review-rating {
     width: 35%;

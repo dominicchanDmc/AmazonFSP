@@ -20,10 +20,13 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
     const handleSearch = e => {
         e.preventDefault()
-        dispatch(fetchProducts(searchParams))
+        const updatedSearchParams = {
+            ...searchParams,
+            category: selectedOption !== 'All' ? selectedOption : ''
+        };
+        dispatch(fetchProducts(updatedSearchParams))
         // setSearchParams({})
-        const queryParams = new URLSearchParams(searchParams).toString();
-        // Redirect to ProductListPage with query string
+        const queryParams = new URLSearchParams(updatedSearchParams).toString();
         history.push(`/products?${queryParams}`);
     }
 
@@ -35,17 +38,10 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
         }
       }, [selectedOption]);
 
-    // if (searchInput.length > 0) {
-    // categories.filter((categories) => {
-    //     return categories.name.match(searchInput);
-    // });
-    // }
     return (
         <div id="nav-search">
             <form id="nav-search-bar-form" onSubmit={handleSearch}>
                 <div className="nav-left">
-                {/* <span class="nav-search-label">All</span>
-                  <i class="fa fa-caret-down" aria-hidden="true"></i> */}
                     <select
                         name='categories'
                         ref={selectRef}
@@ -56,7 +52,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
                     >
                         <option key='All'>All</option>
                         {categories.map(categories =>
-                        <option key={categories.categories}>{categories.name}</option>
+                        <option key={categories.value} value={categories.value}>{categories.name}</option>
                         )}
                     </select>
                 </div>

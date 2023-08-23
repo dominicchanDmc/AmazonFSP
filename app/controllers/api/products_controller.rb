@@ -8,9 +8,9 @@ class Api::ProductsController < ApplicationController
           @products = @products.where("product_name ILIKE ?", "%#{params[:search]}%")
       end
 
-      if params[:categories].present?
-        categories = params[:categories].split(',')  # Split the comma-separated categories
-        @products = @products.where("categories IN (?)", categories)
+      if params[:category].present?
+        categories = params[:category]
+        @products = @products.where("ARRAY[?] && STRING_TO_ARRAY(categories, ',')", categories)
       end
     end
 

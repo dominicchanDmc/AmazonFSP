@@ -11,11 +11,11 @@ import { fetchCartItemsByUserId, selectUserCartItems} from '../../store/cartItem
 
 // import AccountModal from '../Model/accountModel';
 export const categories =  [
-  { name: "Air Conditioners", categories: "airConditioners" },
-  { name: "Alexa", categories: "alexa" },
-  { name: "Electronic", categories: "electronic" },
-  { name: "Kitchen", categories: "kitchen" },
-  { name: "Video Games", categories: "videoGames" }
+  { name: "Air Conditioners", value: "airConditioners", },
+  { name: "Alexa", value: "alexa" },
+  { name: "Electronic", value: "electronic" },
+  { name: "Kitchen", value: "kitchen" },
+  { name: "Video Games", value: "videoGames" }
 ]
 function Navigation({ setIsModalOpen,isModalOpen }) {
   const dispatch = useDispatch();
@@ -167,7 +167,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
         <div className="nav-banner-content">
           <ul className="nav-links">
           {categories.map(categories =>
-            <li><Link to="#" key={categories.categories}>{categories.name}</Link></li>
+            <li><Link to="#" key={categories.values}>{categories.name}</Link></li>
           )}
           </ul>
         </div>

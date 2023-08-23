@@ -1,0 +1,17 @@
+#review-section {
+    display: flex;
+    background-color: white;
+}
+.review-rating {
+    width: 35%;
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.review-review {
+    width: 65%;
+    flex: 1 1 auto;    
+    margin-right: 20px;
+    margin-left: 20px;
+
+}

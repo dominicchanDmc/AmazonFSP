@@ -1,7 +1,18 @@
-    json.set! @product.id do
-        json.partial! 'product', product: @product
-        # json.extract! @product, :id, :product_name, :description, :categories, :price, :discount
-        json.photoUrls @product.photos.attached? ? @product.photos.map { |file| file.url } :nil
-    end
-    # json.photoUrls @product.photos.attached? ? url_for(@product.photos) : nil
-
+json.set! @product.id do
+    json.partial! 'product', product: @product
+    json.photoUrls @product.photos.attached? ? @product.photos.map { |file| file.url } :nil
+    
+    json.ratings do
+        @product.ratings.each do |rating|
+            json.set! rating.id do
+                json.extract! rating, :id,:reviewer_id,:overall_rating,:review_headline,:review
+                # json.overall_rating rating.overall_rating
+                json.reviewer do
+                    json.set! rating.reviewer.id do
+                        json.extract! rating.reviewer, :id, :username,:email          
+                    end
+                end
+            end
+        end
+    end 
+end

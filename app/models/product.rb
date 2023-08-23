@@ -20,6 +20,10 @@ class Product < ApplicationRecord
     class_name: :CartItem,
     dependent: :destroy
 
+    has_many :ratings,
+    class_name: :Rating,
+    dependent: :destroy
+
     private
     def purge_photos
       photos.purge

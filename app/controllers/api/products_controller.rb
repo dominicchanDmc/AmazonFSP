@@ -4,7 +4,8 @@ class Api::ProductsController < ApplicationController
     end
 
     def show
-      @product = Product.find_by(id: params[:id]) 
+      # @product = Product.find_by(id: params[:id]) 
+      @product = Product.includes(ratings: :reviewer).find_by(id: params[:id]) 
       render :show
   end
 

@@ -36,7 +36,7 @@ function ProductItem({ product}) {
       let finalPrice = Number(product.price * (100-product.discount)/100).toFixed(2);
       priceSpan =    (<>
           <span>
-              <span className="colorWhite price-fontSize-18 bgColorBloodRed">
+              <span className="colorWhite price-fontSize-18 bgColor-BloodRed">
                   {product.discount +"% off"}
               </span>
           </span>

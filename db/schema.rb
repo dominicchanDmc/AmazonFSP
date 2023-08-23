@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_18_220137) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_22_164012) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_220137) do
     t.index ["product_name"], name: "index_products_on_product_name"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "overall_rating", null: false
+    t.string "review_headline", null: false
+    t.string "review", null: false
+    t.bigint "reviewer_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_ratings_on_product_id"
+    t.index ["reviewer_id", "product_id"], name: "index_ratings_on_reviewer_id_and_product_id", unique: true
+    t.index ["reviewer_id"], name: "index_ratings_on_reviewer_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "username", null: false
@@ -81,4 +94,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_220137) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "products"
   add_foreign_key "cart_items", "users"
+  add_foreign_key "ratings", "products"
+  add_foreign_key "ratings", "users", column: "reviewer_id"
 end

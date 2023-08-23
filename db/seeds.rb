@@ -59,4 +59,16 @@ puts "Creating cartItems..."
 # cartItem1 = CartItem.create!(quantity:1,user_id:peter.id,product_id:product_Sony_WH_CH720N.id)
 # cartItem2 = CartItem.create!(quantity:1,user_id:peter.id,product_id:product_JBL_Vibe_200TWS.id)
 
+puts "Creating ratings..."
+rating_product_1_user_1 = Rating.create!(product_id:product_Sony_WH_CH720N.id,reviewer_id:mike.id,overall_rating:3,review_headline:"Good vs bad",review:"Good pints
+    - sound quality
+    Bad points:
+    - i have connected it to my sony tv and have router also in same room .. so sometime voice drop while watching OTT platform… Don’t know technical reason behind it")
+rating_product_1_user_2 = Rating.create!(product_id:product_Sony_WH_CH720N.id,reviewer_id:peter.id,overall_rating:4,review_headline:"Amazing!",review:"Works really well for office calls too, the dual pairing is good as well.")   
+rating_product_2_user_1 = Rating.create!(product_id:product_JBL_Vibe_200TWS.id,reviewer_id:mike.id,overall_rating:3,review_headline:"Initial impressions",review:"Pros-
+    *The sound quality is great
+    Cons-
+    *The ear buds are not ready to remove from the moulded docking seat in the case. Not a huge deal but noticable every time.")
+
+
 puts "Seeding complete!"

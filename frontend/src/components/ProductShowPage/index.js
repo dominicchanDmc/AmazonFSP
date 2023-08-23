@@ -4,17 +4,21 @@ import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import './ProductShowPage.css'
 import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
+import ReviewPart from "../ReviewPart";
+import RatingPart from "../RatingPart";
 
 function ProductShowPage() {
     const { productId } = useParams();
     const product = useSelector(getProduct(productId));
     const [quantity, setQuantity] = useState(1); 
     const [message, setMessage] = useState({ content: '', visible: false })
+    // const [reviewInfo, setReViewInfo] = useState([])
+
     const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector(selectUserCartItems);
     const sessionUser = useSelector(state => state.session.user);
-
+    
     useEffect(() => {
         dispatch(fetchProduct(productId));
     }, [dispatch,productId]);
@@ -44,8 +48,20 @@ function ProductShowPage() {
         setQuantity(newQuantity);
     };
 
-    let productInfo; 
+    let productInfo,reviewInfov,totalRatingCount,sumOfRatings,averageRating,reviewInfo=[] ; 
     if (product){
+        if (product && product.ratings && Array.isArray(Object.values(product.ratings))) {
+            reviewInfo = Object.values(product.ratings);
+            reviewInfov = Object.values(reviewInfo);
+            totalRatingCount = reviewInfov.length;
+            sumOfRatings = reviewInfov.reduce((sum, rating) => sum + rating.overallRating, 0);
+            averageRating = Math.round((sumOfRatings / totalRatingCount) * 2) / 2;
+        }
+        else{
+            totalRatingCount = 0;
+            averageRating = 0;
+        }
+                 
         let finalPrice = product.price;
         let priceSpan;
             if (product.discount){
@@ -96,7 +112,9 @@ function ProductShowPage() {
                     <div className="main-info">
                         <h4>{product.productName}</h4>
                         <div className="star-rating">
-                            <small>4 </small><span>★★★★</span>★<small> 10 ratings</small>            
+                            <span className="price-fontSize-14">{averageRating} out of 5 stars</span>
+                                <RatingPart averageRating={averageRating} caller={"show"}/>
+                            <span className="price-fontSize-14"> {totalRatingCount} ratings</span >            
                         </div>
                         <p><span className="showItem-price">{priceSpan}</span></p>
                                 
@@ -140,13 +158,26 @@ function ProductShowPage() {
                     </div>
                 </div>
             </section>
+
+            <section id="review-section"></section>
         </>)
     }
     else
         productInfo=""
+
+    let reviewItems;
+    if (reviewInfo.length > 0) {
+        reviewItems = (<>
+            <section id="review-section">
+                <ReviewPart reviewInfo={Object.values(reviewInfo)} />
+            </section>
+        </>
+        );
+    }
     return(
         <>
             {productInfo}
+            {reviewItems}
         </>
     )
 }

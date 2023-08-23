@@ -36,8 +36,14 @@ body {
 /* .bgColorRed{
   background: red;
 } */
-.bgColorBloodRed{
+.bgColor-BloodRed{
   background: #CC0C39;
+}
+.bgColor-gray{
+  background: gray;
+}
+.bgcolor-white{
+  background-color: white;
 }
 .price-fontSize-mid{
   font-size: 24px;

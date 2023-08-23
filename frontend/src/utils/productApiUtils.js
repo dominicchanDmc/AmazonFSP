@@ -1,5 +1,11 @@
-export const fetchAllProducts = () => (
-  fetch('/api/products')
+export const fetchProducts = params => {
+  let baseUrl = '/api/products?'
+
+  for (let k in params) {
+    baseUrl = baseUrl + `${k}=${params[k]}&`
+  }
+  
+  return fetch(baseUrl)
     .then(res => {
       if(res.ok) {
         return res.json()
@@ -7,7 +13,8 @@ export const fetchAllProducts = () => (
         // error handling
       }
     })
-)
+}
+
 
 export const fetchProduct = async productId => {
   const res = await fetch(`/api/products/${productId}`)

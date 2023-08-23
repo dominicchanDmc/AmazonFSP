@@ -7,7 +7,7 @@ import App from './App';
 import configureStore from './store';
 import csrfFetch from "./store/csrf";
 import * as sessionActions from './store/sessionReducer';
-import { fetchAllProducts } from './utils/productApiUtils';
+import { fetchProducts } from './utils/productApiUtils';
 
 const store = configureStore();
 
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== "production") {
   window.store = store;
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions;
-  window.fetchAllProducts = fetchAllProducts;
+  window.fetchProducts = fetchProducts;
 }
 
 function Root() {

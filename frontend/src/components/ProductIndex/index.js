@@ -1,6 +1,7 @@
-import CategoryStanley from '../../assets/CategoryCard_Stanley.jpg';
 import CategoryElectronic from '../../assets/CategoryCard_electronic.jpg';
-import CategoryTools from '../../assets/CategoryCard_tools.jpg';
+import CategoryAlexa from '../../assets/CategoryCard_Alexa.jpg';
+import CategoryAirConditioners from '../../assets/CategoryCard_airConditioners.jpg';
+
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchProducts, selectAllproducts } from '../../store/productsReducer'
@@ -25,7 +26,7 @@ const ProductIndex = () => {
   },[dispatch])
 
   const handleCategoryElectronic = (e) => {
-    history.push('/products');
+    history.push('/products?search=electronic');
   };
 
   const handleSignInClick = () => {
@@ -37,19 +38,19 @@ const ProductIndex = () => {
       <section className="section-1">
         <div className="section-1-container">
           <div className="section-1-column">
-              <h3>Ready for anything</h3>
-              <img src={CategoryStanley} alt=""/>
-              <p>Shop Stanley drinkware</p>
+              <h3>Shop summer deals with Alexa</h3>
+              <img src={CategoryAlexa} alt=""/>
+              <p>Explore deals on Alexa devices</p>
           </div>
           <div className="section-1-column">
-              <h3>Gadget galore</h3>
+              <h3>Electronic</h3>
               <img className='cursor-pointer' src={CategoryElectronic} alt="" onClick={handleCategoryElectronic}/>
               <p className='cursor-pointer' onClick={handleCategoryElectronic}>Shop electronic products</p>
           </div>
           <div className="section-1-column">
-              <h3>Home repair products</h3>
-              <img src={CategoryTools} alt=""/>
-              <p>Shop tools, lighting & more</p>
+              <h3>Room Air Conditioners</h3>
+              <img src={CategoryAirConditioners} alt=""/>
+              <p>Shop Air Conditioners</p>
           </div>
             {!sessionUser && (<>
               <div className="section-1-column">

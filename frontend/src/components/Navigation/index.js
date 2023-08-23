@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +10,13 @@ import * as sessionActions from '../../store/sessionReducer';
 import { fetchCartItemsByUserId, selectUserCartItems} from '../../store/cartItemsReducer'
 
 // import AccountModal from '../Model/accountModel';
-
+export const categories =  [
+  { name: "Air Conditioners", categories: "airConditioners" },
+  { name: "Alexa", categories: "alexa" },
+  { name: "Electronic", categories: "electronic" },
+  { name: "Kitchen", categories: "kitchen" },
+  { name: "Video Games", categories: "videoGames" }
+]
 function Navigation({ setIsModalOpen,isModalOpen }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -29,7 +35,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
       dispatch(fetchCartItemsByUserId(sessionUser.id))
       // fetchUserCartItems(sessionUser.id);
     }
-  }, [sessionUser]);
+  }, [dispatch,sessionUser]);
 
   const handleMouseOver = () => {
     // if (!isHovered)
@@ -157,6 +163,15 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
         </div>
       </div>
     </div>
+    <div className="nav-banner">
+        <div className="nav-banner-content">
+          <ul className="nav-links">
+          {categories.map(categories =>
+            <li><Link to="#" key={categories.categories}>{categories.name}</Link></li>
+          )}
+          </ul>
+        </div>
+      </div>
   </header>
   );
 }

@@ -10,15 +10,17 @@ const ProductListPage = () => {
   const products = useSelector(selectAllproducts)
   const dispatch = useDispatch()
   const location = useLocation();
-  const { pathname } = location;
+  const { pathname, search } = location;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
   useEffect(() => {
-    dispatch(fetchProducts())
-  },[dispatch])
+    if (!search) {
+      dispatch(fetchProducts())
+    }
+  },[dispatch,search])
 
   return (
     <>
@@ -30,11 +32,13 @@ const ProductListPage = () => {
           alt=""
         />
         <div className="row center">
-            {Object.values(products).map(product => (
+            {Object.values(products).length > 0 ? (Object.values(products).map(product => (
             <ul key={product.id} >
               <ProductListItem product={product} />
             </ul>
-          ))}
+          ))):(<> 
+          <p>No results,Try checking your spelling or use more general terms</p> 
+          </>)}
         </div>
       </div>
     </div>

@@ -17,8 +17,8 @@ export const receiveProducts = products => ({
 })
 
 // THUNK ACTION CREATORS
-export const fetchProducts = () => async (dispatch) => {
-  const products = await productApiUtils.fetchAllProducts()
+export const fetchProducts = (params) => async (dispatch) => {
+  const products = await productApiUtils.fetchProducts(params)
   return dispatch(receiveProducts(products))
 }
 
@@ -45,7 +45,8 @@ const productReducer = (state = {}, action) => {
       // nextState[action.product.id] = action.product
       return {...state, ...action.product}
     case RECEIVE_PRODUCTS:
-      return Object.assign(nextState, action.products)
+      // return Object.assign(nextState, action.products)
+      return action.products
     default:
       return state
   }

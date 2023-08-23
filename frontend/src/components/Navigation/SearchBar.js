@@ -1,21 +1,31 @@
 import React, {useEffect, useRef, useState} from 'react'
-
-const categories =  [
-    { name: "All", categories: "all" },
-    { name: "Amazon Devices", categories: "aDevices" },
-    { name: "Amazon Warehouse", categories: "amazonWarehouse" },
-    { name: "Apps & Games", categories: "appsGames" }
-  ]
+import { categories } from '.';
+import { useDispatch } from 'react-redux';
+import { fetchProducts } from '../../store/productsReducer';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
   function SearchBar(){
 
-    const [searchInput, setSearchInput] = useState("");
+    // const [searchInput, setSearchInput] = useState("");
     const [selectedOption, setSelectedOption] = useState("All");
     const selectRef = useRef(null); // Ref for the <select> element
+    const dispatch = useDispatch()
+    const history = useHistory();
 
-    const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
-    };
+    const [searchParams, setSearchParams] = useState({})
+
+    // const handleChange = (e) => {
+    // e.preventDefault();
+    // setSearchInput(e.target.value);
+    // };
+
+    const handleSearch = e => {
+        e.preventDefault()
+        dispatch(fetchProducts(searchParams))
+        // setSearchParams({})
+        const queryParams = new URLSearchParams(searchParams).toString();
+        // Redirect to ProductListPage with query string
+        history.push(`/products?${queryParams}`);
+    }
 
     useEffect(() => {
         if (selectRef.current) {
@@ -32,7 +42,7 @@ const categories =  [
     // }
     return (
         <div id="nav-search">
-            <form id="nav-search-bar-form">
+            <form id="nav-search-bar-form" onSubmit={handleSearch}>
                 <div className="nav-left">
                 {/* <span class="nav-search-label">All</span>
                   <i class="fa fa-caret-down" aria-hidden="true"></i> */}
@@ -44,6 +54,7 @@ const categories =  [
                         value={selectedOption}
                         onChange={(e) => setSelectedOption(e.target.value)}
                     >
+                        <option key='All'>All</option>
                         {categories.map(categories =>
                         <option key={categories.categories}>{categories.name}</option>
                         )}
@@ -52,8 +63,11 @@ const categories =  [
                 <div className="nav-fill">
                     <input type="text"
                     placeholder="Search here"
-                    onChange={handleChange}
-                    value={searchInput} />
+                    // onChange={handleChange}
+                    // value={searchInput}
+                    value={searchParams.search || ''} 
+                    onChange={e => setSearchParams(prev => ({ ...prev, search: e.target.value }))}
+                    />
                 </div>
                 <div className="nav-right">
                     <button type="submit">

@@ -2,10 +2,11 @@ import RatingPart from '../RatingPart'
 import ReviewItem from '../ReviewItem';
 import './ReviewPart.css'
 function ReviewPart(props) {
-    const reviewInfo = Object.values(props);
-    const totalRatingCount = reviewInfo['0'].length;
-    const sumOfRatings = reviewInfo['0'].reduce((sum, rating) => sum + rating.overallRating, 0);
-    const averageRating = Math.round((sumOfRatings / totalRatingCount) * 2) / 2;
+    const {reviewInfo,averageRating,totalRatingCount} = props;
+    // const reviewInfo = Object.values(props);
+    // const totalRatingCount = reviewInfo['0'].length;
+    // const sumOfRatings = reviewInfo['0'].reduce((sum, rating) => sum + rating.overallRating, 0);
+    // const averageRating = Math.round((sumOfRatings / totalRatingCount) * 2) / 2;
     return (<>
             <div className="review-rating">
                 {totalRatingCount> 0 ? (
@@ -19,7 +20,7 @@ function ReviewPart(props) {
             </div>
             <div className="review-review">
                 <h1><span>Customer reviews</span></h1>
-                {Object.values(reviewInfo['0']).map(reviewItem => (
+                {reviewInfo.map(reviewItem => (
                     <div key={reviewItem.id}>
                         <ReviewItem reviewItem={reviewItem}/>
                     </div>

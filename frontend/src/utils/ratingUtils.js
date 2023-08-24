@@ -1,15 +1,15 @@
 export const getRatingInfo = product=>{
-    let reviewInfov,totalRatingCount,sumOfRatings,averageRating,reviewInfo=[] ; 
+    let reviewInfoValue,totalRatingCount,sumOfRatings,averageRating,reviewInfo=[] ; 
 
     if (product && product.ratings){
         reviewInfo = Object.values(product.ratings);
-        reviewInfov = Object.values(reviewInfo);
-        totalRatingCount = reviewInfov.length;
-        sumOfRatings = reviewInfov.reduce((sum, rating) => sum + rating.overallRating, 0);
+        reviewInfoValue = Object.values(reviewInfo);
+        totalRatingCount = reviewInfoValue.length;
+        sumOfRatings = reviewInfoValue.reduce((sum, rating) => sum + rating.overallRating, 0);
         averageRating = Math.round((sumOfRatings / totalRatingCount) * 2) / 2;
 
-        return {totalRatingCount:totalRatingCount,averageRating:averageRating}
+        return {totalRatingCount:totalRatingCount,averageRating:averageRating,reviewInfo:reviewInfoValue}
     }
     else
-    return {totalRatingCount:0,averageRating:0};  
+    return {totalRatingCount:0,averageRating:0,reviewInfo:0};  
 }

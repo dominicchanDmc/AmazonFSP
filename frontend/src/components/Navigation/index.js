@@ -57,12 +57,12 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
             </span> 
           </div>
           <div className="dropdown-content">
-            <NavLink to="">Order History</NavLink>
-            <NavLink to="">Review List</NavLink>
+            {/* <NavLink to="">Order History</NavLink>
+            <NavLink to="">Review List</NavLink> */}
             <NavLink to="" onClick={logout}>Logout</NavLink>
           </div>
         </div>
-        <NavLink to="" >
+        {/* <NavLink to="" >
           <div className="vertical-align">
               <span> 
                 Returns 
@@ -71,7 +71,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
                 <b>& Orders</b>
               </span> 
           </div>
-        </NavLink>
+        </NavLink> */}
       </div>
     );
   } else {
@@ -95,7 +95,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
             <NavLink to="/login">Login</NavLink>
           </div>
         </div>
-        <NavLink to="/login" >
+        {/* <NavLink to="/login" >
           <div className="vertical-align">
               <span> 
                 Returns 
@@ -104,7 +104,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
                 <b>& Orders</b>
               </span> 
           </div>
-        </NavLink>
+        </NavLink> */}
       </div>
     );
   }

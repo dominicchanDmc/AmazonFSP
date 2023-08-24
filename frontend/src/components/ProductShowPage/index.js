@@ -6,6 +6,7 @@ import './ProductShowPage.css'
 import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
 import ReviewPart from "../ReviewPart";
 import RatingPart from "../RatingPart";
+import { getRatingInfo } from "../../utils/ratingUtils";
 
 function ProductShowPage() {
     const { productId } = useParams();
@@ -13,12 +14,13 @@ function ProductShowPage() {
     const [quantity, setQuantity] = useState(1); 
     const [message, setMessage] = useState({ content: '', visible: false })
     // const [reviewInfo, setReViewInfo] = useState([])
-
     const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector(selectUserCartItems);
     const sessionUser = useSelector(state => state.session.user);
     
+    let ratingInfo,productInfo; 
+
     useEffect(() => {
         dispatch(fetchProduct(productId));
     }, [dispatch,productId]);
@@ -48,19 +50,20 @@ function ProductShowPage() {
         setQuantity(newQuantity);
     };
 
-    let productInfo,reviewInfov,totalRatingCount,sumOfRatings,averageRating,reviewInfo=[] ; 
+    // let productInfo,reviewInfov,totalRatingCount,sumOfRatings,averageRating,reviewInfo=[] ; 
     if (product){
-        if (product && product.ratings && Array.isArray(Object.values(product.ratings))) {
-            reviewInfo = Object.values(product.ratings);
-            reviewInfov = Object.values(reviewInfo);
-            totalRatingCount = reviewInfov.length;
-            sumOfRatings = reviewInfov.reduce((sum, rating) => sum + rating.overallRating, 0);
-            averageRating = Math.round((sumOfRatings / totalRatingCount) * 2) / 2;
-        }
-        else{
-            totalRatingCount = 0;
-            averageRating = 0;
-        }
+        ratingInfo= getRatingInfo(product);
+        // if (product && product.ratings && Array.isArray(Object.values(product.ratings))) 
+        //     reviewInfo = Object.values(product.ratings);
+        //     reviewInfov = Object.values(reviewInfo);
+        //     totalRatingCount = reviewInfov.length;
+        //     sumOfRatings = reviewInfov.reduce((sum, rating) => sum + rating.overallRating, 0);
+        //     averageRating = Math.round((sumOfRatings / totalRatingCount) * 2) / 2;
+        // }
+        // else{
+        //     totalRatingCount = 0;
+        //     averageRating = 0;
+        // }
                  
         let finalPrice = product.price;
         let priceSpan;
@@ -112,13 +115,13 @@ function ProductShowPage() {
                     <div className="main-info">
                         <h4>{product.productName}</h4>
                         <div className="star-rating">
-                            <span className="price-fontSize-14">{averageRating} out of 5 stars</span>
+                            <span className="price-fontSize-14">{ratingInfo.averageRating} out of 5 stars</span>
                              <div className='star-container'>
                                  <div className="star-widget">
-                                <RatingPart averageRating={averageRating} caller={"show"}/>
+                                <RatingPart averageRating={ratingInfo.averageRating} caller={"show"}/>
                                 </div>
                             </div>
-                            <span className="price-fontSize-14"> {totalRatingCount} ratings</span >            
+                            <span className="price-fontSize-14"> {ratingInfo.totalRatingCount} ratings</span >            
                         </div>
                         <p><span className="showItem-price">{priceSpan}</span></p>
                                 
@@ -168,10 +171,13 @@ function ProductShowPage() {
         productInfo=""
 
     let reviewItems;
-    if (reviewInfo.length > 0) {
+    if (ratingInfo.reviewInfo.length > 0) {
         reviewItems = (<>
             <section id="review-section">
-                <ReviewPart reviewInfo={Object.values(reviewInfo)} />
+                <ReviewPart reviewInfo={ratingInfo.reviewInfo} 
+                averageRating={ratingInfo.averageRating}
+                totalRatingCount={ratingInfo.totalRatingCount}/>
+                
             </section>
         </>
         );

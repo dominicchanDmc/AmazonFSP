@@ -10,11 +10,11 @@ function ReviewPart(props) {
     return (<>
             <div className="review-rating">
                 {totalRatingCount> 0 ? (
-                    <div class="rating-box">
+                    <div className="rating-box">
                         {/* <h1><span>Customer reviews</span></h1> */}
                         <RatingPart averageRating={averageRating} caller={"review"} />
                         <span>{totalRatingCount} <span>global ratings</span></span>
-                        <div class="rating-number">{averageRating} out of 5 stars</div>
+                        <div className="rating-number">{averageRating} out of 5 stars</div>
                     </div>
                 ):null}            
             </div>

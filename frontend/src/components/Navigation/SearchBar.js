@@ -14,8 +14,8 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
     const handleSearch = e => {
         e.preventDefault()
         const updatedSearchParams = {
-            ...searchParams,
-            category: selectedOption !== 'All' ? selectedOption : ''
+            ...searchParams
+            // category: selectedOption !== 'All' ? selectedOption : ''
         };
         dispatch(fetchProducts(updatedSearchParams))
         // setSearchParams({})

@@ -14,12 +14,6 @@ a {
 	text-decoration: none;
 	color: white;
 }
-/* header {
-	background: var(--main-header-bg);
-	height: 100px;
-	font-size: 1rem;
-	display: flex;
-} */
 
 #nav-bar {
 	display: flex;
@@ -56,28 +50,53 @@ a {
 	margin: 0.1rem;
 }
 
-/* #nav-logo > a:hover {
-	border: 0.1rem solid var(--main-border);
-	border-radius: var(--border-radius);
-	margin: 0;
-	color: var(--main-text);
-	box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
-} */
-
 #nav-belt > .nav-fill {
 	box-sizing: border-box;
 	display: flex;
 	flex: 1 1 auto;
 }
 
+.nav-banner {
+	padding: 10px 20px;
+	background: #222f3d;
+	color: #fff;
+	font-size: 0.875rem;
+  }
+  
+  .nav-banner-content {
+	margin: 0 auto;
+	max-width: 1280px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+  }
+  .nav-links {
+	display: flex;
+	align-items: center;
+	list-style: none;
+	gap: 15px;
+	flex-grow: 1;
+	margin-left: 15px;
+  }
+  .nav-links a {
+	padding: 10px 0;
+  }
 #nav-search {
 	box-sizing: border-box;
 	width: 50vw;
 	display: flex;
-	/* flex: 1 1 ; */
 	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 	overflow: hidden;
 }
+
+.select-search {
+	background: #f3f3f3;
+	width: 50px;
+	text-align: center;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border: none;
+  }
 
 #nav-search-bar-form {
 	box-sizing: border-box;
@@ -86,6 +105,15 @@ a {
 	flex: 1 1 1 auto;
 	border-radius: var(--border-radius);
 	overflow: hidden;
+}
+
+.nav-left .nav-search-label {
+    color: #777;
+    display: block;
+    font-size: 12px;
+    line-height: 33px;
+    margin-right: 21px;
+    margin-left: 10px;
 }
 
 #nav-search-bar-form:focus-within {
@@ -112,6 +140,8 @@ a {
 	height: 100%;
 	align-items: center;
 }
+
+
 
 #nav-search-bar-form .nav-left a:hover {
 	background: var(--main-search-opt);
@@ -233,6 +263,8 @@ a {
   /* font-size: 2.5rem */
   width: 3em;
   filter: invert(1);
+  /* position: absolute; */
+  /* right: 40px; */
 }
 
 .cart p {
@@ -246,8 +278,8 @@ a {
 .cart-count{
 	position: absolute;
 	transform: translateX(-40%);
-	right: 50px;
-	top: 1%;
+	right: 51px;
+	top: 1.5%;
 	font-size: 15px;
 	color: #f08806;
 }

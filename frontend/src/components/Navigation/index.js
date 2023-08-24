@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Navigation.css';
 import logo from '../../assets/Yellow_Arrow_1.png';
@@ -9,43 +9,43 @@ import SearchBar from './SearchBar';
 import * as sessionActions from '../../store/sessionReducer';
 import { fetchCartItemsByUserId, selectUserCartItems} from '../../store/cartItemsReducer'
 
-// import AccountModal from '../Model/accountModel';
-
-function Navigation({ setIsModalOpen,isModalOpen }) {
+export const categories =  [
+  { name: "Air Conditioners", value: "airConditioners", },
+  { name: "Alexa", value: "alexa" },
+  { name: "Electronic", value: "electronic" },
+  { name: "Kitchen", value: "kitchen" },
+  { name: "Video Games", value: "videoGames" }
+]
+function Navigation() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const cartItems = useSelector(selectUserCartItems)
+  const history = useHistory();
+    const [selectedOption, setSelectedOption] = useState("All");
+    const [searchParams, setSearchParams] = useState({})
   let cartItemsCount;
   if (cartItems && Object.keys(cartItems).length > 0)
     cartItemsCount = Object.values(cartItems).reduce
     ((total, cartItem) => total + cartItem.quantity, 0);
 
-  // const [cartItems, setCartItems] = useState([]);
-  // const [isHovered, setIsHovered] = useState(false);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
   useEffect(() => {
     if (sessionUser) {
       dispatch(fetchCartItemsByUserId(sessionUser.id))
-      // fetchUserCartItems(sessionUser.id);
     }
-  }, [sessionUser]);
-
-  const handleMouseOver = () => {
-    // if (!isHovered)
-    //   setIsHovered(true);
-    // if (!isModalOpen)
-    //   setIsModalOpen(true);
-  };
+  }, [dispatch,sessionUser]);
   
-  const handleMouseOut = () => {
-    // setIsHovered(false);
-    //  setIsModalOpen(false);
-  };
-
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+  };
+
+  const handleCategory = (category) => {
+    history.push(`/products?category=${category}`);
+  };
+
+  const handleLogoClick = () => {
+    setSearchParams('');
+    setSelectedOption('All')
   };
 
   let sessionLinks;
@@ -63,12 +63,12 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
             </span> 
           </div>
           <div className="dropdown-content">
-            <NavLink to="">Order History</NavLink>
-            <NavLink to="">Review List</NavLink>
+            {/* <NavLink to="">Order History</NavLink>
+            <NavLink to="">Review List</NavLink> */}
             <NavLink to="" onClick={logout}>Logout</NavLink>
           </div>
         </div>
-        <NavLink to="" >
+        {/* <NavLink to="" >
           <div className="vertical-align">
               <span> 
                 Returns 
@@ -77,14 +77,12 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
                 <b>& Orders</b>
               </span> 
           </div>
-        </NavLink>
+        </NavLink> */}
       </div>
     );
   } else {
     sessionLinks = (
       <div        
-       onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
       className='link-login'>
         <div className="dropdown">
           <NavLink to="/login" >
@@ -103,7 +101,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
             <NavLink to="/login">Login</NavLink>
           </div>
         </div>
-        <NavLink to="/login" >
+        {/* <NavLink to="/login" >
           <div className="vertical-align">
               <span> 
                 Returns 
@@ -112,7 +110,7 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
                 <b>& Orders</b>
               </span> 
           </div>
-        </NavLink>
+        </NavLink> */}
       </div>
     );
   }
@@ -122,12 +120,13 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
     <div id="nav-bar">
       <div id="nav-belt">
         <div className="nav-left">
-          <div id="nav-logo">
+          <div id="nav-logo" onClick={handleLogoClick}>
             <NavLink exact to="/"><img id='img-logo' src={logo} alt=""></img></NavLink>
           </div>
         </div>
         <div className="nav-fill">
-          <SearchBar/>
+          <SearchBar selectedOption={selectedOption} setSelectedOption={setSelectedOption}
+           searchParams={searchParams} setSearchParams={setSearchParams}/>
         </div>
         <div className="nav-right">
           <div id="nav-tools">
@@ -149,14 +148,18 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
               </p>
             </div>
           </div>
-          {/* {isModalOpen  && (
-            <div className="modal-overlay">
-              <AccountModal isOpen={isModalOpen } />
-            </div>
-          )} */}
         </div>
       </div>
     </div>
+    <div className="nav-banner">
+        <div className="nav-banner-content">
+          <ul className="nav-links">
+          {categories.map(categories =>
+            <li key={categories.value} onClick={()=>handleCategory(categories.value)}><Link to="#" >{categories.name}</Link></li>
+          )}
+          </ul>
+        </div>
+      </div>
   </header>
   );
 }

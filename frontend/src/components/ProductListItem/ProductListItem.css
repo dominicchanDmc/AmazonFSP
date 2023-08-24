@@ -21,10 +21,10 @@ img.medium {
   position: relative;
 }
 
-.productItem-card-body {
+/* .productItem-card-body {
   padding: 1rem;
 
-}
+} */
 .productItem-card-body > * {
   margin-bottom: 0.5rem;
 }
@@ -51,12 +51,21 @@ img.medium {
   left: 25px;
 }
 
-.rating {
-  color: #f0c040;
-  margin: 0.1rem;
-  position: absolute; 
-  bottom: 100px;
-  left: 25px;
+.listItem-star-container{
+  position: absolute;
+  border-radius: 5px;
+  display: flex;
+  bottom: 95px;
+}
+
+.listItem-star-container .listItem-star-widget input{
+  display: none;
+}
+.listItem-star-widget label{
+  font-size: 15px;
+  color: #444;
+  float: right;
+  transition: all 0.2s ease;
 }
 
 .price {

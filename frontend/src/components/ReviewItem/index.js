@@ -5,14 +5,14 @@ function ReviewItem(props) {
     const reviewer = reviewItem.reviewer[reviewItem.reviewerId]
 
     return (<>
-          <div class="review-item">
-          <div class="thumbnail"></div>
-              <div class="review-item-comment-content">
-                <div class="review-item-comment-top">
-                  <div class="review-item-title">
-                    <i class="fa-solid fa-user"></i>
+          <div className="review-item">
+          <div className="thumbnail"></div>
+              <div className="review-item-comment-content">
+                <div className="review-item-comment-top">
+                  <div className="review-item-title">
+                    <i className="fa-solid fa-user"></i>
                   {"  "+reviewer.username}</div>
-                  <div class="review-item-rating"> 
+                  <div className="review-item-rating"> 
                     <div className='review-star-container'>
                         <div className='review-star-widget'>
                             <RatingPart averageRating={reviewItem.overallRating} 
@@ -21,7 +21,7 @@ function ReviewItem(props) {
                     </div>
                   </div>
                 </div>
-                <span class="review-item-subtitle">{reviewItem.reviewHeadline}</span>
+                <span className="review-item-subtitle">{reviewItem.reviewHeadline}</span>
                 <p className='price-fontSize-14'>
                     {reviewItem.review}
                 </p>

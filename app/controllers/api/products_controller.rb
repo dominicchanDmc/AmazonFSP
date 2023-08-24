@@ -1,6 +1,17 @@
 class Api::ProductsController < ApplicationController
     def index
-        @products = Product.all.sort { |a,b| b.created_at <=> a.created_at }
+        # @products = Product.all.sort { |a,b| b.created_at <=> a.created_at }
+        @products = Product.includes(ratings: :reviewer).all
+
+      if params[:search] 
+          # @products = @products.where("product_name ILIKE '%#{params[:search]}%'")
+          @products = @products.where("product_name ILIKE ?", "%#{params[:search]}%")
+      end
+
+      if params[:category].present?
+        categories = params[:category]
+        @products = @products.where("ARRAY[?] && STRING_TO_ARRAY(categories, ',')", categories)
+      end
     end
 
     def show

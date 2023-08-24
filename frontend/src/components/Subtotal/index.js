@@ -23,7 +23,7 @@ function Subtotal() {
   return (
     <div className="subtotal">
       <div className="subtotal-title">
-        Subtotal ({!cartItemsCount ? 'empty' : `${cartItemsCount} ${cartItemsCount === 1 ? 'item' : 'items'}` }):&nbsp;
+        Subtotal ({!cartItemsCount ? '0 item' : `${cartItemsCount} ${cartItemsCount === 1 ? 'item' : 'items'}` }):&nbsp;
         <strong> $
           {cartItemsList ? (
             parseFloat(
@@ -36,13 +36,15 @@ function Subtotal() {
           ) : 0}
         </strong>
       </div>
+      {sessionUser ? (
       <button
         className="subtotal-button"
         type="button"
         onClick={handleDeselectClick}
       >
         Proceed to checkout
-      </button>
+      </button>):null}
+
       <div className="subtotal-error">
         {error}
       </div>

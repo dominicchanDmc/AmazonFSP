@@ -1,44 +1,59 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef} from 'react'
+import { categories } from '.';
+import { useDispatch } from 'react-redux';
+import { fetchProducts } from '../../store/productsReducer';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+  function SearchBar({selectedOption,setSelectedOption,searchParams,setSearchParams}){
 
-// const categories =  [
-//     { name: "All", categories: "all" },
-//     { name: "Amazon Devices", categories: "aDevices" },
-//     { name: "Amazon Warehouse", categories: "amazonWarehouse" },
-//     { name: "Apps & Games", categories: "appsGames" }
-//   ]
-  function SearchBar(){
+    // const [selectedOption, setSelectedOption] = useState("All");
+    // const [searchParams, setSearchParams] = useState({})
+    const selectRef = useRef(null);
+    const dispatch = useDispatch()
+    const history = useHistory();
 
-    const [searchInput, setSearchInput] = useState("");
+    const handleSearch = e => {
+        e.preventDefault()
+        const updatedSearchParams = {
+            ...searchParams,
+            category: selectedOption !== 'All' ? selectedOption : ''
+        };
+        dispatch(fetchProducts(updatedSearchParams))
+        // setSearchParams({})
+        const queryParams = new URLSearchParams(updatedSearchParams).toString();
+        history.push(`/products?${queryParams}`);
+    }
 
-    const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
-    };
-    
-    // if (searchInput.length > 0) {
-    // categories.filter((categories) => {
-    //     return categories.name.match(searchInput);
-    // });
-    // }
+    useEffect(() => {
+        if (selectRef.current) {
+            const optionText = selectRef.current.options[selectRef.current.selectedIndex].text;
+            const optionWidth = optionText === 'All'|| optionText === 'Alexa' ? '60px' : `${optionText.length * 10}px`;
+            selectRef.current.style.width = optionWidth;
+        }
+      }, [selectedOption]);
+
     return (
         <div id="nav-search">
-            <form id="nav-search-bar-form">
+            <form id="nav-search-bar-form" onSubmit={handleSearch}>
                 <div className="nav-left">
-                    {/* <select
+                    <select
                         name='categories'
-                        value={categories}
-                        className='nav-select'
+                        ref={selectRef}
+                        className='select-search'
+                        value={selectedOption}
+                        onChange={(e) => setSelectedOption(e.target.value)}
                     >
+                        <option key='All'>All</option>
                         {categories.map(categories =>
-                        <option key={categories}>{categories}</option>
+                        <option key={categories.value} value={categories.value}>{categories.name}</option>
                         )}
-                    </select> */}
+                    </select>
                 </div>
                 <div className="nav-fill">
                     <input type="text"
                     placeholder="Search here"
-                    onChange={handleChange}
-                    value={searchInput} />
+                    value={searchParams.search || ''} 
+                    onChange={e => setSearchParams(prev => ({ ...prev, search: e.target.value }))}
+                    />
                 </div>
                 <div className="nav-right">
                     <button type="submit">

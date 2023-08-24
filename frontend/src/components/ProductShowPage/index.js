@@ -1,24 +1,30 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom/cjs/react-router-dom";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import './ProductShowPage.css'
 import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
 import ReviewPart from "../ReviewPart";
 import RatingPart from "../RatingPart";
+import { getRatingInfo } from "../../utils/ratingUtils";
 
 function ProductShowPage() {
     const { productId } = useParams();
     const product = useSelector(getProduct(productId));
     const [quantity, setQuantity] = useState(1); 
     const [message, setMessage] = useState({ content: '', visible: false })
-    // const [reviewInfo, setReViewInfo] = useState([])
-
     const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector(selectUserCartItems);
     const sessionUser = useSelector(state => state.session.user);
-    
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const location = useLocation();
+    const { pathname } = location;
+    let ratingInfo,productInfo; 
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
     useEffect(() => {
         dispatch(fetchProduct(productId));
     }, [dispatch,productId]);
@@ -42,26 +48,18 @@ function ProductShowPage() {
             history.push('/login');
         }
     };
+    const selectedImageUrl = product.photoUrls && product.photoUrls[selectedImageIndex];
+    const handleThumbnailClick = (index) => {
+        setSelectedImageIndex(index);
+      };
 
     const handleQuantityChange = (event) => {
         const newQuantity = parseInt(event.target.value);
         setQuantity(newQuantity);
     };
 
-    let productInfo,reviewInfov,totalRatingCount,sumOfRatings,averageRating,reviewInfo=[] ; 
     if (product){
-        if (product && product.ratings && Array.isArray(Object.values(product.ratings))) {
-            reviewInfo = Object.values(product.ratings);
-            reviewInfov = Object.values(reviewInfo);
-            totalRatingCount = reviewInfov.length;
-            sumOfRatings = reviewInfov.reduce((sum, rating) => sum + rating.overallRating, 0);
-            averageRating = Math.round((sumOfRatings / totalRatingCount) * 2) / 2;
-        }
-        else{
-            totalRatingCount = 0;
-            averageRating = 0;
-        }
-                 
+        ratingInfo= getRatingInfo(product);         
         let finalPrice = product.price;
         let priceSpan;
             if (product.discount){
@@ -94,7 +92,8 @@ function ProductShowPage() {
                         {
                            product.photoUrls && (
                                 product.photoUrls.map((url,index) => (
-                                    <div key={product.id+"-"+index} className="thumb-box">
+                                    <div key={product.id+"-"+index} className="thumb-box"
+                                    onClick={() => handleThumbnailClick(index)}>
                                         <img src={url} alt="thumbnail" />
                                     </div>
                                 ))
@@ -103,7 +102,7 @@ function ProductShowPage() {
                     </div>
                     <div className="item-image-main">
                         {product.photoUrls && (
-                            <img src={product.photoUrls[0]} alt="default" />
+                            <img src={selectedImageUrl} alt="default" />
                         ) }
                     </div>
                 </div>
@@ -112,13 +111,13 @@ function ProductShowPage() {
                     <div className="main-info">
                         <h4>{product.productName}</h4>
                         <div className="star-rating">
-                            <span className="price-fontSize-14">{averageRating} out of 5 stars</span>
+                            <span className="price-fontSize-14">{ratingInfo.averageRating} out of 5 stars</span>
                              <div className='star-container'>
                                  <div className="star-widget">
-                                <RatingPart averageRating={averageRating} caller={"show"}/>
+                                <RatingPart averageRating={ratingInfo.averageRating} caller={"show"}/>
                                 </div>
                             </div>
-                            <span className="price-fontSize-14"> {totalRatingCount} ratings</span >            
+                            <span className="price-fontSize-14"> {ratingInfo.totalRatingCount} ratings</span >            
                         </div>
                         <p><span className="showItem-price">{priceSpan}</span></p>
                                 
@@ -168,10 +167,13 @@ function ProductShowPage() {
         productInfo=""
 
     let reviewItems;
-    if (reviewInfo.length > 0) {
+    if (ratingInfo.reviewInfo.length > 0) {
         reviewItems = (<>
             <section id="review-section">
-                <ReviewPart reviewInfo={Object.values(reviewInfo)} />
+                <ReviewPart reviewInfo={ratingInfo.reviewInfo} 
+                averageRating={ratingInfo.averageRating}
+                totalRatingCount={ratingInfo.totalRatingCount}/>
+                
             </section>
         </>
         );

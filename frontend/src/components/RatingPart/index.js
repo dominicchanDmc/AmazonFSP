@@ -77,7 +77,7 @@ switch(averageRating){
     break;
 }
 
-return (caller ==='reviewItem'? (<>{starInfo}</>) :(
+return (caller ==='reviewItem'|| caller ==='listItem'? (<>{starInfo}</>) :(
         <div className='star-container'>
             <div className="star-widget">
                     {starInfo}

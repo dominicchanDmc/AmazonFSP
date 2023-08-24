@@ -88,13 +88,13 @@ puts "Creating airConditioners................................................."
 #     product_Frigidaire_FHPC082AC1.photos.attach(io:img[:file],filename:img[:filename])
 # end
 
-array_Frigidaire_FHWC054WB1 = []
-product_Frigidaire_FHWC054WB1 = Product.create!(product_name: "Frigidaire FHWC054WB1 Window Air Conditioner, 5000 BTU Electronic Controls, White",description:"The Frigidaire 5,000 BTU window air conditioner keeps your room cool and comfortable with optimum circulation thanks to multi-directional airflow and three fan speeds. Easily install this air conditioner; this unit distributes the weight into two pieces using a slide-out chassis. Capture dust from the air and keep your air conditioner working efficiently with our easy-to-clean washable filter.",categories:"airConditioners, HEATING & COOLING & AIR QUALITY,Home & Kitchen",price:229.00,discount:35);
-array_Frigidaire_FHWC054WB1.push({file:File.open('frontend/src/assets/products/airConditioner/Frigidaire_FHWC054WB1_1.jpg'),filename:'Frigidaire_FHWC054WB1_1.jpg'})
-array_Frigidaire_FHWC054WB1.push({file:File.open('frontend/src/assets/products/airConditioner/Frigidaire_FHWC054WB1_2.jpg'),filename:'Frigidaire_FHWC054WB1_2.jpg'})
-array_Frigidaire_FHWC054WB1.each do |img| 
-    product_Frigidaire_FHWC054WB1.photos.attach(io:img[:file],filename:img[:filename])
-end
+# array_Frigidaire_FHWC054WB1 = []
+# product_Frigidaire_FHWC054WB1 = Product.create!(product_name: "Frigidaire FHWC054WB1 Window Air Conditioner, 5000 BTU Electronic Controls, White",description:"The Frigidaire 5,000 BTU window air conditioner keeps your room cool and comfortable with optimum circulation thanks to multi-directional airflow and three fan speeds. Easily install this air conditioner; this unit distributes the weight into two pieces using a slide-out chassis. Capture dust from the air and keep your air conditioner working efficiently with our easy-to-clean washable filter.",categories:"airConditioners, HEATING & COOLING & AIR QUALITY,Home & Kitchen",price:229.00,discount:35);
+# array_Frigidaire_FHWC054WB1.push({file:File.open('frontend/src/assets/products/airConditioner/Frigidaire_FHWC054WB1_1.jpg'),filename:'Frigidaire_FHWC054WB1_1.jpg'})
+# array_Frigidaire_FHWC054WB1.push({file:File.open('frontend/src/assets/products/airConditioner/Frigidaire_FHWC054WB1_2.jpg'),filename:'Frigidaire_FHWC054WB1_2.jpg'})
+# array_Frigidaire_FHWC054WB1.each do |img| 
+#     product_Frigidaire_FHWC054WB1.photos.attach(io:img[:file],filename:img[:filename])
+# end
 
 # puts "Creating alexa............................................................."
 # array_Echo_latest_release = []

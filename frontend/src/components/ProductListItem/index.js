@@ -3,6 +3,8 @@ import "./ProductListItem.css";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
 import { useDispatch, useSelector } from "react-redux";
+import RatingPart from "../RatingPart";
+import { getRatingInfo } from "../../utils/ratingUtils";
 
 function ProductItem({ product}) {
   const [message, setMessage] = useState({ content: '', visible: false });
@@ -10,6 +12,7 @@ function ProductItem({ product}) {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectUserCartItems);
   const sessionUser = useSelector(state => state.session.user);
+  const ratingInfo = getRatingInfo(product);
 
   const handleAddToCart = () => {
     if (sessionUser){
@@ -69,12 +72,18 @@ function ProductItem({ product}) {
         <Link to={`/products/${product.id}`} className="a-product-Name">
              <h2>{product.productName.length > 50 ? product.productName.slice(0, 50) + "..." : product.productName}</h2>
         </Link>
-        <div className="rating">
+        {/* <div className="rating">
           <span> <i className="fa fa-star"></i> </span>
           <span> <i className="fa fa-star"></i> </span>
           <span> <i className="fa fa-star"></i> </span>
           <span> <i className="fa fa-star"></i> </span>
           <span> <i className="fa fa-star"></i> </span>
+        </div> */}
+        <div className='listItem-star-container'>
+            <div className='listItem-star-widget'>
+                <RatingPart averageRating={ratingInfo.averageRating} 
+                caller={"listItem"} callerId={product.id}/>
+            </div>
         </div>
         <div className="price">
           <span>{priceSpan}</span>

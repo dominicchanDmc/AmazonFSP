@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom/cjs/react-router-dom";
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import './ProductShowPage.css'
 import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
@@ -17,9 +17,14 @@ function ProductShowPage() {
     const dispatch = useDispatch();
     const cartItems = useSelector(selectUserCartItems);
     const sessionUser = useSelector(state => state.session.user);
-    
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const location = useLocation();
+    const { pathname } = location;
     let ratingInfo,productInfo; 
 
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
     useEffect(() => {
         dispatch(fetchProduct(productId));
     }, [dispatch,productId]);
@@ -43,6 +48,10 @@ function ProductShowPage() {
             history.push('/login');
         }
     };
+    const selectedImageUrl = product.photoUrls && product.photoUrls[selectedImageIndex];
+    const handleThumbnailClick = (index) => {
+        setSelectedImageIndex(index);
+      };
 
     const handleQuantityChange = (event) => {
         const newQuantity = parseInt(event.target.value);
@@ -83,7 +92,8 @@ function ProductShowPage() {
                         {
                            product.photoUrls && (
                                 product.photoUrls.map((url,index) => (
-                                    <div key={product.id+"-"+index} className="thumb-box">
+                                    <div key={product.id+"-"+index} className="thumb-box"
+                                    onClick={() => handleThumbnailClick(index)}>
                                         <img src={url} alt="thumbnail" />
                                     </div>
                                 ))
@@ -92,7 +102,7 @@ function ProductShowPage() {
                     </div>
                     <div className="item-image-main">
                         {product.photoUrls && (
-                            <img src={product.photoUrls[0]} alt="default" />
+                            <img src={selectedImageUrl} alt="default" />
                         ) }
                     </div>
                 </div>

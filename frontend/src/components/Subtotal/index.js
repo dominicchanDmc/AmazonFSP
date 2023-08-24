@@ -36,13 +36,15 @@ function Subtotal() {
           ) : 0}
         </strong>
       </div>
+      {sessionUser ? (
       <button
         className="subtotal-button"
         type="button"
         onClick={handleDeselectClick}
       >
         Proceed to checkout
-      </button>
+      </button>):null}
+
       <div className="subtotal-error">
         {error}
       </div>

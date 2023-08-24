@@ -72,13 +72,6 @@ function ProductItem({ product}) {
         <Link to={`/products/${product.id}`} className="a-product-Name">
              <h2>{product.productName.length > 50 ? product.productName.slice(0, 50) + "..." : product.productName}</h2>
         </Link>
-        {/* <div className="rating">
-          <span> <i className="fa fa-star"></i> </span>
-          <span> <i className="fa fa-star"></i> </span>
-          <span> <i className="fa fa-star"></i> </span>
-          <span> <i className="fa fa-star"></i> </span>
-          <span> <i className="fa fa-star"></i> </span>
-        </div> */}
         <div className='listItem-star-container'>
             <div className='listItem-star-widget'>
                 <RatingPart averageRating={ratingInfo.averageRating} 

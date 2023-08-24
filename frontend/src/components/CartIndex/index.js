@@ -22,7 +22,8 @@ const CartIndex = () => {
       <div className="cartIndex-left">
         <div className="cartIndex-header">
           <h2 className="cartIndex-title">Shopping Cart</h2>
-          <button onClick={handleDeselectClick}>Delete all items</button>
+          {sessionUser ? (<button onClick={handleDeselectClick}>Delete all items</button>):
+          null}
         </div>
 
         <div className="cartIndex-products">

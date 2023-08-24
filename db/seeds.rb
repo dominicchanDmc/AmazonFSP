@@ -23,9 +23,12 @@
 # peter = User.create!(username: 'peter', email: 'peter@google.com', password: '123456')
 #  mary = User.create!(username: 'mary', email: 'mary@google.com', password: '123456')
 #  may = User.create!(username: 'may', email: 'may@google.com', password: '123456')
-# john = User.create!(username: 'john', email: 'john@google.com', password: '123456')
-# george = User.create!(username: 'george', email: 'george@google.com', password: '123456')
-# thomas = User.create!(username: 'thomas', email: 'thomas@google.com', password: '123456')
+# rosalina = User.create!(username: 'rosalina', email: 'rosalina@google.com', password: '123456')
+# yoshi = User.create!(username: 'yoshi', email: 'yoshi@google.com', password: '123456')
+# daisy = User.create!(username: 'daisy', email: 'daisy@google.com', password: '123456')
+# koba = User.create!(username: 'koba', email: 'koba@google.com', password: '123456')
+# mario = User.create!(username: 'mario', email: 'mario@google.com', password: '123456')
+# luigi = User.create!(username: 'luigi', email: 'luigi@google.com', password: '123456')
 
 
 # puts "Creating products..."
@@ -174,16 +177,16 @@
 # end
 
 # puts "Creating alexa ratings..........................................."
-# rating_alexa_1_user_1 = Rating.create!(product_id:product_Echo_latest_release.id,reviewer_id:john.id,overall_rating:5,review_headline:"Worth every money",review:"The picture is great and I love the remote.")
-# rating_alexa_1_user_2 = Rating.create!(product_id:product_Echo_latest_release.id,reviewer_id:george.id,overall_rating:4,review_headline:"Its powerful",review:"Has amazing sound for the size.")   
-# rating_alexa_2_user_1 = Rating.create!(product_id:product_Bose_Portable_Smart_Speaker.id,reviewer_id:john.id,overall_rating:5,review_headline:"Excellent Speaker For Size!",review:"I currently own a variety of portable speakers, hard wired speakers and a home theater system.")
-# rating_alexa_2_user_2 = Rating.create!(product_id:product_Bose_Portable_Smart_Speaker.id,reviewer_id:george.id,overall_rating:3,review_headline:"Worth every money",review:"The picture is great and I love the remote.")   
-# rating_alexa_3_user_1 = Rating.create!(product_id:product_LG_50_Inch_Class_UQ9000.id,reviewer_id:john.id,overall_rating:2,review_headline:"Ok TV. Would not buy again though",review:"Review after using it for 5 months.- remote is too sensitive- TV is very slow. ")
-# rating_alexa_3_user_2 = Rating.create!(product_id:product_LG_50_Inch_Class_UQ9000.id,reviewer_id:george.id,overall_rating:3,review_headline:"Great TV",review:"Worth every money, deep soothing lows, table rumbling bass. Keep inside any wooden cabinet and see sounds coming to life.")   
-# rating_alexa_4_user_1 = Rating.create!(product_id:product_Fitbit_Sense_2_Advanced_Health.id,reviewer_id:john.id,overall_rating:1,review_headline:"Excellent Speaker For Size!",review:"Review after using it for 5 months.- remote is too sensitive- TV is very slow. ")
-# rating_alexa_4_user_2 = Rating.create!(product_id:product_Fitbit_Sense_2_Advanced_Health.id,reviewer_id:george.id,overall_rating:3,review_headline:"Amazing Picture Quality At A Great Price",review:"I wanted to upgrade my old television to a flat screen with 4K capability, as I am an avid gamer and wanted to experience my PS5 the way it was intended.")   
-# rating_alexa_5_user_1 = Rating.create!(product_id:product_Sonos_Roam.id,reviewer_id:john.id,overall_rating:3,review_headline:"Ok TV. Would not buy again though",review:"I currently own a variety of portable speakers, hard wired speakers and a home theater system.")
-# rating_alexa_5_user_2 = Rating.create!(product_id:product_Sonos_Roam.id,reviewer_id:george.id,overall_rating:4,review_headline:"Great TV",review:"The picture is great and I love the remote.")   
+# rating_alexa_1_user_1 = Rating.create!(product_id:product_Echo_latest_release.id,reviewer_id:rosalina.id,overall_rating:5,review_headline:"Worth every money",review:"The picture is great and I love the remote.")
+# rating_alexa_1_user_2 = Rating.create!(product_id:product_Echo_latest_release.id,reviewer_id:yoshi.id,overall_rating:4,review_headline:"Its powerful",review:"Has amazing sound for the size.")   
+# rating_alexa_2_user_1 = Rating.create!(product_id:product_Bose_Portable_Smart_Speaker.id,reviewer_id:rosalina.id,overall_rating:5,review_headline:"Excellent Speaker For Size!",review:"I currently own a variety of portable speakers, hard wired speakers and a home theater system.")
+# rating_alexa_2_user_2 = Rating.create!(product_id:product_Bose_Portable_Smart_Speaker.id,reviewer_id:yoshi.id,overall_rating:3,review_headline:"Worth every money",review:"The picture is great and I love the remote.")   
+# rating_alexa_3_user_1 = Rating.create!(product_id:product_LG_50_Inch_Class_UQ9000.id,reviewer_id:rosalina.id,overall_rating:2,review_headline:"Ok TV. Would not buy again though",review:"Review after using it for 5 months.- remote is too sensitive- TV is very slow. ")
+# rating_alexa_3_user_2 = Rating.create!(product_id:product_LG_50_Inch_Class_UQ9000.id,reviewer_id:yoshi.id,overall_rating:3,review_headline:"Great TV",review:"Worth every money, deep soothing lows, table rumbling bass. Keep inside any wooden cabinet and see sounds coming to life.")   
+# rating_alexa_4_user_1 = Rating.create!(product_id:product_Fitbit_Sense_2_Advanced_Health.id,reviewer_id:rosalina.id,overall_rating:1,review_headline:"Excellent Speaker For Size!",review:"Review after using it for 5 months.- remote is too sensitive- TV is very slow. ")
+# rating_alexa_4_user_2 = Rating.create!(product_id:product_Fitbit_Sense_2_Advanced_Health.id,reviewer_id:yoshi.id,overall_rating:3,review_headline:"Amazing Picture Quality At A Great Price",review:"I wanted to upgrade my old television to a flat screen with 4K capability, as I am an avid gamer and wanted to experience my PS5 the way it was intended.")   
+# rating_alexa_5_user_1 = Rating.create!(product_id:product_Sonos_Roam.id,reviewer_id:rosalina.id,overall_rating:3,review_headline:"Ok TV. Would not buy again though",review:"I currently own a variety of portable speakers, hard wired speakers and a home theater system.")
+# rating_alexa_5_user_2 = Rating.create!(product_id:product_Sonos_Roam.id,reviewer_id:yoshi.id,overall_rating:4,review_headline:"Great TV",review:"The picture is great and I love the remote.")   
 
 # puts "Creating games............................................................."
 # array_Nintendo_Switch = []
@@ -193,6 +196,48 @@
 # array_Nintendo_Switch.each do |img| 
 #     product_Nintendo_Switch.photos.attach(io:img[:file],filename:img[:filename])
 # end
+# array_PS5 = []
+# product_PS5 = Product.create!(product_name: "PlayStation 5 Console (PS5)",description:"The PS5 console unleashes new gaming possibilities that you never anticipated. Experience lightning fast loading with an ultra-high speed SSD, deeper immersion with support for haptic feedback, adaptive triggers, and 3D Audio, and an all-new generation of incredible PlayStation games.",categories:"videoGames,PlayStation 5, Consoles",price:499.00,discount:0);
+# array_PS5.push({file:File.open('frontend/src/assets/products/games/PS5_1.jpg'),filename:'PS5_1.jpg'})
+# array_PS5.push({file:File.open('frontend/src/assets/products/games/PS5_2.jpg'),filename:'PS5_2.jpg'})
+# array_PS5.each do |img| 
+#     product_PS5.photos.attach(io:img[:file],filename:img[:filename])
+# end
+# array_FIFA_23_Standard_Edition = []
+# product_FIFA_23_Standard_Edition = Product.create!(product_name: "FIFA 23 Standard Edition Playstation 5 (FIFA_23_Standard_Edition)| English | Import Region Free",description:"IFA 23 Standard Edition Playstation 5 (FIFA_23_Standard_Edition)| English | Import Region Free EA SPORTS FIFA 23 brings even more of the action and realism of football to the pitch in The World’s Game HyperMotion2 Technology creates more true football animation than ever before in every match",categories:"videoGames,PlayStation 5, Games",price:44.49,discount:11);
+# array_FIFA_23_Standard_Edition.push({file:File.open('frontend/src/assets/products/games/FIFA_23_Standard_Edition_1.jpg'),filename:'FIFA_23_Standard_Edition_1.jpg'})
+# array_FIFA_23_Standard_Edition.push({file:File.open('frontend/src/assets/products/games/FIFA_23_Standard_Edition_2.jpg'),filename:'FIFA_23_Standard_Edition_2.jpg'})
+# array_FIFA_23_Standard_Edition.each do |img| 
+#     product_FIFA_23_Standard_Edition.photos.attach(io:img[:file],filename:img[:filename])
+# end
+
+# array_product_Splatoon_3_US_Version = []
+# product_Splatoon_3_US_Version = Product.create!(product_name: "Splatoon 3 - US Version",description:"Winner - Best Multiplayer - The Game Awards 2022 Enter 4-on-4* ink-slinging battles in this colorful action shooter packed with style and attitude. As a squid-like Inkling, quickly cover your surroundings (and opponents) in ink with wild weaponry and swim through your own color to sneak and splat. Dive into the fresh fun with family and friends and make waves as a team.",categories:"videoGames,Nintendo Switch, Games",price:47.50,discount:0);
+# array_product_Splatoon_3_US_Version.push({file:File.open('frontend/src/assets/products/games/Splatoon_3_US_Version_1.jpg'),filename:'Splatoon_3_US_Version_1.jpg'})
+# array_product_Splatoon_3_US_Version.push({file:File.open('frontend/src/assets/products/games/Splatoon_3_US_Version_2.jpg'),filename:'Splatoon_3_US_Version_2.jpg'})
+# array_product_Splatoon_3_US_Version.each do |img| 
+#     product_Splatoon_3_US_Version.photos.attach(io:img[:file],filename:img[:filename])
+# end
+# array_product_Mario_Kart_8_Deluxe = []
+# product_Mario_Kart_8_Deluxe = Product.create!(product_name: "Mario Kart 8 Deluxe",description:"Hit the road with the definitive version of Mario Kart 8 and play anytime, any-where! Race your friends or battle them in a revised battle mode on new and returning battle courses. Play locally in up to 4-player multiplayer in 1080p while playing in TV Mode. Every track from the Wii U version, including DLC, makes a glorious return. Plus, the Inklings appear as all-new guest characters, along with returning favorites, such as King Boo, Dry Bones, and Bowser Jr.!",categories:"videoGames,Nintendo Switch, Games",price:54.60,discount:19);
+# array_product_Mario_Kart_8_Deluxe.push({file:File.open('frontend/src/assets/products/games/Mario_Kart_8_Deluxe_1.jpg'),filename:'Mario_Kart_8_Deluxe_1.jpg'})
+# array_product_Mario_Kart_8_Deluxe.push({file:File.open('frontend/src/assets/products/games/Mario_Kart_8_Deluxe_2.jpg'),filename:'Mario_Kart_8_Deluxe_2.jpg'})
+# array_product_Mario_Kart_8_Deluxe.each do |img| 
+#     product_Mario_Kart_8_Deluxe.photos.attach(io:img[:file],filename:img[:filename])
+# end
+
+# puts "Creating games ratings..........................................."
+# rating_games_1_user_1 = Rating.create!(product_id:product_Nintendo_Switch.id,reviewer_id:mario.id,overall_rating:5,review_headline:"I love this Nintendo Switch OLED Zelda Edition",review:"grew up to NES and all the old school stuff but I love the Switch OLED I mean realistically it's 3 in 1. TV/ Portable and you can pop controllers out and lean that bad boy back like a tablet and hold the controllers yourself and play.")
+# rating_games_1_user_2 = Rating.create!(product_id:product_Nintendo_Switch.id,reviewer_id:luigi.id,overall_rating:4,review_headline:"Sorry I waited this long",review:"Now that I’ve got my hands on it, I regret not purchasing the oled model when it launched. I’m upgrading from the OG switch launch model")   
+# rating_games_2_user_1 = Rating.create!(product_id:product_PS5.id,reviewer_id:mario.id,overall_rating:4,review_headline:"I like controller, but console feels cheap, and outer box came damaged.",review:"Was disappointed that the console tamper proof sleeve came partially ripped, but the main box was mostly intact, and all the cords and accessories were in the right place, seemingly, everything looked clean for the most.")
+# rating_games_2_user_2 = Rating.create!(product_id:product_PS5.id,reviewer_id:luigi.id,overall_rating:5,review_headline:"Exceeded my expectations",review:"The PS5 was supremely hard to come by thanks to supply chain shortages and scalpers, but once I found one (I was NOT going to pay scalper prices), I didn't regret buying it.")   
+# rating_games_3_user_1 = Rating.create!(product_id:product_FIFA_23_Standard_Edition.id,reviewer_id:mario.id,overall_rating:5,review_headline:"Amazing",review:"This game is so fun! It has so many cool game modes that you can play")
+# rating_games_3_user_2 = Rating.create!(product_id:product_FIFA_23_Standard_Edition.id,reviewer_id:luigi.id,overall_rating:5,review_headline:"My son loves it.",review:"Happy boy.")   
+# rating_games_4_user_1 = Rating.create!(product_id:product_Splatoon_3_US_Version.id,reviewer_id:mario.id,overall_rating:5,review_headline:"Great Game",review:"This game is so much fun. If you had played any of the previous games you will love this one. Its fun running around inking the maps which are so much fun to play through.")
+# rating_games_4_user_2 = Rating.create!(product_id:product_Splatoon_3_US_Version.id,reviewer_id:luigi.id,overall_rating:4,review_headline:"Great game Love it",review:"Great game Love it nothing else really to say splatoon If you like splatoon you're like splatoon 3 same for two.")   
+# rating_games_5_user_1 = Rating.create!(product_id:product_Mario_Kart_8_Deluxe.id,reviewer_id:mario.id,overall_rating:5,review_headline:"Fun game!",review:"is game but the Amazon delivery person ignored my notes about the package pirates in my building")
+# rating_games_5_user_2 = Rating.create!(product_id:product_Mario_Kart_8_Deluxe.id,reviewer_id:luigi.id,overall_rating:4,review_headline:"Just what I looked for",review:"Excellent product!")   
+
 
 # puts "Creating kitchen............................................................."
 # array_Krups_One_Touch = []
@@ -202,6 +247,48 @@
 # array_Krups_One_Touch.each do |img| 
 #     product_Krups_One_Touch.photos.attach(io:img[:file],filename:img[:filename])
 # end
+
+# array_Breville_Smart_Oven_Air_Fryer_Pro = []
+# product_Breville_Smart_Oven_Air_Fryer_Pro = Product.create!(product_name: "Breville Smart Oven Air Fryer Pro, Brushed Stainless Steel, BOV900BSS",description:"13 smart cooking functions with air fry and dehydrate. The Smart Oven Air with Element IQ is for the cook who desires a countertop oven that can roast for large gatherings, air fry crispy French fries & family favorites and dehydrate a wide range of healthy foods. The super convection setting reduces cooking time by up to 30 percent with great crispness. Capacity: 9 Slice Toaster, 13 Pizza, 9 x 13 baking pan, 12 cup muffin tray , 14 lb Turkey.",categories:"kitchen,Home & Kitchen, Kitchen & Dining",price:399.95,discount:20);
+# array_Breville_Smart_Oven_Air_Fryer_Pro.push({file:File.open('frontend/src/assets/products/kitchen/Breville_Smart_Oven_Air_Fryer_Pro_1.jpg'),filename:'Breville_Smart_Oven_Air_Fryer_Pro_1.jpg'})
+# array_Breville_Smart_Oven_Air_Fryer_Pro.push({file:File.open('frontend/src/assets/products/kitchen/Breville_Smart_Oven_Air_Fryer_Pro_2.jpg'),filename:'Breville_Smart_Oven_Air_Fryer_Pro_2.jpg'})
+# array_Breville_Smart_Oven_Air_Fryer_Pro.each do |img| 
+#     product_Breville_Smart_Oven_Air_Fryer_Pro.photos.attach(io:img[:file],filename:img[:filename])
+# end
+
+# array_OXO_Good_Grips_Soft = []
+# product_OXO_Good_Grips_Soft = Product.create!(product_name: "OXO Good Grips Soft-Handled Manual Can Opener",description:"OXO International Soft Handle Can Opener The sharp cutting wheel is made of stainless steel and the handles are big and cushioned. This opener comes with a built in bottle cap opener. Model: 28081 Material: Stainless steel Color: Black handle Built in bottle cap opener Oversized knob Sharp cutting wheel Works on any size lid Height: 2 Width: 3 Length: 7 375373. Hand Wash only.",categories:"kitchen,Home & Kitchen, Kitchen & Dining",price:16.95,discount:0);
+# array_OXO_Good_Grips_Soft.push({file:File.open('frontend/src/assets/products/kitchen/OXO_Good_Grips_Soft_1.jpg'),filename:'OXO_Good_Grips_Soft_1.jpg'})
+# array_OXO_Good_Grips_Soft.push({file:File.open('frontend/src/assets/products/kitchen/OXO_Good_Grips_Soft_2.jpg'),filename:'OXO_Good_Grips_Soft_2.jpg'})
+# array_OXO_Good_Grips_Soft.each do |img| 
+#     product_OXO_Good_Grips_Soft.photos.attach(io:img[:file],filename:img[:filename])
+# end
+# array_Bodum_1928_16US4_Chambord_French = []
+# product_Bodum_1928_16US4_Chambord_French = Product.create!(product_name: "Bodum 1928-16US4 Chambord French Press Coffee Maker, 1 Liter, 34 Ounce, Chrome",description:"Chambord is a true original – the classic French press Coffee maker designed in the fifties. And we still produce it with the same painstaking craftsmanship we used way back when with the original.",categories:"kitchen,Home & Kitchen, Kitchen & Dining",price:55.00,discount:46);
+# array_Bodum_1928_16US4_Chambord_French.push({file:File.open('frontend/src/assets/products/kitchen/Bodum_1928_16US4_Chambord_French_1.jpg'),filename:'Bodum_1928_16US4_Chambord_French_1.jpg'})
+# array_Bodum_1928_16US4_Chambord_French.push({file:File.open('frontend/src/assets/products/kitchen/Bodum_1928_16US4_Chambord_French_2.jpg'),filename:'Bodum_1928_16US4_Chambord_French_2.jpg'})
+# array_Bodum_1928_16US4_Chambord_French.each do |img| 
+#     product_Bodum_1928_16US4_Chambord_French.photos.attach(io:img[:file],filename:img[:filename])
+# end
+# array_OXO_Good_Grips_12_Inch = []
+# product_OXO_Good_Grips_12_Inch = Product.create!(product_name: "OXO Good Grips 12-Inch Stainless-Steel Locking Tongs",description:"The OXO Good Grips 8-Inch Chef’s Knife is essential for any kitchen. It’s a workhorse, all-purpose knife for chopping, mincing, dicing and scooping. The soft handle is contoured for comfort and non-slip for a secure grip, even when wet. The sharp 8-inch blade is made from hardened Japanese stainless steel for strength and durability. To extend the life of your Knife, hand wash with warm, soapy water and dry promptly.",categories:"kitchen,Home & Kitchen, Kitchen & Dining",price:15.95,discount:0);
+# array_OXO_Good_Grips_12_Inch.push({file:File.open('frontend/src/assets/products/kitchen/OXO_Good_Grips_12_Inch_1.jpg'),filename:'OXO_Good_Grips_12_Inch_1.jpg'})
+# array_OXO_Good_Grips_12_Inch.push({file:File.open('frontend/src/assets/products/kitchen/OXO_Good_Grips_12_Inch_2.jpg'),filename:'OXO_Good_Grips_12_Inch_2.jpg'})
+# array_OXO_Good_Grips_12_Inch.each do |img| 
+#     product_OXO_Good_Grips_12_Inch.photos.attach(io:img[:file],filename:img[:filename])
+# end
+
+# puts "Creating kitchen ratings..........................................."
+# rating_kitchen_1_user_1 = Rating.create!(product_id:product_Krups_One_Touch.id,reviewer_id:daisy.id,overall_rating:5,review_headline:"A Wonderful Addition to My Kitchen",review:"My feedback is really positive because the Breville Smart Oven Air Fryer Pro has exceeded my expectations in every way.")
+# rating_kitchen_1_user_2 = Rating.create!(product_id:product_Krups_One_Touch.id,reviewer_id:koba.id,overall_rating:4,review_headline:"Does Everything!",review:"This oven makes fantastic pizza and flat breads along with many other foods. My problem is with shipping options.")   
+# rating_kitchen_2_user_1 = Rating.create!(product_id:product_Breville_Smart_Oven_Air_Fryer_Pro.id,reviewer_id:daisy.id,overall_rating:5,review_headline:"Easy to use, fast, does nearly everything",review:"I bought this Breville Smart Oven after my wall oven died about eight months ago, and I wasn’t ready to drop $2000 to replace it right away.")
+# rating_kitchen_2_user_2 = Rating.create!(product_id:product_Breville_Smart_Oven_Air_Fryer_Pro.id,reviewer_id:koba.id,overall_rating:3,review_headline:"A Wonderful Addition to My Kitchen",review:"My feedback is really positive because the Breville Smart Oven Air Fryer Pro has exceeded my expectations in every way.")   
+# rating_kitchen_3_user_1 = Rating.create!(product_id:product_OXO_Good_Grips_Soft.id,reviewer_id:daisy.id,overall_rating:5,review_headline:"It s great",review:"My old one lasted a good 15 years. ")
+# rating_kitchen_3_user_2 = Rating.create!(product_id:product_OXO_Good_Grips_Soft.id,reviewer_id:koba.id,overall_rating:5,review_headline:"My wife said she loves it.",review:"My wife said she loves it.")   
+# rating_kitchen_4_user_1 = Rating.create!(product_id:product_Bodum_1928_16US4_Chambord_French.id,reviewer_id:daisy.id,overall_rating:5,review_headline:"Best looking Press",review:"Love this press it is my my second one.")
+# rating_kitchen_4_user_2 = Rating.create!(product_id:product_Bodum_1928_16US4_Chambord_French.id,reviewer_id:koba.id,overall_rating:4,review_headline:"Cant beat the original",review:"If you like press coffee, then you know already. ")   
+# rating_kitchen_5_user_1 = Rating.create!(product_id:product_OXO_Good_Grips_12_Inch.id,reviewer_id:daisy.id,overall_rating:5,review_headline:"Best Tongs Made !",review:"Been looking for tongs for a long time and decided to give these a try and let me tell you , boy they are great .")
+# rating_kitchen_5_user_2 = Rating.create!(product_id:product_OXO_Good_Grips_12_Inch.id,reviewer_id:koba.id,overall_rating:4,review_headline:"Grips well",review:"Great size, grips well, easy to clean. Locks into place without coming apart.")   
 
 # puts "Creating cartItems..."
 # cartItem1 = CartItem.create!(quantity:1,user_id:peter.id,product_id:product_Sony_WH_CH720N.id)

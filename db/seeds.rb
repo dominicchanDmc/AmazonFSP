@@ -23,8 +23,8 @@
 # peter = User.create!(username: 'peter', email: 'peter@google.com', password: '123456')
 #  mary = User.create!(username: 'mary', email: 'mary@google.com', password: '123456')
 #  may = User.create!(username: 'may', email: 'may@google.com', password: '123456')
-john = User.create!(username: 'john', email: 'john@google.com', password: '123456')
-george = User.create!(username: 'george', email: 'george@google.com', password: '123456')
+# john = User.create!(username: 'john', email: 'john@google.com', password: '123456')
+# george = User.create!(username: 'george', email: 'george@google.com', password: '123456')
 # thomas = User.create!(username: 'thomas', email: 'thomas@google.com', password: '123456')
 
 
@@ -134,56 +134,56 @@ george = User.create!(username: 'george', email: 'george@google.com', password: 
 # rating_airConditioners_5_user_1 = Rating.create!(product_id:product_Frigidaire_FHWC054WB1.id,reviewer_id:mary.id,overall_rating:3,review_headline:"Set it and forget it type of unit, rather cool",review:"To start things off, I'm not usually a real big B+D fan. ")
 # rating_airConditioners_5_user_2 = Rating.create!(product_id:product_Frigidaire_FHWC054WB1.id,reviewer_id:may.id,overall_rating:3,review_headline:"So far, so great!",review:"I'll start this review stating, if you CAN get an in-window or two part AC unit, get it. They are FAR better than ANY portable AC unit. A lot of bad reviews here are because people didn't understand portable AC's CANNOT compete with wall or window mount units for cooling efficiency. I'll explain why at the end.")   
 
-puts "Creating alexa............................................................."
-array_Echo_latest_release = []
-product_Echo_latest_release = Product.create!(product_name: "Echo (latest release) | Upgrade any room with premium rich, HD sound plus Alexa and smart home hub | Charcoal",description:"PREMIUM SOUND – Rich, detailed sound that automatically adapts to any room. Supports lossless HD audio available on select streaming services such as Amazon Music HD.VOICE CONTROL YOUR MUSIC – Stream songs from Amazon Music, Apple Music, Spotify, SiriusXM, and more. HD requires a compatible music streaming service.",categories:"alexa,Echo & Alexa, Amazon Devices",price:99.99,discount:35);
-array_Echo_latest_release.push({file:File.open('frontend/src/assets/products/alexa/Echo_latest_release_1.jpg'),filename:'Echo_latest_release_1.jpg'})
-array_Echo_latest_release.push({file:File.open('frontend/src/assets/products/alexa/Echo_latest_release_2.jpg'),filename:'Echo_latest_release_2.jpg'})
-array_Echo_latest_release.each do |img| 
-    product_Echo_latest_release.photos.attach(io:img[:file],filename:img[:filename])
-end
-array_Bose_Portable_Smart_Speaker = []
-product_Bose_Portable_Smart_Speaker = Product.create!(product_name: "Bose Portable Smart Speaker — Wireless Bluetooth Speaker with Alexa Voice Control Built-In, Black",description:"The Bose portable smart speaker is our most versatile smart speaker. It’s a home speaker, a portable speaker, and a voice control speaker, all in one. Around the house, you can move it from room to room and out of the house, You can take it with you wherever you go.",categories:"alexa,Echo & Alexa, Amazon Devices",price:399.00,discount:13)
-array_Bose_Portable_Smart_Speaker.push({file:File.open('frontend/src/assets/products/alexa/Bose_Portable_Smart_Speaker_1.jpg'),filename:'Bose_Portable_Smart_Speaker_1.jpg'})
-array_Bose_Portable_Smart_Speaker.push({file:File.open('frontend/src/assets/products/alexa/Bose_Portable_Smart_Speaker_2.jpg'),filename:'Bose_Portable_Smart_Speaker_2.jpg'})
-array_Bose_Portable_Smart_Speaker.each do |img| 
-    product_Bose_Portable_Smart_Speaker.photos.attach(io:img[:file],filename:img[:filename])
-end
-array_LG_50_Inch_Class_UQ9000 = []
-product_LG_50_Inch_Class_UQ9000 = Product.create!(product_name: "LG 50-Inch Class UQ9000 Series Alexa Built-in 4K Smart TV (3840 x 2160), 60Hz Refresh Rate, AI-Powered, Cloud Gaming (50UQ9000PUD, 2022)",description:"STREAM IT LIKE YOU MEAN IT Everything you need to bring your favorite content to life with the power of 4K and the extras you crave.",categories:"alexa,Echo & Alexa, Amazon Devices",price:529.99,discount:19);
-array_LG_50_Inch_Class_UQ9000.push({file:File.open('frontend/src/assets/products/alexa/LG_50_Inch_Class_UQ9000_1.jpg'),filename:'LG_50_Inch_Class_UQ9000_1.jpg'})
-array_LG_50_Inch_Class_UQ9000.push({file:File.open('frontend/src/assets/products/alexa/LG_50_Inch_Class_UQ9000_2.jpg'),filename:'LG_50_Inch_Class_UQ9000_2.jpg'})
-array_LG_50_Inch_Class_UQ9000.each do |img| 
-    product_LG_50_Inch_Class_UQ9000.photos.attach(io:img[:file],filename:img[:filename])
-end
+# puts "Creating alexa............................................................."
+# array_Echo_latest_release = []
+# product_Echo_latest_release = Product.create!(product_name: "Echo (latest release) | Upgrade any room with premium rich, HD sound plus Alexa and smart home hub | Charcoal",description:"PREMIUM SOUND – Rich, detailed sound that automatically adapts to any room. Supports lossless HD audio available on select streaming services such as Amazon Music HD.VOICE CONTROL YOUR MUSIC – Stream songs from Amazon Music, Apple Music, Spotify, SiriusXM, and more. HD requires a compatible music streaming service.",categories:"alexa,Echo & Alexa, Amazon Devices",price:99.99,discount:35);
+# array_Echo_latest_release.push({file:File.open('frontend/src/assets/products/alexa/Echo_latest_release_1.jpg'),filename:'Echo_latest_release_1.jpg'})
+# array_Echo_latest_release.push({file:File.open('frontend/src/assets/products/alexa/Echo_latest_release_2.jpg'),filename:'Echo_latest_release_2.jpg'})
+# array_Echo_latest_release.each do |img| 
+#     product_Echo_latest_release.photos.attach(io:img[:file],filename:img[:filename])
+# end
+# array_Bose_Portable_Smart_Speaker = []
+# product_Bose_Portable_Smart_Speaker = Product.create!(product_name: "Bose Portable Smart Speaker — Wireless Bluetooth Speaker with Alexa Voice Control Built-In, Black",description:"The Bose portable smart speaker is our most versatile smart speaker. It’s a home speaker, a portable speaker, and a voice control speaker, all in one. Around the house, you can move it from room to room and out of the house, You can take it with you wherever you go.",categories:"alexa,Echo & Alexa, Amazon Devices",price:399.00,discount:13)
+# array_Bose_Portable_Smart_Speaker.push({file:File.open('frontend/src/assets/products/alexa/Bose_Portable_Smart_Speaker_1.jpg'),filename:'Bose_Portable_Smart_Speaker_1.jpg'})
+# array_Bose_Portable_Smart_Speaker.push({file:File.open('frontend/src/assets/products/alexa/Bose_Portable_Smart_Speaker_2.jpg'),filename:'Bose_Portable_Smart_Speaker_2.jpg'})
+# array_Bose_Portable_Smart_Speaker.each do |img| 
+#     product_Bose_Portable_Smart_Speaker.photos.attach(io:img[:file],filename:img[:filename])
+# end
+# array_LG_50_Inch_Class_UQ9000 = []
+# product_LG_50_Inch_Class_UQ9000 = Product.create!(product_name: "LG 50-Inch Class UQ9000 Series Alexa Built-in 4K Smart TV (3840 x 2160), 60Hz Refresh Rate, AI-Powered, Cloud Gaming (50UQ9000PUD, 2022)",description:"STREAM IT LIKE YOU MEAN IT Everything you need to bring your favorite content to life with the power of 4K and the extras you crave.",categories:"alexa,Echo & Alexa, Amazon Devices",price:529.99,discount:19);
+# array_LG_50_Inch_Class_UQ9000.push({file:File.open('frontend/src/assets/products/alexa/LG_50_Inch_Class_UQ9000_1.jpg'),filename:'LG_50_Inch_Class_UQ9000_1.jpg'})
+# array_LG_50_Inch_Class_UQ9000.push({file:File.open('frontend/src/assets/products/alexa/LG_50_Inch_Class_UQ9000_2.jpg'),filename:'LG_50_Inch_Class_UQ9000_2.jpg'})
+# array_LG_50_Inch_Class_UQ9000.each do |img| 
+#     product_LG_50_Inch_Class_UQ9000.photos.attach(io:img[:file],filename:img[:filename])
+# end
 
-array_Fitbit_Sense_2_Advanced_Health = []
-product_Fitbit_Sense_2_Advanced_Health = Product.create!(product_name: "Fitbit Sense 2 Advanced Health and Fitness Smartwatch with Tools to Manage Stress and Sleep, ECG App, SpO2, 24/7 Heart Rate and GPS, Shadow Grey/Graphite, One Size (S & L Bands Included)",description:"Meet Sense 2—the smartwatch designed to help you stress less, sleep better & live healthier. Fitbit is part of the Google family.",categories:"alexa,Echo & Alexa, Amazon Devices",price:299.95,discount:24);
-array_Fitbit_Sense_2_Advanced_Health.push({file:File.open('frontend/src/assets/products/alexa/Fitbit_Sense_2_Advanced_Health_1.jpg'),filename:'Fitbit_Sense_2_Advanced_Health_1.jpg'})
-array_Fitbit_Sense_2_Advanced_Health.push({file:File.open('frontend/src/assets/products/alexa/Fitbit_Sense_2_Advanced_Health_2.jpg'),filename:'Fitbit_Sense_2_Advanced_Health_2.jpg'})
-array_Fitbit_Sense_2_Advanced_Health.each do |img| 
-    product_Fitbit_Sense_2_Advanced_Health.photos.attach(io:img[:file],filename:img[:filename])
-end
+# array_Fitbit_Sense_2_Advanced_Health = []
+# product_Fitbit_Sense_2_Advanced_Health = Product.create!(product_name: "Fitbit Sense 2 Advanced Health and Fitness Smartwatch with Tools to Manage Stress and Sleep, ECG App, SpO2, 24/7 Heart Rate and GPS, Shadow Grey/Graphite, One Size (S & L Bands Included)",description:"Meet Sense 2—the smartwatch designed to help you stress less, sleep better & live healthier. Fitbit is part of the Google family.",categories:"alexa,Echo & Alexa, Amazon Devices",price:299.95,discount:24);
+# array_Fitbit_Sense_2_Advanced_Health.push({file:File.open('frontend/src/assets/products/alexa/Fitbit_Sense_2_Advanced_Health_1.jpg'),filename:'Fitbit_Sense_2_Advanced_Health_1.jpg'})
+# array_Fitbit_Sense_2_Advanced_Health.push({file:File.open('frontend/src/assets/products/alexa/Fitbit_Sense_2_Advanced_Health_2.jpg'),filename:'Fitbit_Sense_2_Advanced_Health_2.jpg'})
+# array_Fitbit_Sense_2_Advanced_Health.each do |img| 
+#     product_Fitbit_Sense_2_Advanced_Health.photos.attach(io:img[:file],filename:img[:filename])
+# end
 
-array_Sonos_Roam = []
-product_Sonos_Roam = Product.create!(product_name: "Sonos Roam, The Portable Smart Speaker for All Your Listening Adventures (Black)",description:"Stream music and more over WiFi, and enjoy easy control with the Sonos app, Apple AirPlay 2, Amazon Alexa",categories:"alexa,Echo & Alexa, Amazon Devices",price:179.00,discount:0);
-array_Sonos_Roam.push({file:File.open('frontend/src/assets/products/alexa/Sonos_Roam_1.jpg'),filename:'Sonos_Roam_1.jpg'})
-array_Sonos_Roam.push({file:File.open('frontend/src/assets/products/alexa/Sonos_Roam_2.jpg'),filename:'Sonos_Roam_2.jpg'})
-array_Sonos_Roam.each do |img| 
-    product_Sonos_Roam.photos.attach(io:img[:file],filename:img[:filename])
-end
+# array_Sonos_Roam = []
+# product_Sonos_Roam = Product.create!(product_name: "Sonos Roam, The Portable Smart Speaker for All Your Listening Adventures (Black)",description:"Stream music and more over WiFi, and enjoy easy control with the Sonos app, Apple AirPlay 2, Amazon Alexa",categories:"alexa,Echo & Alexa, Amazon Devices",price:179.00,discount:0);
+# array_Sonos_Roam.push({file:File.open('frontend/src/assets/products/alexa/Sonos_Roam_1.jpg'),filename:'Sonos_Roam_1.jpg'})
+# array_Sonos_Roam.push({file:File.open('frontend/src/assets/products/alexa/Sonos_Roam_2.jpg'),filename:'Sonos_Roam_2.jpg'})
+# array_Sonos_Roam.each do |img| 
+#     product_Sonos_Roam.photos.attach(io:img[:file],filename:img[:filename])
+# end
 
-puts "Creating alexa ratings..........................................."
-rating_alexa_1_user_1 = Rating.create!(product_id:product_Echo_latest_release.id,reviewer_id:john.id,overall_rating:5,review_headline:"Worth every money",review:"The picture is great and I love the remote.")
-rating_alexa_1_user_2 = Rating.create!(product_id:product_Echo_latest_release.id,reviewer_id:george.id,overall_rating:4,review_headline:"Its powerful",review:"Has amazing sound for the size.")   
-rating_alexa_2_user_1 = Rating.create!(product_id:product_Bose_Portable_Smart_Speaker.id,reviewer_id:john.id,overall_rating:5,review_headline:"Excellent Speaker For Size!",review:"I currently own a variety of portable speakers, hard wired speakers and a home theater system.")
-rating_alexa_2_user_2 = Rating.create!(product_id:product_Bose_Portable_Smart_Speaker.id,reviewer_id:george.id,overall_rating:3,review_headline:"Worth every money",review:"The picture is great and I love the remote.")   
-rating_alexa_3_user_1 = Rating.create!(product_id:product_LG_50_Inch_Class_UQ9000.id,reviewer_id:john.id,overall_rating:2,review_headline:"Ok TV. Would not buy again though",review:"Review after using it for 5 months.- remote is too sensitive- TV is very slow. ")
-rating_alexa_3_user_2 = Rating.create!(product_id:product_LG_50_Inch_Class_UQ9000.id,reviewer_id:george.id,overall_rating:3,review_headline:"Great TV",review:"Worth every money, deep soothing lows, table rumbling bass. Keep inside any wooden cabinet and see sounds coming to life.")   
-rating_alexa_4_user_1 = Rating.create!(product_id:product_Fitbit_Sense_2_Advanced_Health.id,reviewer_id:john.id,overall_rating:1,review_headline:"Excellent Speaker For Size!",review:"Review after using it for 5 months.- remote is too sensitive- TV is very slow. ")
-rating_alexa_4_user_2 = Rating.create!(product_id:product_Fitbit_Sense_2_Advanced_Health.id,reviewer_id:george.id,overall_rating:3,review_headline:"Amazing Picture Quality At A Great Price",review:"I wanted to upgrade my old television to a flat screen with 4K capability, as I am an avid gamer and wanted to experience my PS5 the way it was intended.")   
-rating_alexa_5_user_1 = Rating.create!(product_id:product_Sonos_Roam.id,reviewer_id:john.id,overall_rating:3,review_headline:"Ok TV. Would not buy again though",review:"I currently own a variety of portable speakers, hard wired speakers and a home theater system.")
-rating_alexa_5_user_2 = Rating.create!(product_id:product_Sonos_Roam.id,reviewer_id:george.id,overall_rating:4,review_headline:"Great TV",review:"The picture is great and I love the remote.")   
+# puts "Creating alexa ratings..........................................."
+# rating_alexa_1_user_1 = Rating.create!(product_id:product_Echo_latest_release.id,reviewer_id:john.id,overall_rating:5,review_headline:"Worth every money",review:"The picture is great and I love the remote.")
+# rating_alexa_1_user_2 = Rating.create!(product_id:product_Echo_latest_release.id,reviewer_id:george.id,overall_rating:4,review_headline:"Its powerful",review:"Has amazing sound for the size.")   
+# rating_alexa_2_user_1 = Rating.create!(product_id:product_Bose_Portable_Smart_Speaker.id,reviewer_id:john.id,overall_rating:5,review_headline:"Excellent Speaker For Size!",review:"I currently own a variety of portable speakers, hard wired speakers and a home theater system.")
+# rating_alexa_2_user_2 = Rating.create!(product_id:product_Bose_Portable_Smart_Speaker.id,reviewer_id:george.id,overall_rating:3,review_headline:"Worth every money",review:"The picture is great and I love the remote.")   
+# rating_alexa_3_user_1 = Rating.create!(product_id:product_LG_50_Inch_Class_UQ9000.id,reviewer_id:john.id,overall_rating:2,review_headline:"Ok TV. Would not buy again though",review:"Review after using it for 5 months.- remote is too sensitive- TV is very slow. ")
+# rating_alexa_3_user_2 = Rating.create!(product_id:product_LG_50_Inch_Class_UQ9000.id,reviewer_id:george.id,overall_rating:3,review_headline:"Great TV",review:"Worth every money, deep soothing lows, table rumbling bass. Keep inside any wooden cabinet and see sounds coming to life.")   
+# rating_alexa_4_user_1 = Rating.create!(product_id:product_Fitbit_Sense_2_Advanced_Health.id,reviewer_id:john.id,overall_rating:1,review_headline:"Excellent Speaker For Size!",review:"Review after using it for 5 months.- remote is too sensitive- TV is very slow. ")
+# rating_alexa_4_user_2 = Rating.create!(product_id:product_Fitbit_Sense_2_Advanced_Health.id,reviewer_id:george.id,overall_rating:3,review_headline:"Amazing Picture Quality At A Great Price",review:"I wanted to upgrade my old television to a flat screen with 4K capability, as I am an avid gamer and wanted to experience my PS5 the way it was intended.")   
+# rating_alexa_5_user_1 = Rating.create!(product_id:product_Sonos_Roam.id,reviewer_id:john.id,overall_rating:3,review_headline:"Ok TV. Would not buy again though",review:"I currently own a variety of portable speakers, hard wired speakers and a home theater system.")
+# rating_alexa_5_user_2 = Rating.create!(product_id:product_Sonos_Roam.id,reviewer_id:george.id,overall_rating:4,review_headline:"Great TV",review:"The picture is great and I love the remote.")   
 
 # puts "Creating games............................................................."
 # array_Nintendo_Switch = []

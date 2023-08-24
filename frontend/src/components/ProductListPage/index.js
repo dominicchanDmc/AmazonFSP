@@ -23,8 +23,11 @@ const ProductListPage = () => {
     if (search) {
       const searchParams = new URLSearchParams(search);
       const urlCategory = searchParams.get('category');
+      const urlSearch = searchParams.get('search');
+
       const updatedSearchParams = {
-        category: urlCategory
+        category: urlCategory ? urlCategory : '',
+        search: urlSearch ? urlSearch: ''
       };
       if (urlCategory) {
         dispatch(fetchProducts(updatedSearchParams))

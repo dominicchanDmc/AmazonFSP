@@ -5,18 +5,11 @@ import { fetchProducts } from '../../store/productsReducer';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
   function SearchBar(){
 
-    // const [searchInput, setSearchInput] = useState("");
     const [selectedOption, setSelectedOption] = useState("All");
-    const selectRef = useRef(null); // Ref for the <select> element
+    const selectRef = useRef(null);
     const dispatch = useDispatch()
     const history = useHistory();
-
     const [searchParams, setSearchParams] = useState({})
-
-    // const handleChange = (e) => {
-    // e.preventDefault();
-    // setSearchInput(e.target.value);
-    // };
 
     const handleSearch = e => {
         e.preventDefault()
@@ -59,8 +52,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
                 <div className="nav-fill">
                     <input type="text"
                     placeholder="Search here"
-                    // onChange={handleChange}
-                    // value={searchInput}
                     value={searchParams.search || ''} 
                     onChange={e => setSearchParams(prev => ({ ...prev, search: e.target.value }))}
                     />

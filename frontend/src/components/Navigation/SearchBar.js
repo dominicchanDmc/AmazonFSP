@@ -1,15 +1,15 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef} from 'react'
 import { categories } from '.';
 import { useDispatch } from 'react-redux';
 import { fetchProducts } from '../../store/productsReducer';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
-  function SearchBar(){
+  function SearchBar({selectedOption,setSelectedOption,searchParams,setSearchParams}){
 
-    const [selectedOption, setSelectedOption] = useState("All");
+    // const [selectedOption, setSelectedOption] = useState("All");
+    // const [searchParams, setSearchParams] = useState({})
     const selectRef = useRef(null);
     const dispatch = useDispatch()
     const history = useHistory();
-    const [searchParams, setSearchParams] = useState({})
 
     const handleSearch = e => {
         e.preventDefault()
@@ -38,7 +38,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
                     <select
                         name='categories'
                         ref={selectRef}
-                        // value={categories}
                         className='select-search'
                         value={selectedOption}
                         onChange={(e) => setSelectedOption(e.target.value)}

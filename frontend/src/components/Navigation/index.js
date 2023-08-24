@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,12 +16,13 @@ export const categories =  [
   { name: "Kitchen", value: "kitchen" },
   { name: "Video Games", value: "videoGames" }
 ]
-function Navigation({ setIsModalOpen,isModalOpen }) {
+function Navigation() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const cartItems = useSelector(selectUserCartItems)
   const history = useHistory();
-
+    const [selectedOption, setSelectedOption] = useState("All");
+    const [searchParams, setSearchParams] = useState({})
   let cartItemsCount;
   if (cartItems && Object.keys(cartItems).length > 0)
     cartItemsCount = Object.values(cartItems).reduce
@@ -40,6 +41,11 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
 
   const handleCategory = (category) => {
     history.push(`/products?category=${category}`);
+  };
+
+  const handleLogoClick = () => {
+    setSearchParams('');
+    setSelectedOption('All')
   };
 
   let sessionLinks;
@@ -114,12 +120,13 @@ function Navigation({ setIsModalOpen,isModalOpen }) {
     <div id="nav-bar">
       <div id="nav-belt">
         <div className="nav-left">
-          <div id="nav-logo">
+          <div id="nav-logo" onClick={handleLogoClick}>
             <NavLink exact to="/"><img id='img-logo' src={logo} alt=""></img></NavLink>
           </div>
         </div>
         <div className="nav-fill">
-          <SearchBar/>
+          <SearchBar selectedOption={selectedOption} setSelectedOption={setSelectedOption}
+           searchParams={searchParams} setSearchParams={setSearchParams}/>
         </div>
         <div className="nav-right">
           <div id="nav-tools">

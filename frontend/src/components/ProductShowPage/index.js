@@ -13,7 +13,6 @@ function ProductShowPage() {
     const product = useSelector(getProduct(productId));
     const [quantity, setQuantity] = useState(1); 
     const [message, setMessage] = useState({ content: '', visible: false })
-    // const [reviewInfo, setReViewInfo] = useState([])
     const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector(selectUserCartItems);
@@ -50,21 +49,8 @@ function ProductShowPage() {
         setQuantity(newQuantity);
     };
 
-    // let productInfo,reviewInfov,totalRatingCount,sumOfRatings,averageRating,reviewInfo=[] ; 
     if (product){
-        ratingInfo= getRatingInfo(product);
-        // if (product && product.ratings && Array.isArray(Object.values(product.ratings))) 
-        //     reviewInfo = Object.values(product.ratings);
-        //     reviewInfov = Object.values(reviewInfo);
-        //     totalRatingCount = reviewInfov.length;
-        //     sumOfRatings = reviewInfov.reduce((sum, rating) => sum + rating.overallRating, 0);
-        //     averageRating = Math.round((sumOfRatings / totalRatingCount) * 2) / 2;
-        // }
-        // else{
-        //     totalRatingCount = 0;
-        //     averageRating = 0;
-        // }
-                 
+        ratingInfo= getRatingInfo(product);         
         let finalPrice = product.price;
         let priceSpan;
             if (product.discount){

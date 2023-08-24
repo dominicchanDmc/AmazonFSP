@@ -263,6 +263,8 @@ a {
   /* font-size: 2.5rem */
   width: 3em;
   filter: invert(1);
+  position: absolute;
+  right: 40px;
 }
 
 .cart p {
@@ -276,7 +278,7 @@ a {
 .cart-count{
 	position: absolute;
 	transform: translateX(-40%);
-	right: 50px;
+	right: 51px;
 	top: 1.5%;
 	font-size: 15px;
 	color: #f08806;

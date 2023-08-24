@@ -26,7 +26,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
     useEffect(() => {
         if (selectRef.current) {
             const optionText = selectRef.current.options[selectRef.current.selectedIndex].text;
-            const optionWidth = optionText === 'All' ? '50px' : `${optionText.length * 10}px`;
+            const optionWidth = optionText === 'All'|| optionText === 'Alexa' ? '60px' : `${optionText.length * 10}px`;
             selectRef.current.style.width = optionWidth;
         }
       }, [selectedOption]);

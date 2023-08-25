@@ -172,7 +172,9 @@ function ProductShowPage() {
             <section id="review-section">
                 <ReviewPart reviewInfo={ratingInfo.reviewInfo} 
                 averageRating={ratingInfo.averageRating}
-                totalRatingCount={ratingInfo.totalRatingCount}/>
+                totalRatingCount={ratingInfo.totalRatingCount}
+                productId={product.id}
+                />
                 
             </section>
         </>

@@ -79,3 +79,10 @@ img.medium {
   position: absolute; 
   bottom: 5px;
 }
+
+.list-errorMessage{
+  color: green;
+  position: absolute; 
+  bottom: -3px;
+  font-size: 15px;
+}

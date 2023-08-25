@@ -10,13 +10,13 @@ function ReviewPart(props) {
                         <RatingPart averageRating={averageRating} caller={"review"} />
                         <span>{totalRatingCount} <span>global ratings</span></span>
                         <div className="rating-number">{averageRating} out of 5 stars</div>
-                        <div className="breck"></div>
+                        {/* <div className="breck"></div>
                         <div className="review-card">
                             <span className="price-fontSize-18"><strong>Review this product</strong></span>
                             <span className="price-fontSize-14">Share your thoughts with other customers</span>
                             <button className='review-card-button'>Write a customer review</button>
                             <div className="breck"/>
-                        </div>
+                        </div> */}
                     </div>
                 </>
                 ):null}            

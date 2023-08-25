@@ -10,6 +10,7 @@ import CartIndex from './components/CartIndex';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 import ProductListPage from './components/ProductListPage';
 import ProductShowPage from './components/ProductShowPage';
+import ReviewForm from './components/ReviewForm';
 // import AccountModal from './components/Model/accountModel';
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route path="/cart">
             <CartIndex />
+        </Route>
+        <Route path="/products/:productId/reviewForm">
+            <ReviewForm />
         </Route>
         {/* <Route path="/products/:productId">
             <ProductShowPage />

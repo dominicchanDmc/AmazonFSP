@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
 
-
+  get '/favicon.ico', to: 'static_pages#favicon'
   get '*path',
   to: "static_pages#frontend",
   constraints: lambda{|req| !req.xhr? && req.format.html?}

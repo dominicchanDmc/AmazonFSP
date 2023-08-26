@@ -6,3 +6,12 @@ Users can search product by name or categories, choose products to cart, review 
 
 ## Live version 
 Live version can be seen on <a href='https://yellow-arrow.onrender.com/'>this link</a>
+
+## Technologies
+In this website,I have use 1 Libraries:
+
+- **Font Awesome**: The commom and easy to understand icon
+- **Ruby**: Build backEnd Api to get DB data
+- **React & Redux**: Build frontEnd
+
+- 

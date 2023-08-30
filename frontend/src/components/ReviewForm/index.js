@@ -44,45 +44,50 @@ function ReviewForm() {
   };
 
   return (
-    <div className="review-form">
-      <h2>Create Review</h2>
-      <span>{product.productName}</span>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Overall rating
-          <div className="rating-stars">
-            {[1, 2, 3, 4, 5].map((value) => (
-              <span
-                key={value}
-                onClick={() => handleRatingChange(value)}
-                className={value <= rating ? 'star selected' : 'star'}
-              >
-                ★
-              </span>
-            ))}
-          </div>
-        </label>
-
-        <label>
-          Add a headline
-          <input
-            type="text"
-            value={headline}
-            onChange={(e) => setHeadline(e.target.value)}
-          />
-        </label>
-
-        <label>
-          Add a written review
-          <textarea
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-          />
-        </label>
-
-        <button type="submit">Submit</button>
-      </form>
+    <section className='bgcolor-white' id="review-form-section">
+      <div className="review-form">
+        <div><h2>Create Review</h2>
+        <span>                    
+          {product.productName.length > 150 ? product.productName.slice(0, 150) + "..." : product.productName}
+        </span>
     </div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <h3>Overall rating</h3>
+            <div className="rating-stars">
+              {[1, 2, 3, 4, 5].map((value) => (
+                <span
+                  key={value}
+                  onClick={() => handleRatingChange(value)}
+                  className={value <= rating ? 'star selected' : 'star'}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+          </label>
+          <h3>Add a headline</h3>
+            <input
+              type="text"
+              id='headline'
+              value={headline}
+              onChange={(e) => setHeadline(e.target.value)}
+            />
+      
+
+          <h3>Add a written review</h3>
+            
+            <textarea
+              value={review}
+              id='review'
+              onChange={(e) => setReview(e.target.value)}
+            />
+        <br/>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </section>
   );
 }
 

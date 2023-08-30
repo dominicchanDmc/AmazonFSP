@@ -15,7 +15,7 @@ import ReviewForm from './components/ReviewForm';
 
 function App() {
   const location = useLocation();
-  const isNavigationVisible = ['/', '/cart','/404','/products/:productId','/products'].includes(location.pathname);
+  const isNavigationVisible = ['/', '/cart','/404','/products/:productId','/products','/products/:productId/reviewForm'].includes(location.pathname);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -34,9 +34,9 @@ function App() {
         <Route path="/cart">
             <CartIndex />
         </Route>
-        <Route path="/products/:productId/reviewForm">
-            <ReviewForm />
-        </Route>
+        <Route path="/products/:productId/reviewForm" component={ReviewFormWithNavigation} />
+            {/* <ReviewForm />
+        </Route> */}
         {/* <Route path="/products/:productId">
             <ProductShowPage />
         </Route> */}
@@ -71,6 +71,16 @@ function ProductShowPageWithNavigation() {
     <>
       <Navigation />
       <ProductShowPage />
+    </>
+  );
+}
+
+function ReviewFormWithNavigation() {
+  
+  return (
+    <>
+      <Navigation />
+      <ReviewForm />
     </>
   );
 }

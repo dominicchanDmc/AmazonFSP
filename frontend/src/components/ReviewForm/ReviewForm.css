@@ -1,0 +1,16 @@
+
+.review-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    line-height: 35px;
+
+    /* margin:0 auto; */
+    height: 80vh;
+}
+
+.review-form div {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0; /* Optional: Add padding for better spacing */
+  }

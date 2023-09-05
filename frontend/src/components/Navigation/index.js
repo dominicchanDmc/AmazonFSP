@@ -158,6 +158,12 @@ function Navigation() {
             <li key={categories.value} onClick={()=>handleCategory(categories.value)}><Link to="#" >{categories.name}</Link></li>
           )}
           </ul>
+          <div>
+            <a href="https://github.com/dominicchanDmc/Steam-Games-Statistics" target="_blank"><i class="fa-brands fa-square-github aboutIcon"></i></a>
+          </div>
+            <div>
+            <a href="https://www.linkedin.com/in/dominic-chan-0b4128255/" target="_blank"><i class="fa-brands fa-linkedin aboutIcon"></i></a>
+          </div>
         </div>
       </div>
   </header>

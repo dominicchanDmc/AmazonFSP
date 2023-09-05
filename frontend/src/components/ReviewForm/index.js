@@ -47,10 +47,10 @@ function ReviewForm() {
     <section className='bgcolor-white' id="review-form-section">
       <div className="review-form">
         <div><h2>Create Review</h2>
-        <span>                    
-          {product.productName.length > 150 ? product.productName.slice(0, 150) + "..." : product.productName}
-        </span>
-    </div>
+          <span>                    
+            {product.productName.length > 150 ? product.productName.slice(0, 150) + "..." : product.productName}
+          </span>
+        </div>
         <form onSubmit={handleSubmit}>
           <label>
             <h3>Overall rating</h3>
@@ -66,24 +66,25 @@ function ReviewForm() {
               ))}
             </div>
           </label>
-          <h3>Add a headline</h3>
-            <input
-              type="text"
-              id='headline'
-              value={headline}
-              onChange={(e) => setHeadline(e.target.value)}
-            />
+          <div>
+            <h3>Add a headline</h3>
+              <input
+                type="text"
+                id='headline'
+                value={headline}
+                onChange={(e) => setHeadline(e.target.value)}
+              />
+          </div>
       
-
-          <h3>Add a written review</h3>
-            
-            <textarea
-              value={review}
-              id='review'
-              onChange={(e) => setReview(e.target.value)}
-            />
-        <br/>
-
+          <div>
+                <h3>Add a written review</h3>        
+                  <textarea
+                    value={review}
+                    id='review'
+                    onChange={(e) => setReview(e.target.value)}
+                  />
+              <br/>
+          </div>
           <button type="submit">Submit</button>
         </form>
       </div>

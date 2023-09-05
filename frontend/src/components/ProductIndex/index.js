@@ -62,6 +62,7 @@ const ProductIndex = () => {
             </>)}
         </div>
       </section>
+      {sessionUser && (
       <section className="section-3">
         <section className="section-3-container">
             <h3>Inspired by your browsing history</h3>
@@ -76,6 +77,8 @@ const ProductIndex = () => {
             </div>
         </section>
       </section>
+      )}
+
     </>
   )
 }

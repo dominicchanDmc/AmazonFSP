@@ -48,17 +48,17 @@ function ProductShowPage() {
             history.push('/login');
         }
     };
-    const selectedImageUrl = product.photoUrls && product.photoUrls[selectedImageIndex];
     const handleThumbnailClick = (index) => {
         setSelectedImageIndex(index);
-      };
-
+    };
+    
     const handleQuantityChange = (event) => {
         const newQuantity = parseInt(event.target.value);
         setQuantity(newQuantity);
     };
-
+    
     if (product){
+        const selectedImageUrl = product.photoUrls && product.photoUrls[selectedImageIndex];
         ratingInfo= getRatingInfo(product);         
         let finalPrice = product.price;
         let priceSpan;
@@ -167,7 +167,7 @@ function ProductShowPage() {
         productInfo=""
 
     let reviewItems;
-    if (ratingInfo.reviewInfo.length > 0) {
+    if (ratingInfo?.reviewInfo.length > 0) {
         reviewItems = (<>
             <section id="review-section">
                 <ReviewPart reviewInfo={ratingInfo.reviewInfo} 

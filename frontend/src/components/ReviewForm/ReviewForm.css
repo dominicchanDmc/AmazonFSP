@@ -7,7 +7,7 @@
     line-height: 35px;
 
     /* margin:0 auto; */
-    height: 80vh;
+    height: 85vh;
 
 
 }
@@ -36,4 +36,10 @@
     padding: 10px 0; /* Optional: Add padding for better spacing */
   }
 
-  
+.reviewInputTextArea{
+  height: 120px;
+}
+
+.review-form .star-widget{
+  border-bottom: none;
+}

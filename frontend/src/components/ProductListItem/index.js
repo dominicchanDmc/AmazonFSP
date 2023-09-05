@@ -8,6 +8,7 @@ import { getRatingInfo } from "../../utils/ratingUtils";
 
 function ProductItem({ product}) {
   const [message, setMessage] = useState({ content: '', visible: false });
+  const [errorMessage, seterrorMessage] = useState({ content: '', visible: false });
   const history = useHistory();
   const dispatch = useDispatch();
   const cartItems = useSelector(selectUserCartItems);
@@ -20,6 +21,14 @@ function ProductItem({ product}) {
         Object.values(cartItems).find(item => item.productId === product.id):0;
         if (existingCartItem) {
             const updatedQuantity = existingCartItem.quantity + 1;
+            if (updatedQuantity >30){
+              seterrorMessage({ content: 'each product limit of 30 per order!', visible: true });
+              setTimeout(() => {
+              seterrorMessage({ ...errorMessage, visible: false });
+              }, 5000);
+              return;
+          }
+          else
             dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
         } else {
             dispatch(fetchAddToCart(product.id, 1));
@@ -85,6 +94,11 @@ function ProductItem({ product}) {
           {message.visible && (
               <div className="list-message">
               <b>{message.content}</b>
+              </div>
+          )}
+          {errorMessage.visible && (
+              <div className="list-errorMessage">
+              <b>{errorMessage.content}</b>
               </div>
           )}
       </div>

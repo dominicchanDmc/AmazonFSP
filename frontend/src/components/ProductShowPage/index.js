@@ -35,7 +35,16 @@ function ProductShowPage() {
             Object.values(cartItems).find(item => item.productId === product.id):0;
             if (existingCartItem) {
                 const updatedQuantity = existingCartItem.quantity + quantity;
-                dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
+
+                if (updatedQuantity >30){
+                    setMessage({ content: 'each product limit of 30 per order!', visible: true });
+                    setTimeout(() => {
+                    setMessage({ ...message, visible: false });
+                    }, 5000);
+                    return;
+                }
+                else
+                    dispatch(fetchUpdateCartItemQuantity(existingCartItem.id, updatedQuantity));
             } else {
                 dispatch(fetchAddToCart(product.id, quantity));
             }

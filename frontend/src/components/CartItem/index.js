@@ -42,7 +42,7 @@ if (props.item){
             <select id="quantity" name="quantity" className="showQuantitySelect"
             value={props.item.quantity} onChange={handleQuantityChange}>
                 <option key="0" value="0">0 (Delete)</option>
-                {Array.from({ length: 15 }, (_, index) => index + 1).map((qty) => (
+                {Array.from({ length: 30 }, (_, index) => index + 1).map((qty) => (
                     <option key={qty} value={qty}>
                         {qty}
                     </option>

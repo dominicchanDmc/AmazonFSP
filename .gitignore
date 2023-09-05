@@ -57,7 +57,10 @@ node_modules/
 /public/packs
 /public/packs-test
 /public/assets
-/public
+# /public
+/public/asset-manifest.json
+/public/static/
+/public/index.html
 
 # Ignore yarn files
 /yarn-error.log

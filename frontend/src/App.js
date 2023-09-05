@@ -41,7 +41,7 @@ function App() {
             <ProductShowPage />
         </Route> */}
         <Route path="/products/:productId" component={ProductShowPageWithNavigation} />
-
+ 
         <Route path="/products">
             <ProductListPage />
         </Route>

@@ -12,6 +12,10 @@ class Api::ProductsController < ApplicationController
         categories = params[:category]
         @products = @products.where("ARRAY[?] && STRING_TO_ARRAY(categories, ',')", categories)
       end
+
+      if params[:limit_to_five] == 'true'
+        @products = @products.limit(5)
+      end
     end
 
     def show

@@ -9,20 +9,23 @@ import SimpleProductList from '../SimpleProductList';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
 
 const ProductIndex = () => {
-  // const products = useSelector(selectAllproducts)
+  const products = useSelector(selectAllproducts)
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch()
   const history = useHistory();
   const location = useLocation();
   const { pathname } = location;
+  const limitSearchParams = {
+    limit_to_five: true
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  // useEffect(() => {
-  //   dispatch(fetchProducts())
-  // },[dispatch])
+  useEffect(() => {
+    dispatch(fetchProducts(limitSearchParams))
+  },[dispatch])
 
   const handleCategory = (category) => {
     history.push(`/products?category=${category}`);
@@ -59,10 +62,11 @@ const ProductIndex = () => {
             </>)}
         </div>
       </section>
+      {sessionUser && (
       <section className="section-3">
         <section className="section-3-container">
             <h3>Inspired by your browsing history</h3>
-            {/* <div className="product-detail-cards">
+            <div className="product-detail-cards">
               {Object.values(products).map((product, index) => (
                 index <=5 && (
                   <div key={product.id}>
@@ -70,9 +74,11 @@ const ProductIndex = () => {
                   </div>
                 )
               ))}
-            </div> */}
+            </div>
         </section>
       </section>
+      )}
+
     </>
   )
 }

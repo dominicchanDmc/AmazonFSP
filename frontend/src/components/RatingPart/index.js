@@ -5,6 +5,20 @@ const callerId = props.callerId || 0;
 let starInfo;
 
 switch(averageRating){
+    case 0 :
+        starInfo = (<>
+                <input type="radio" name={`${caller}-${callerId}-rate`} id={`${caller}-rate-5`} />
+                <label htmlFor={`${caller}-rate-5`} className="fas fa-star"></label>
+                <input type="radio" name={`${caller}-${callerId}-rate`} id={`${caller}-rate-4`} />
+                <label htmlFor={`${caller}-rate-4`} className="fas fa-star"></label>
+                <input type="radio" name={`${caller}-${callerId}-rate`} id={`${caller}-rate-3`} />
+                <label htmlFor={`${caller}-rate-3`} className="fas fa-star"></label>
+                <input type="radio" name={`${caller}-${callerId}-rate`} id={`${caller}-rate-2`} />
+                <label htmlFor={`${caller}-rate-2`} className="fas fa-star"></label>
+                <input type="radio" name={`${caller}-${callerId}-rate`} id={`${caller}-rate-1`} />
+                <label htmlFor={`${caller}-rate-1`} className="fas fa-star"></label>
+        </>);
+        break;
     case 1.5 :
         starInfo = (<>
                 <input type="radio" name={`${caller}-${callerId}-rate`} id={`${caller}-rate-5`} checked={averageRating === 5} readOnly/>

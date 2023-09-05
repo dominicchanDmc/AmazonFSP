@@ -3,6 +3,7 @@ import './ReviewForm.css'
 import { useLocation, useParams } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, getProduct } from "../../store/productsReducer";
+import RatingPart from '../RatingPart';
 
 function ReviewForm() {
   const [rating, setRating] = useState(0); 
@@ -44,45 +45,42 @@ function ReviewForm() {
   };
 
   return (
-    <div className="review-form">
-      <h2>Create Review</h2>
-      <span>{product.productName}</span>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Overall rating
-          <div className="rating-stars">
-            {[1, 2, 3, 4, 5].map((value) => (
-              <span
-                key={value}
-                onClick={() => handleRatingChange(value)}
-                className={value <= rating ? 'star selected' : 'star'}
-              >
-                ★
-              </span>
-            ))}
+    <section className='bgcolor-white' id="review-form-section">
+      <div className="review-form">
+        <div><h2>Create Review</h2>
+          <span>                    
+            {product?.productName.length > 150 ? product?.productName.slice(0, 150) + "..." : product?.productName}
+          </span>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <h3>Overall rating (1-5)</h3>
+            <RatingPart averageRating={0} caller={"reviewForm"} />
+          </label>
+          <div>
+            <h3>Add a headline</h3>
+              <input
+                type="text"
+                id='headline'
+                value={headline}
+                onChange={(e) => setHeadline(e.target.value)}
+              />
           </div>
-        </label>
-
-        <label>
-          Add a headline
-          <input
-            type="text"
-            value={headline}
-            onChange={(e) => setHeadline(e.target.value)}
-          />
-        </label>
-
-        <label>
-          Add a written review
-          <textarea
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-          />
-        </label>
-
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+      
+          <div>
+                <h3>Add a written review</h3>        
+                  <textarea
+                    value={review}
+                    id='review'
+                    className='reviewInputTextArea'
+                    onChange={(e) => setReview(e.target.value)}
+                  />
+              <br/>
+              <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 }
 

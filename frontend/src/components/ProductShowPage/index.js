@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation, useParams } from "react-router-dom/cjs/react-router-dom";
-import { fetchProduct, getProduct } from "../../store/productsReducer";
+import { fetchProduct, getProduct, getProductRatings } from "../../store/productsReducer";
 import './ProductShowPage.css'
 import { fetchAddToCart, fetchUpdateCartItemQuantity, selectUserCartItems } from "../../store/cartItemsReducer";
 import ReviewPart from "../ReviewPart";
@@ -11,6 +11,7 @@ import { getRatingInfo } from "../../utils/ratingUtils";
 function ProductShowPage() {
     const { productId } = useParams();
     const product = useSelector(getProduct(productId));
+    const ratings = useSelector(getProductRatings(productId));
     const [quantity, setQuantity] = useState(1); 
     const [message, setMessage] = useState({ content: '', visible: false })
     const history = useHistory();

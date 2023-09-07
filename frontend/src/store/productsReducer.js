@@ -66,6 +66,11 @@ export const selectAllproducts = state => state.entities.products
 // export const getProducts = (state) => selectAllproducts(state) ? Object.values(selectAllproducts(state)) : [];
 
 export const getProduct = (productId) => (state) => selectAllproducts(state) ? selectAllproducts(state)[productId] : null;
+export const getProductRatings = (productId) => (state) =>{
+  const ratings =selectAllproducts(state) ? selectAllproducts(state)[productId]?.ratings : null;
+  console.log(ratings);
+  }
+
 // REDUCER
 const productReducer = (state = {}, action) => {
   // const nextState = { ...state }
@@ -91,7 +96,10 @@ const productReducer = (state = {}, action) => {
         };
       
     case REMOVE_RATING:
-      let nextState = { ...state };
+      let nextState ={};
+      Object.keys(state).forEach(key=>{
+         nextState[key] = {...state[key],ratings:{...state[key].ratings}}
+      })
       const nextStateRatings = nextState[action.productId].ratings;
       delete nextStateRatings[action.ratingId];
       // nextState[action.productId].ratings = nextStateRatings;

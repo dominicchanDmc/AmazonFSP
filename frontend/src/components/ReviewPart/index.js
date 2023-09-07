@@ -20,7 +20,10 @@ function ReviewPart(props) {
     }
 
     const handleReview = (e) => {
-        history.push(`/products/${productId}/reviewForm`);
+        if (sessionUser)
+            history.push(`/products/${productId}/reviewForm`);
+        else
+            history.push('/login');
     };
     const filteredReviewInfo = reviewInfo.filter((reviewItem) => !reviewItem.isDeleted);
 

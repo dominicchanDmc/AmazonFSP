@@ -20,7 +20,7 @@ function ReviewUpdateForm() {
   const { pathname } = location;
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user);
-  const rating = useSelector(state => state.entities.ratings);
+  const rating = useSelector(state => state.entities.ratings[reviewId]);
 
   let ratingInfo; 
 
@@ -30,10 +30,15 @@ function ReviewUpdateForm() {
 ;
   useEffect(() => {
       dispatch(fetchRating(reviewId));
-      setOverAllRatingRating(rating.overall_rating);
-      setHeadline(rating.review_headline);
-      setReview(rating.review);
   }, [dispatch]);
+
+  useEffect(() => {
+    setOverAllRatingRating(rating?.overall_rating);
+    setHeadline(rating?.review_headline);
+    setReview(rating?.review);
+  }, [rating]);
+
+
 
   const handleRatingChange = (value) => {
     setOverAllRatingRating(value);

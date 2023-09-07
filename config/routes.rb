@@ -12,11 +12,11 @@ Rails.application.routes.draw do
     delete '/cart_items/delete_all', to: 'cart_items#delete_all'
 
     resources :products, only: [:index,:show] do
-      resources :reviews, only: [:create]
+      resources :ratings, only: [:create]
     end
     resource :session, only: [:show, :create, :destroy]
     resources :cart_items, only: [:create,:update,:destroy]
-    resources :reviews, only: [:show,:update,:destroy]
+    resources :ratings, only: [:show,:update,:destroy]
 
   end
 

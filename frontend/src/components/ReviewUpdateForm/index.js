@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import './ReviewForm.css'
 import { useHistory, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import { postRatingRequest } from '../../store/productsReducer';
 import RatingPart from '../RatingPart';
+import { fetchRating, updateRating } from '../../store/ratingsReducer';
+import RatingUpdatePart from '../RatingUpdatePart';
 
-function ReviewForm() {
+function ReviewUpdateForm() {
   const [overall_rating, setOverAllRatingRating] = useState(0); 
   const [review_headline, setHeadline] = useState('');
   const [review, setReview] = useState('');
-  const { productId } = useParams();
+  const { productId ,reviewId} = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const [productReview, setProductReview] = useState(null);
@@ -19,21 +20,31 @@ function ReviewForm() {
   const { pathname } = location;
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user);
+  const rating = useSelector(state => state.entities.ratings[reviewId]);
+
+  let ratingInfo; 
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+;
+  useEffect(() => {
+      dispatch(fetchRating(reviewId));
+  }, [dispatch]);
 
   useEffect(() => {
-      dispatch(fetchProduct(productId));
-  }, [dispatch,productId]);
+    setOverAllRatingRating(rating?.overall_rating);
+    setHeadline(rating?.review_headline);
+    setReview(rating?.review);
+  }, [rating]);
+
 
 
   const handleRatingChange = (value) => {
     setOverAllRatingRating(value);
   };
 
-  const createReview = async () => {
+  const updateReview = async () => {
     setErrors([]);
     try {
       const reviewData = {
@@ -41,24 +52,24 @@ function ReviewForm() {
         review_headline,
         review,
         productId, 
-        reviewer_id:sessionUser.id
+        reviewer_id:sessionUser.id,
+        reviewId
       };
 
-      const response  = await  dispatch(postRatingRequest(reviewData))
-
+      const response  = await  dispatch(updateRating(reviewData))
       if (response.success) {
         setOverAllRatingRating(0);
         setHeadline('');
         setReview('');
         history.push(`/products/${productId}`);
-        console.log('Review created successfully');
+        console.log('Review updated successfully');
       } else {
         if (response.error !== null && response.error !== undefined && response.error !== ""){
           setErrors([...errors, response.error]);
         }
       }
     } catch (error) {
-     console.error('Error creating review:', error);
+     console.error('Error updated review:', error);
     }
   };
 
@@ -77,13 +88,13 @@ function ReviewForm() {
       setErrors(["Headline and review are required."]);
       return; 
     }
-    createReview();
+    updateReview();
   };
 
   return (
     <section className='bgcolor-white' id="review-form-section">
       <div className="review-form">
-        <div><h2>Create Review</h2>
+        <div><h2>Update Review</h2>
           <span>                    
             {product?.productName.length > 150 ? product?.productName.slice(0, 150) + "..." : product?.productName}
           </span>
@@ -91,10 +102,10 @@ function ReviewForm() {
         <form onSubmit={handleSubmit}>
           <label>
             <h3>Overall rating (1-5)</h3>
-            <RatingPart averageRating={0} caller={"reviewForm"} handleRatingChange={handleRatingChange} />
+            <RatingUpdatePart averageRating={overall_rating} caller={"reviewForm"} handleRatingChange={handleRatingChange} />
           </label>
           <div>
-            <h3>Add a headline</h3>
+            <h3>Headline</h3>
               <input
                 type="text"
                 id='headline'
@@ -104,7 +115,7 @@ function ReviewForm() {
           </div>
       
           <div>
-                <h3>Add a written review</h3>        
+                <h3>Review</h3>        
                   <textarea
                     value={review}
                     id='review'
@@ -123,4 +134,4 @@ function ReviewForm() {
   );
 }
 
-export default ReviewForm;
+export default ReviewUpdateForm;

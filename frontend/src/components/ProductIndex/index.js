@@ -67,13 +67,13 @@ const ProductIndex = () => {
         <section className="section-3-container">
             <h3>Inspired by your browsing history</h3>
             <div className="product-detail-cards">
-              {Object.values(products).map((product, index) => (
+              {products? (Object.values(products).map((product, index) => (
                 index <=5 && (
                   <div key={product.id}>
                     <SimpleProductList product={product} />
                   </div>
                 )
-              ))}
+              ))):null }
             </div>
         </section>
       </section>

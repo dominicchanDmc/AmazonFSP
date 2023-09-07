@@ -11,6 +11,8 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 import ProductListPage from './components/ProductListPage';
 import ProductShowPage from './components/ProductShowPage';
 import ReviewForm from './components/ReviewForm';
+import ReviewUpdateForm from './components/ReviewUpdateForm';
+
 // import AccountModal from './components/Model/accountModel';
 
 function App() {
@@ -34,7 +36,9 @@ function App() {
         <Route path="/cart">
             <CartIndex />
         </Route>
+        <Route path="/products/:productId/reviewForm/:reviewId" component={ReviewUpdateFormWithNavigation} />
         <Route path="/products/:productId/reviewForm" component={ReviewFormWithNavigation} />
+
             {/* <ReviewForm />
         </Route> */}
         {/* <Route path="/products/:productId">
@@ -84,5 +88,13 @@ function ReviewFormWithNavigation() {
     </>
   );
 }
-
+function ReviewUpdateFormWithNavigation() {
+  
+  return (
+    <>
+      <Navigation />
+      <ReviewUpdateForm />
+    </>
+  );
+}
 export default App;

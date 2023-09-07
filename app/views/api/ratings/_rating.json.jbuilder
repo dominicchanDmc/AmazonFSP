@@ -1,2 +1,2 @@
-json.extract! rating, :id, :product_id,:viewer_id,:overall_rating,:review_headline	,:review
+json.extract! rating, :id, :product_id,:reviewer_id,:overall_rating,:review_headline	,:review
 

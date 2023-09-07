@@ -32,7 +32,7 @@ function Navigation() {
     if (sessionUser) {
       dispatch(fetchCartItemsByUserId(sessionUser.id))
     }
-  }, [dispatch,sessionUser]);
+  }, [dispatch]);
   
   const logout = (e) => {
     e.preventDefault();
@@ -159,10 +159,10 @@ function Navigation() {
           )}
           </ul>
           <div>
-            <a href="https://github.com/dominicchanDmc/Steam-Games-Statistics" target="_blank"><i class="fa-brands fa-square-github aboutIcon"></i></a>
+            <a href="https://github.com/dominicchanDmc/Steam-Games-Statistics" target="_blank"><i className="fa-brands fa-square-github aboutIcon"></i></a>
           </div>
             <div>
-            <a href="https://www.linkedin.com/in/dominic-chan-0b4128255/" target="_blank"><i class="fa-brands fa-linkedin aboutIcon"></i></a>
+            <a href="https://www.linkedin.com/in/dominic-chan-0b4128255/" target="_blank"><i className="fa-brands fa-linkedin aboutIcon"></i></a>
           </div>
         </div>
       </div>

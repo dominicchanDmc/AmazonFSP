@@ -32,7 +32,7 @@ function Navigation() {
     if (sessionUser) {
       dispatch(fetchCartItemsByUserId(sessionUser.id))
     }
-  }, [dispatch,sessionUser]);
+  }, [dispatch]);
   
   const logout = (e) => {
     e.preventDefault();

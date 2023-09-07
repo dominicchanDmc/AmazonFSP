@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RatingPart from '../RatingPart';
 import './ReviewItem.css'
 import { fetchRemoveReview } from '../../utils/ratingApiUtils';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 
 function ReviewItem(props) {
@@ -9,12 +10,13 @@ function ReviewItem(props) {
     const reviewer = reviewItem?.reviewer ? reviewItem?.reviewer[reviewItem?.reviewerId] : null; // Check if reviewer exists
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const history = useHistory();
     let isSessionUserReview = false;
     if (sessionUser)
         isSessionUserReview = reviewItem?.reviewerId === sessionUser.id;
 
   const onEdit=()=>{
-    
+    history.push(`/products/${props.productId}/reviewForm/${reviewItem.id}`);
   }
 
   const onDelete=()=>{
@@ -28,7 +30,14 @@ function ReviewItem(props) {
                 <div className="review-item-comment-top">
                   <div className="review-item-title">
                     <i className="fa-solid fa-user"></i>
-                  {"  "+reviewer.username}</div>
+                  {"  "+reviewer.username}
+                  {isSessionUserReview && (
+                    <div>
+                        <button  onClick={() => onEdit()}>Edit</button>
+                        <button  onClick={() => onDelete()}>Delete</button>
+                    </div>
+                )}
+                  </div>
                   <div className="review-item-rating"> 
                     <div className='review-star-container'>
                         <div className='review-star-widget'>
@@ -43,12 +52,6 @@ function ReviewItem(props) {
                     {reviewItem.review}
                 </p>
               </div>
-              {isSessionUserReview && (
-                <div>
-                    <button  onClick={() => onEdit()}>Edit</button>
-                    <button  onClick={() => onDelete()}>Delete</button>
-                </div>
-                )}
             </div>):null}
             
     </>

@@ -3,6 +3,11 @@ class Api::RatingsController < ApplicationController
         @ratings = Rating.all.sort { |a,b| b.created_at <=> a.created_at }
     end
 
+    def show
+      @ratings = Rating.find_by(id: params[:id]) 
+      render json: @ratings
+    end
+
     def create
         @product = Product.find(params[:product_id])
         @rating = @product.ratings.build(review_params)
@@ -13,6 +18,20 @@ class Api::RatingsController < ApplicationController
         end
     end
     
+    def update
+      @rating = Rating.find(params[:id])
+  
+      if current_user.id == @rating.reviewer_id
+        if @rating.update(review_params)
+          render @rating, status: :ok
+        else
+          render json: { errors: @rating.errors.full_messages }, status: :unprocessable_entity
+        end
+      else
+        render json: { errors: 'You are not authorized to update this review' }, status: :unauthorized
+      end
+    end
+
     def destroy
       @rating = Rating.find_by(id: params[:id])
   

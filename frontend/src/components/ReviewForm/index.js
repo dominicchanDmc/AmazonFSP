@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './ReviewForm.css'
-import { useLocation, useParams } from 'react-router-dom/cjs/react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, getProduct } from "../../store/productsReducer";
 import { postRatingRequest } from '../../store/productsReducer';
@@ -12,6 +12,7 @@ function ReviewForm() {
   const [review, setReview] = useState('');
   const { productId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const [productReview, setProductReview] = useState(null);
   const product = useSelector(getProduct(productId));
   const location = useLocation();
@@ -49,6 +50,7 @@ function ReviewForm() {
         setOverAllRatingRating(0);
         setHeadline('');
         setReview('');
+        history.push(`/products/${productId}`);
         console.log('Review created successfully');
       } else {
         if (response.error !== null && response.error !== undefined && response.error !== ""){
@@ -62,6 +64,19 @@ function ReviewForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setErrors([]);
+
+    if (!overall_rating) {
+      // setErrors([...errors, "Rating is required."]);
+      setErrors(["Rating is required."]);
+      return; 
+    }
+
+    if (!review_headline || !review) {
+      // setErrors([...errors, "Headline and review are required."]);
+      setErrors(["Headline and review are required."]);
+      return; 
+    }
     createReview();
   };
 

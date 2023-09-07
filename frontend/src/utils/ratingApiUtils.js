@@ -1,4 +1,5 @@
 import csrfFetch from "../store/csrf";
+import { removeRating } from "../store/productsReducer";
 
 export const fetchPostRating = async (productId, ratingData) => {
   try {
@@ -18,5 +19,21 @@ export const fetchPostRating = async (productId, ratingData) => {
   } catch (error) {
     // Handle network errors or other exceptions here
     throw new Error('An error occurred while posting the rating.');
+  }
+};
+
+export const fetchRemoveReview = (productId,review_Id) => async (dispatch) =>{
+  try {
+    const response = await csrfFetch(`/api/ratings/${review_Id}`, {
+      method: 'DELETE'
+    }); 
+
+    if (response.ok) {
+      dispatch(removeRating(productId,review_Id));
+    } else {
+      throw new Error('Failed to remove review');
+    }
+  } catch (error) {
+    throw error;
   }
 };

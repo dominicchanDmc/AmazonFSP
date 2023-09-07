@@ -12,7 +12,9 @@
 #  updated_at      :datetime         not null
 #
 class Rating < ApplicationRecord
-    validates :overall_rating,:review_headline,:review, presence: true
+    validates :overall_rating, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
+    validates :review_headline, presence: true
+    validates :review, presence: true    
     validates :reviewer_id, uniqueness: {scope: :product_id}
 
     belongs_to :reviewer,

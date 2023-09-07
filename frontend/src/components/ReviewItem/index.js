@@ -1,11 +1,28 @@
+import { useDispatch, useSelector } from 'react-redux';
 import RatingPart from '../RatingPart';
 import './ReviewItem.css'
+import { fetchRemoveReview } from '../../utils/ratingApiUtils';
+
+
 function ReviewItem(props) {
-    const reviewItem = props.reviewItem;
-    const reviewer = reviewItem.reviewer[reviewItem.reviewerId]
+    const reviewItem = props?.reviewItem;
+    const reviewer = reviewItem?.reviewer ? reviewItem?.reviewer[reviewItem?.reviewerId] : null; // Check if reviewer exists
+    const sessionUser = useSelector(state => state.session.user);
+    const dispatch = useDispatch();
+    let isSessionUserReview = false;
+    if (sessionUser)
+        isSessionUserReview = reviewItem?.reviewerId === sessionUser.id;
+
+  const onEdit=()=>{
+    
+  }
+
+  const onDelete=()=>{
+    dispatch(fetchRemoveReview(props.productId,reviewItem.id));
+  };
 
     return (<>
-          <div className="review-item">
+    {reviewer? (<div className="review-item">
           <div className="thumbnail"></div>
               <div className="review-item-comment-content">
                 <div className="review-item-comment-top">
@@ -26,28 +43,14 @@ function ReviewItem(props) {
                     {reviewItem.review}
                 </p>
               </div>
-            </div>
-
-
-        {/* <div className="box-top">
-            <div className="profile">
-                <div className="name-user">
-                    <span>{reviewer.username}</span>
+              {isSessionUserReview && (
+                <div>
+                    <button  onClick={() => onEdit()}>Edit</button>
+                    <button  onClick={() => onDelete()}>Delete</button>
                 </div>
-            </div>
-            <div className="reviews">
-                <RatingPart averageRating={reviewItem.overallRating} 
-                caller={"reviewItem"} callerId={reviewItem.id}/>
-            </div>
-            <div>
-                <span>{reviewItem.reviewHeadline}</span>
-            </div>
-        </div>
-        <div className="client-comment">
-            <p>
-                {reviewItem.review}
-            </p>
-        </div> */}
+                )}
+            </div>):null}
+            
     </>
     )
 }

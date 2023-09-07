@@ -5,15 +5,24 @@ class Api::RatingsController < ApplicationController
 
     def create
         @product = Product.find(params[:product_id])
-        @review = @product.ratings.build(review_params)
-        debugger
-        if @review.save
-          render json: { message: 'Review created successfully' }, status: :created
+        @rating = @product.ratings.build(review_params)
+        if @rating.save
+          render json: @rating, status: :created
         else
-          render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
+          render json: { errors: @rating.errors.full_messages }, status: :unprocessable_entity
         end
     end
     
+    def destroy
+      @rating = Rating.find_by(id: params[:id])
+  
+      if @rating
+        @rating.destroy
+      else
+        render json: { error: "Review not found" }, status: :not_found
+      end
+    end
+
     private
 
     def review_params

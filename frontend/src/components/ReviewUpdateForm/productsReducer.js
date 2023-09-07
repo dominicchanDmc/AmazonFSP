@@ -68,7 +68,7 @@ export const selectAllproducts = state => state.entities.products
 export const getProduct = (productId) => (state) => selectAllproducts(state) ? selectAllproducts(state)[productId] : null;
 export const getProductRatings = (productId) => (state) =>{
   const ratings =selectAllproducts(state) ? selectAllproducts(state)[productId]?.ratings : null;
-  // console.log(ratings);
+  // receiveCartItems(ratings);
   }
 
 // REDUCER

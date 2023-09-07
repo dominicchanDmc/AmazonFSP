@@ -51,7 +51,7 @@ function ReviewForm() {
         setHeadline('');
         setReview('');
         history.push(`/products/${productId}`);
-        console.log('Review created successfully');
+        // console.log('Review created successfully');
       } else {
         if (response.error !== null && response.error !== undefined && response.error !== ""){
           setErrors([...errors, response.error]);

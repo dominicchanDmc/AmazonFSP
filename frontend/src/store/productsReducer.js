@@ -1,8 +1,11 @@
 import * as productApiUtils from '../utils/productApiUtils'
+import * as ratingApiApiUtils from '../utils/ratingApiUtils'
+
 
 // CONSTANTS
 export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT'
 const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
+export const POST_RATING = 'POST_RATING';
 
 // ACTION CREATORS
 export const receiveProduct = product => ({
@@ -15,6 +18,12 @@ export const receiveProducts = products => ({
   type: RECEIVE_PRODUCTS,
   products
 })
+
+export const postRating = (productId, ratingData) => ({
+  type: POST_RATING,
+  productId,
+  ratingData
+});
 
 // THUNK ACTION CREATORS
 export const fetchProducts = (params) => async (dispatch) => {
@@ -29,7 +38,22 @@ export const fetchProduct = productId => (dispatch) => (
     )
   )
 )
+export const postRatingRequest = (ratingData) => async (dispatch) => {
+  try {
+    // const requestData = JSON.stringify({ rating: ratingData });
 
+    const response = await ratingApiApiUtils.fetchPostRating(ratingData.productId, ratingData);
+
+    if (response.status === 201) {
+      dispatch(postRating(ratingData.productId, response.data));
+      return { success: true };
+    } else {
+      return { success: false, error: response.data.error };
+    }
+  } catch (error) {
+    return { success: false, error: error.message }; // Return the caught error message
+  }
+};
 // SELECTORS
 export const selectAllproducts = state => state.entities.products
 
@@ -45,7 +69,17 @@ const productReducer = (state = {}, action) => {
       return {...state, ...action.product}
     case RECEIVE_PRODUCTS:
       // return Object.assign(nextState, action.products)
-      return action.products
+      return action.products;
+    case POST_RATING:
+      // Update the product's rating data in your state
+      const updatedProduct = {
+        ...state[action.productId],
+        ratings: [...state[action.productId].ratings, action.ratingData],
+      };
+      return {
+        ...state,
+        [action.productId]: updatedProduct,
+      };
     default:
       return state
   }

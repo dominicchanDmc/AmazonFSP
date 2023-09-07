@@ -24,7 +24,7 @@ function LoginForm() {
   const handleDemo = (e) => {
       e.preventDefault();
       setErrors([]);
-      return dispatch(sessionActions.login({ credential:'peter', password:'123456' }))
+      return dispatch(sessionActions.login({ credential:'mike', password:'123456' }))
         .catch(async (res) => {
           let data;
           try {

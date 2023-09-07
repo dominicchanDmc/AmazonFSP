@@ -3,11 +3,12 @@ import './ReviewForm.css'
 import { useLocation, useParams } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, getProduct } from "../../store/productsReducer";
+import { postRatingRequest } from '../../store/productsReducer';
 import RatingPart from '../RatingPart';
 
 function ReviewForm() {
-  const [rating, setRating] = useState(0); 
-  const [headline, setHeadline] = useState('');
+  const [overall_rating, setOverAllRatingRating] = useState(0); 
+  const [review_headline, setHeadline] = useState('');
   const [review, setReview] = useState('');
   const { productId } = useParams();
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ function ReviewForm() {
   const product = useSelector(getProduct(productId));
   const location = useLocation();
   const { pathname } = location;
+  const [errors, setErrors] = useState([]);
+  const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,22 +29,40 @@ function ReviewForm() {
 
 
   const handleRatingChange = (value) => {
-    setRating(value);
+    setOverAllRatingRating(value);
+  };
+
+  const createReview = async () => {
+    setErrors([]);
+    try {
+      const reviewData = {
+        overall_rating,
+        review_headline,
+        review,
+        productId, 
+        reviewer_id:sessionUser.id
+      };
+
+      const response  = await  dispatch(postRatingRequest(reviewData))
+
+      if (response.success) {
+        setOverAllRatingRating(0);
+        setHeadline('');
+        setReview('');
+        console.log('Review created successfully');
+      } else {
+        if (response.error !== null && response.error !== undefined && response.error !== ""){
+          setErrors([...errors, response.error]);
+        }
+      }
+    } catch (error) {
+     console.error('Error creating review:', error);
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const reviewData = {
-      rating,
-      headline,
-      review,
-    };
-
-    setRating(0);
-    setHeadline('');
-    setReview('');
-
+    createReview();
   };
 
   return (
@@ -55,14 +76,14 @@ function ReviewForm() {
         <form onSubmit={handleSubmit}>
           <label>
             <h3>Overall rating (1-5)</h3>
-            <RatingPart averageRating={0} caller={"reviewForm"} />
+            <RatingPart averageRating={0} caller={"reviewForm"} handleRatingChange={handleRatingChange} />
           </label>
           <div>
             <h3>Add a headline</h3>
               <input
                 type="text"
                 id='headline'
-                value={headline}
+                value={review_headline}
                 onChange={(e) => setHeadline(e.target.value)}
               />
           </div>
@@ -76,6 +97,9 @@ function ReviewForm() {
                     onChange={(e) => setReview(e.target.value)}
                   />
               <br/>
+              <ul className="errorUl">
+                {errors? errors.map(error => <li key={error}><b>{error}</b></li>):null}
+              </ul>
               <button type="submit">Submit</button>
           </div>
         </form>

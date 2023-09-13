@@ -46,6 +46,8 @@
 
 .cartItem-productPrice {
   font-weight: bold;
+  margin-top:10px;
+  margin-bottom: 10px;
 }
 
 .cartItem-productPrice .product-price {

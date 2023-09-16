@@ -164,7 +164,7 @@ function Navigation() {
             <div>
             <a href="https://www.linkedin.com/in/dominic-chan-0b4128255/" target="_blank"><i className="fa-brands fa-linkedin aboutIcon"></i></a>
           </div>
-        </div>
+        </div>   
       </div>
   </header>
   ); 

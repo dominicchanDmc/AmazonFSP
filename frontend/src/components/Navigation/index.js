@@ -159,7 +159,7 @@ function Navigation() {
           )}
           </ul>
           <div>
-            <a href="https://github.com/dominicchanDmc/Steam-Games-Statistics" target="_blank"><i className="fa-brands fa-square-github aboutIcon"></i></a>
+            <a href="https://github.com/dominicchanDmc/YellowArrow" target="_blank"><i className="fa-brands fa-square-github aboutIcon"></i></a>
           </div>
             <div>
             <a href="https://www.linkedin.com/in/dominic-chan-0b4128255/" target="_blank"><i className="fa-brands fa-linkedin aboutIcon"></i></a>

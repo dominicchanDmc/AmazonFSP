@@ -25,7 +25,7 @@ if (props.item){
     <div key={product.id} className="cartItem-product">
         <div className="cartItem-productImg">
           <img src={product.photoUrls[0]} alt="product" />  
-        </div>
+        </div> 
 
         <div className="cartItem-productInfo">
           <div className="cartItem-productTitlePrice">

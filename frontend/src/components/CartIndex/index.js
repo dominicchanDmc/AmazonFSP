@@ -4,7 +4,7 @@ import { deleteAllCartItems, fetchCartItemsByUserId,resetCartItems, selectUserCa
 import './CartIndex.css'
 import CartItem from "../CartItem";
 import Subtotal from "../Subtotal";
-
+ 
 const CartIndex = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectUserCartItems)

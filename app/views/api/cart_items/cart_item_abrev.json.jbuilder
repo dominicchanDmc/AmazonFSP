@@ -5,4 +5,4 @@ json.products do
       json.photoUrls @cart_item.product.photos.map { |file| file.url }
     end  
   end    
-# json.photoUrls @cartItem.product.photos.map { |file| file.url }
+# json.photoUrls @cartItem.product.photos.map { |file| file.url } 

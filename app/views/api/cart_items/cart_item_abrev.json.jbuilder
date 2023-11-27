@@ -6,3 +6,4 @@ json.products do
     end  
   end    
 # json.photoUrls @cartItem.product.photos.map { |file| file.url } 
+ 

@@ -94,7 +94,7 @@ const productReducer = (state = {}, action) => {
           ...state,
           [action.productId]: updatedProduct,
         };  
-        
+         
     case REMOVE_RATING:
       let nextState ={};
       Object.keys(state).forEach(key=>{

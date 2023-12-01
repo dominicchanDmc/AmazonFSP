@@ -93,7 +93,7 @@ const productReducer = (state = {}, action) => {
         return {
           ...state,
           [action.productId]: updatedProduct,
-        };  
+        };   
          
     case REMOVE_RATING:
       let nextState ={};

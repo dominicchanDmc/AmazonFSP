@@ -78,7 +78,7 @@ const productReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_PRODUCT:
       return {...state, ...action.product}
-    case RECEIVE_PRODUCTS:
+    case RECEIVE_PRODUCTS: 
       // return Object.assign(nextState, action.products)
       return action.products;
     case POST_RATING:

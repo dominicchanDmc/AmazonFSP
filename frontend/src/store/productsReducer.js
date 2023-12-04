@@ -89,7 +89,7 @@ const productReducer = (state = {}, action) => {
             ...state[action.productId].ratings,
             [action.ratingData.id]: action.ratingData,
           }, 
-        };  
+        };   
         return {
           ...state,
           [action.productId]: updatedProduct,

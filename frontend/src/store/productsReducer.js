@@ -62,7 +62,7 @@ export const postRatingRequest = (ratingData) => async (dispatch) => {
 };
 // SELECTORS
 export const selectAllproducts = state => state.entities.products
-
+ 
 // export const getProducts = (state) => selectAllproducts(state) ? Object.values(selectAllproducts(state)) : [];
 
 export const getProduct = (productId) => (state) => selectAllproducts(state) ? selectAllproducts(state)[productId] : null;

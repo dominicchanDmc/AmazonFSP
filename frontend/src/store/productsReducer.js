@@ -91,7 +91,7 @@ const productReducer = (state = {}, action) => {
           },       
         };      
         return {   
-          ...state,
+          ...state, 
           [action.productId]: updatedProduct,
         };     
          

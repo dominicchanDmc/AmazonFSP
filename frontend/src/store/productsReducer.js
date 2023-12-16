@@ -85,7 +85,7 @@ const productReducer = (state = {}, action) => {
         // Update the product's rating data in your state
         const updatedProduct = {  
           ...state[action.productId],  
-          ratings: {
+          ratings: { 
             ...state[action.productId].ratings,
             [action.ratingData.id]: action.ratingData,
           },       

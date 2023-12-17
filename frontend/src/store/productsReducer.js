@@ -70,7 +70,7 @@ export const getProductRatings = (productId) => (state) =>{
   const ratings =selectAllproducts(state) ? selectAllproducts(state)[productId]?.ratings : null;
   // console.log(ratings);
   }
-    
+     
 // REDUCER
 const productReducer = (state = {}, action) => {
   // const nextState = { ...state }

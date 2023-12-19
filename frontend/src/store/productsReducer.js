@@ -80,7 +80,7 @@ const productReducer = (state = {}, action) => {
       return {...state, ...action.product} 
     case RECEIVE_PRODUCTS: 
       // return Object.assign(nextState, action.products)
-      return action.products;
+      return action.products; 
     case POST_RATING: 
         // Update the product's rating data in your state
         const updatedProduct = {  

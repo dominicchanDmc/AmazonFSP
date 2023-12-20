@@ -73,7 +73,7 @@ export const getProductRatings = (productId) => (state) =>{
      
 // REDUCER
 const productReducer = (state = {}, action) => {
-  // const nextState = { ...state }
+  // const nextState = { ...state } 
   
   switch (action.type) { 
     case RECEIVE_PRODUCT: 

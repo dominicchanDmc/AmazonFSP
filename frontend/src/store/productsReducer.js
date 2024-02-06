@@ -113,7 +113,7 @@ const productReducer = (state = {}, action) => {
       //   return {...nextState};
     default:  
       return state
-  }  
+  }   
 }
 
 export default productReducer;

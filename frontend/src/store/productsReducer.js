@@ -104,7 +104,8 @@ const productReducer = (state = {}, action) => {
       delete nextStateRatings[action.ratingId];
       // nextState[action.productId].ratings = nextStateRatings;
       return {...nextState}; 
-      // ----------------------wrong code
+
+      // ----------------------wrong code (shallow copy)
       // case REMOVE_RATING:
       //   let nextState = { ...state };
       //   const nextStateRatings = nextState[action.productId].ratings;

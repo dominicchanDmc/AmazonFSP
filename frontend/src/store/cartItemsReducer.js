@@ -11,7 +11,7 @@ export const UPDATE_CART_ITEM_QUANTITY  = 'UPDATE_CART_ITEM_QUANTITY'
 // ACTION CREATORS
 export const receiveCartItems = cartItems => ({
     type: RECEIVE_CARTITEMS,
-    cartItems
+    cartItems 
   })
 export const receiveCartItem = cartItem => ({
     type: RECEIVE_CARTITEM,

@@ -23,7 +23,7 @@ type: RESET_CARTITEMS
 export const removeFromCart = cartId => ({
     type: REMOVE_FROM_CART,
     cartId
-});
+}); 
 export const addToCart = (cartItem) => ({  
     type: ADD_TO_CART,
     cartItem 

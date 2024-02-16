@@ -25,7 +25,7 @@ export const removeFromCart = cartId => ({
     cartId
 }); 
 export const addToCart = (cartItem) => ({  
-    type: ADD_TO_CART,
+    type: ADD_TO_CART, 
     cartItem 
 }); 
 

@@ -12,7 +12,7 @@ async function csrfFetch(url, options = {}) {
 
   if (res.status >= 400) throw res;
  
-  return res; 
+  return res;  
 } 
  
 export default csrfFetch;

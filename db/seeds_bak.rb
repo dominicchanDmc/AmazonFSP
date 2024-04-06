@@ -7,28 +7,28 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Destroying tables..."
-# Rating.destroy_all
-# CartItem.destroy_all
-# Product.destroy_all
-# User.destroy_all
+Rating.destroy_all
+CartItem.destroy_all
+Product.destroy_all
+User.destroy_all
 
-# puts "Resetting primary keys..."
-# ActiveRecord::Base.connection.reset_pk_sequence!('ratings')
-# ActiveRecord::Base.connection.reset_pk_sequence!('cartItems')
-# ActiveRecord::Base.connection.reset_pk_sequence!('products')
-# ActiveRecord::Base.connection.reset_pk_sequence!('users')
+puts "Resetting primary keys..."
+ActiveRecord::Base.connection.reset_pk_sequence!('ratings')
+ActiveRecord::Base.connection.reset_pk_sequence!('cartItems')
+ActiveRecord::Base.connection.reset_pk_sequence!('products')
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
-# puts "Creating users..."
-# mike = User.create!(username: 'mike', email: 'mike@google.com', password: '123456')
-# peter = User.create!(username: 'peter', email: 'peter@google.com', password: '123456')
-#  mary = User.create!(username: 'mary', email: 'mary@google.com', password: '123456')
-#  may = User.create!(username: 'may', email: 'may@google.com', password: '123456')
-# rosalina = User.create!(username: 'rosalina', email: 'rosalina@google.com', password: '123456')
-# yoshi = User.create!(username: 'yoshi', email: 'yoshi@google.com', password: '123456')
-# daisy = User.create!(username: 'daisy', email: 'daisy@google.com', password: '123456')
-# koba = User.create!(username: 'koba', email: 'koba@google.com', password: '123456')
-# mario = User.create!(username: 'mario', email: 'mario@google.com', password: '123456')
-# luigi = User.create!(username: 'luigi', email: 'luigi@google.com', password: '123456')
+puts "Creating users..."
+mike = User.create!(username: 'mike', email: 'mike@google.com', password: '123456')
+peter = User.create!(username: 'peter', email: 'peter@google.com', password: '123456')
+ mary = User.create!(username: 'mary', email: 'mary@google.com', password: '123456')
+ may = User.create!(username: 'may', email: 'may@google.com', password: '123456')
+rosalina = User.create!(username: 'rosalina', email: 'rosalina@google.com', password: '123456')
+yoshi = User.create!(username: 'yoshi', email: 'yoshi@google.com', password: '123456')
+daisy = User.create!(username: 'daisy', email: 'daisy@google.com', password: '123456')
+koba = User.create!(username: 'koba', email: 'koba@google.com', password: '123456')
+mario = User.create!(username: 'mario', email: 'mario@google.com', password: '123456')
+luigi = User.create!(username: 'luigi', email: 'luigi@google.com', password: '123456')
 
 
 # puts "Creating products..."

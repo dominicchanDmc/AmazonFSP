@@ -13,37 +13,37 @@ Product.destroy_all
 User.destroy_all
 
 puts "Resetting primary keys..."
-# ActiveRecord::Base.connection.reset_pk_sequence!('ratings')
-# ActiveRecord::Base.connection.reset_pk_sequence!('cartItems')
-ActiveRecord::Base.connection.reset_pk_sequence!('products')
-ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.reset_pk_sequence!('ratings')
+ActiveRecord::Base.connection.reset_pk_sequence!('cartItems')
+# ActiveRecord::Base.connection.reset_pk_sequence!('products')
+# ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
 puts "Creating users..."
 # mike_1 = User.create!(username: 'mike_1', email: 'mike_1@google.com', password: '123456')
 # peter = User.create!(username: 'peter', email: 'peter@google.com', password: '123456')
- mary = User.create!(username: 'mary', email: 'mary@google.com', password: '123456')
- may = User.create!(username: 'may', email: 'may@google.com', password: '123456')
+#  mary = User.create!(username: 'mary', email: 'mary@google.com', password: '123456')
+#  may = User.create!(username: 'may', email: 'may@google.com', password: '123456')
 # rosalina = User.create!(username: 'rosalina', email: 'rosalina@google.com', password: '123456')
 # yoshi = User.create!(username: 'yoshi', email: 'yoshi@google.com', password: '123456')
-# daisy = User.create!(username: 'daisy', email: 'daisy@google.com', password: '123456')
-# koba = User.create!(username: 'koba', email: 'koba@google.com', password: '123456')
+daisy = User.create!(username: 'daisy', email: 'daisy@google.com', password: '123456')
+koba = User.create!(username: 'koba', email: 'koba@google.com', password: '123456')
 # mario = User.create!(username: 'mario', email: 'mario@google.com', password: '123456')
 # luigi = User.create!(username: 'luigi', email: 'luigi@google.com', password: '123456')
 
 
-puts "Creating products..."
-puts "Creating audio...................................................."
-product_Sony_WH_CH720N = Product.create!(product_name: "Sony WH-CH720N Noise Canceling Wireless Headphones Bluetooth Over The Ear Headset with Microphone and Alexa Built-in, Black New",description:"Turn down the world's noise with the long-lasting noise cancellation performance. Featuring Dual Noise Sensor technology and an Integrated Processor V1, the WH-CH720N allows you to fully immerse yourself in music without any distractions. Ergonomically designed to be lightweight, comfortable, and with up to 35 hours of battery life, you’ll almost forget you’re wearing it.",categories:"electronic, audio,Headphones & earbuds",price:149.99,discount:0);
-product_Sony_WH_CH720N_1 = File.open('frontend/src/assets/products/audio/Sony_WH_CH720N_1.jpg')
-product_Sony_WH_CH720N_2 = File.open('frontend/src/assets/products/audio/Sony_WH_CH720N_2.jpg')
-product_Sony_WH_CH720N.photos.attach(io: product_Sony_WH_CH720N_1, filename: 'Sony_WH_CH720N_1.jpg')
-product_Sony_WH_CH720N.photos.attach(io: product_Sony_WH_CH720N_2, filename: 'Sony_WH_CH720N_2.jpg')
+# puts "Creating products..."
+ puts "Creating audio...................................................."
+# product_Sony_WH_CH720N = Product.create!(product_name: "Sony WH-CH720N Noise Canceling Wireless Headphones Bluetooth Over The Ear Headset with Microphone and Alexa Built-in, Black New",description:"Turn down the world's noise with the long-lasting noise cancellation performance. Featuring Dual Noise Sensor technology and an Integrated Processor V1, the WH-CH720N allows you to fully immerse yourself in music without any distractions. Ergonomically designed to be lightweight, comfortable, and with up to 35 hours of battery life, you’ll almost forget you’re wearing it.",categories:"electronic, audio,Headphones & earbuds",price:149.99,discount:0);
+# product_Sony_WH_CH720N_1 = File.open('frontend/src/assets/products/audio/Sony_WH_CH720N_1.jpg')
+# product_Sony_WH_CH720N_2 = File.open('frontend/src/assets/products/audio/Sony_WH_CH720N_2.jpg')
+# product_Sony_WH_CH720N.photos.attach(io: product_Sony_WH_CH720N_1, filename: 'Sony_WH_CH720N_1.jpg')
+# product_Sony_WH_CH720N.photos.attach(io: product_Sony_WH_CH720N_2, filename: 'Sony_WH_CH720N_2.jpg')
 
-product_JBL_Vibe_200TWS = Product.create!(product_name: "JBL Vibe 200TWS True Wireless Earbuds - Black, Small",description:"Amp up your routine with the sound you love! Get powerful, JBL Deep Bass Sound and all the freedom of true wireless for up to 20 hours with the JBL Vibe 200TWS. Stay in touch with your friends hands-free with a simple touch and in full comfort.",categories:"electronic,audio,Headphones & earbuds",price:49.95,discount:40);
-product_JBL_Vibe_200TWS_1 = File.open('frontend/src/assets/products/audio/JBL_Vibe_200TWS_1.jpg')
-product_JBL_Vibe_200TWS_2 = File.open('frontend/src/assets/products/audio/JBL_Vibe_200TWS_2.jpg')
-product_JBL_Vibe_200TWS.photos.attach(io: product_JBL_Vibe_200TWS_1, filename: 'JBL_Vibe_200TWS_1.jpg')
-product_JBL_Vibe_200TWS.photos.attach(io: product_JBL_Vibe_200TWS_2, filename: 'JBL_Vibe_200TWS_2.jpg')
+# product_JBL_Vibe_200TWS = Product.create!(product_name: "JBL Vibe 200TWS True Wireless Earbuds - Black, Small",description:"Amp up your routine with the sound you love! Get powerful, JBL Deep Bass Sound and all the freedom of true wireless for up to 20 hours with the JBL Vibe 200TWS. Stay in touch with your friends hands-free with a simple touch and in full comfort.",categories:"electronic,audio,Headphones & earbuds",price:49.95,discount:40);
+# product_JBL_Vibe_200TWS_1 = File.open('frontend/src/assets/products/audio/JBL_Vibe_200TWS_1.jpg')
+# product_JBL_Vibe_200TWS_2 = File.open('frontend/src/assets/products/audio/JBL_Vibe_200TWS_2.jpg')
+# product_JBL_Vibe_200TWS.photos.attach(io: product_JBL_Vibe_200TWS_1, filename: 'JBL_Vibe_200TWS_1.jpg')
+# product_JBL_Vibe_200TWS.photos.attach(io: product_JBL_Vibe_200TWS_2, filename: 'JBL_Vibe_200TWS_2.jpg')
 
 # array_Sony_SRS_XB13 = []
 # product_Sony_SRS_XB13 = Product.create!(product_name: "Sony SRS-XB13 EXTRA BASS Wireless Bluetooth Portable Lightweight Compact Travel Speaker, IP67 Waterproof & Durable for Outdoor, 16 Hour Battery, USB Type-C, Removable Strap, and Speakerphone, Black",description:"Enjoy big sound with the super-compact SRS-XB13 wireless speaker, featuring EXTRA BASS™, an updated IP67 waterproof and dustproof design1,2, and up to 16 hours of battery life.3 Small enough to fit in a bag or cupholder, the XB13 also features a multiway strap to take it with you everywhere you go.",categories:"electronic,audio,Portable Speakers",price:59.99,discount:42);
@@ -66,40 +66,40 @@ product_JBL_Vibe_200TWS.photos.attach(io: product_JBL_Vibe_200TWS_2, filename: '
 # product_Jabra_Elite_7_Pro.photos.attach(io: product_Jabra_Elite_7_Pro_2, filename: 'Jabra_Elite_7_Pro_2.jpg')
 
 puts "Creating audio ratings..........................................."
-rating_product_1_user_1 = Rating.create!(product_id:product_Sony_WH_CH720N.id,reviewer_id:mike_1.id,overall_rating:3,review_headline:"Good vs bad",review:"Good pints
-    - sound quality
-    Bad points:
-    - i have connected it to my sony tv and have router also in same room .. so sometime voice drop while watching OTT platform… Don’t know technical reason behind it")
-rating_product_1_user_2 = Rating.create!(product_id:product_Sony_WH_CH720N.id,reviewer_id:peter.id,overall_rating:4,review_headline:"Amazing!",review:"Works really well for office calls too, the dual pairing is good as well.")   
-rating_product_2_user_1 = Rating.create!(product_id:product_JBL_Vibe_200TWS.id,reviewer_id:mike_1.id,overall_rating:3,review_headline:"Initial impressions",review:"Pros-
-    *The sound quality is great
-    Cons-
-    *The ear buds are not ready to remove from the moulded docking seat in the case. Not a huge deal but noticable every time.")
-rating_product_2_user_2 = Rating.create!(product_id:product_JBL_Vibe_200TWS.id,reviewer_id:peter.id,overall_rating:5,review_headline:"Good audio nearly no bass",review:"The normal audio is clear but the bass is almost non existent I had cheaper headphones with way more bass so deep bass is definitely false advertising")
-rating_product_3_user_1 = Rating.create!(product_id:product_Sony_SRS_XB13.id,reviewer_id:mike_1.id,overall_rating:4,review_headline:"Improvement for me",review:"My previous brand of Bluetooth speaker started to malfunction so I wanted a change with a better overall sound quality than what I was used to. This one was slightly more expensive than the others but still cheap enough to try with no hesitation.")   
-rating_product_3_user_2 = Rating.create!(product_id:product_Sony_SRS_XB13.id,reviewer_id:peter.id,overall_rating:5,review_headline:"Amazing!",review:"Works really well for office calls too, the dual pairing is good as well.")   
-rating_product_4_user_1 = Rating.create!(product_id:product_JBL_Flip_6.id,reviewer_id:mike_1.id,overall_rating:4,review_headline:"good sounding small speaker",review:"Currently have the JBL CLIP 3 and was needing another portable bluetooth speaker. Bought this Sony speaker because it was on sale. ")   
-rating_product_4_user_2 = Rating.create!(product_id:product_JBL_Flip_6.id,reviewer_id:peter.id,overall_rating:5,review_headline:"Best sound",review:"I tried four different speakers and this one is by far the best. Two sounded rather tinny and one sounded great. Until I tested it against this one")   
-rating_product_5_user_1 = Rating.create!(product_id:product_Jabra_Elite_7_Pro.id,reviewer_id:mike_1.id,overall_rating:4,review_headline:"good sounding small speaker",review:"Currently have the JBL CLIP 3 and was needing another portable bluetooth speaker. Bought this Sony speaker because it was on sale. ")   
-rating_product_5_user_2 = Rating.create!(product_id:product_Jabra_Elite_7_Pro.id,reviewer_id:peter.id,overall_rating:5,review_headline:"Excellent speaker!",review:"The sound of speaking is very clear with this speaker. I also like the compact size! I’m an English language teacher")   
+# rating_product_1_user_1 = Rating.create!(product_id:product_Sony_WH_CH720N.id,reviewer_id:mike_1.id,overall_rating:3,review_headline:"Good vs bad",review:"Good pints
+#     - sound quality
+#     Bad points:
+#     - i have connected it to my sony tv and have router also in same room .. so sometime voice drop while watching OTT platform… Don’t know technical reason behind it")
+# rating_product_1_user_2 = Rating.create!(product_id:product_Sony_WH_CH720N.id,reviewer_id:peter.id,overall_rating:4,review_headline:"Amazing!",review:"Works really well for office calls too, the dual pairing is good as well.")   
+# rating_product_2_user_1 = Rating.create!(product_id:product_JBL_Vibe_200TWS.id,reviewer_id:mike_1.id,overall_rating:3,review_headline:"Initial impressions",review:"Pros-
+#     *The sound quality is great
+#     Cons-
+#     *The ear buds are not ready to remove from the moulded docking seat in the case. Not a huge deal but noticable every time.")
+# rating_product_2_user_2 = Rating.create!(product_id:product_JBL_Vibe_200TWS.id,reviewer_id:peter.id,overall_rating:5,review_headline:"Good audio nearly no bass",review:"The normal audio is clear but the bass is almost non existent I had cheaper headphones with way more bass so deep bass is definitely false advertising")
+# rating_product_3_user_1 = Rating.create!(product_id:product_Sony_SRS_XB13.id,reviewer_id:mike_1.id,overall_rating:4,review_headline:"Improvement for me",review:"My previous brand of Bluetooth speaker started to malfunction so I wanted a change with a better overall sound quality than what I was used to. This one was slightly more expensive than the others but still cheap enough to try with no hesitation.")   
+# rating_product_3_user_2 = Rating.create!(product_id:product_Sony_SRS_XB13.id,reviewer_id:peter.id,overall_rating:5,review_headline:"Amazing!",review:"Works really well for office calls too, the dual pairing is good as well.")   
+# rating_product_4_user_1 = Rating.create!(product_id:product_JBL_Flip_6.id,reviewer_id:mike_1.id,overall_rating:4,review_headline:"good sounding small speaker",review:"Currently have the JBL CLIP 3 and was needing another portable bluetooth speaker. Bought this Sony speaker because it was on sale. ")   
+# rating_product_4_user_2 = Rating.create!(product_id:product_JBL_Flip_6.id,reviewer_id:peter.id,overall_rating:5,review_headline:"Best sound",review:"I tried four different speakers and this one is by far the best. Two sounded rather tinny and one sounded great. Until I tested it against this one")   
+# rating_product_5_user_1 = Rating.create!(product_id:product_Jabra_Elite_7_Pro.id,reviewer_id:mike_1.id,overall_rating:4,review_headline:"good sounding small speaker",review:"Currently have the JBL CLIP 3 and was needing another portable bluetooth speaker. Bought this Sony speaker because it was on sale. ")   
+# rating_product_5_user_2 = Rating.create!(product_id:product_Jabra_Elite_7_Pro.id,reviewer_id:peter.id,overall_rating:5,review_headline:"Excellent speaker!",review:"The sound of speaking is very clear with this speaker. I also like the compact size! I’m an English language teacher")   
 
 
-# puts "Creating airConditioners................................................."
-# array_BLACK_DECKER_8000_BTU = []
-# product_BLACK_DECKER_8000_BTU = Product.create!(product_name: "BLACK+DECKER 8,000 BTU Portable Air Conditioner up to 350 Sq. with Remote Control, White",description:"Portable AC: Use this personal air conditioner (15.3” x 14” x 24.8”) in rooms up to 350 sq. ft. Stay cool in the hot summer months and sleep well with this BLACK+DECKER ac unit for bedroom.3-in-1: Our 4,100 BTU DOE (8000 BTU ASHRAE 128) air conditioner also functions as a dehumidifier & fan. This portable air conditioner (45.8 lbs.) has a convenient remote control & top mounted control panel with LED display.",categories:"airConditioners, HEATING & COOLING & AIR QUALITY,Home & Kitchen",price:419.99,discount:48);
-# array_BLACK_DECKER_8000_BTU.push({file:File.open('frontend/src/assets/products/airConditioner/BLACK_DECKER_8000_BTU_1.jpg'),filename:'BLACK_DECKER_8000_BTU_1.jpg'})
-# array_BLACK_DECKER_8000_BTU.push({file:File.open('frontend/src/assets/products/airConditioner/BLACK_DECKER_8000_BTU_2.jpg'),filename:'BLACK_DECKER_8000_BTU_2.jpg'})
-# array_BLACK_DECKER_8000_BTU.each do |img| 
-#     product_BLACK_DECKER_8000_BTU.photos.attach(io:img[:file],filename:img[:filename])
-# end
+puts "Creating airConditioners................................................."
+array_BLACK_DECKER_8000_BTU = []
+product_BLACK_DECKER_8000_BTU = Product.create!(product_name: "BLACK+DECKER 8,000 BTU Portable Air Conditioner up to 350 Sq. with Remote Control, White",description:"Portable AC: Use this personal air conditioner (15.3” x 14” x 24.8”) in rooms up to 350 sq. ft. Stay cool in the hot summer months and sleep well with this BLACK+DECKER ac unit for bedroom.3-in-1: Our 4,100 BTU DOE (8000 BTU ASHRAE 128) air conditioner also functions as a dehumidifier & fan. This portable air conditioner (45.8 lbs.) has a convenient remote control & top mounted control panel with LED display.",categories:"airConditioners, HEATING & COOLING & AIR QUALITY,Home & Kitchen",price:419.99,discount:48);
+array_BLACK_DECKER_8000_BTU.push({file:File.open('frontend/src/assets/products/airConditioner/BLACK_DECKER_8000_BTU_1.jpg'),filename:'BLACK_DECKER_8000_BTU_1.jpg'})
+array_BLACK_DECKER_8000_BTU.push({file:File.open('frontend/src/assets/products/airConditioner/BLACK_DECKER_8000_BTU_2.jpg'),filename:'BLACK_DECKER_8000_BTU_2.jpg'})
+array_BLACK_DECKER_8000_BTU.each do |img| 
+    product_BLACK_DECKER_8000_BTU.photos.attach(io:img[:file],filename:img[:filename])
+end
 
-# array_Frigidaire_FHWC124WB1 = []
-# product_Frigidaire_FHWC124WB1 = Product.create!(product_name: "Frigidaire FHWC124WB1 Window Air Conditioner, 12000 BTU, White",description:"The Frigidaire 12,000 BTU window air conditioner keeps your room cool and comfortable with optimum circulation thanks to multi-directional airflow and three fan speeds. Easily install this air conditioner; this unit distributes the weight into two pieces using a slide-out chassis. Capture dust from the air and keep your air conditioner working efficiently with our easy-to-clean washable filter.",categories:"airConditioners, HEATING & COOLING & AIR QUALITY,Home & Kitchen",price:439.00,discount:32);
-# array_Frigidaire_FHWC124WB1.push({file:File.open('frontend/src/assets/products/airConditioner/Frigidaire_FHWC124WB1_1.jpg'),filename:'Frigidaire_FHWC124WB1_1.jpg'})
-# array_Frigidaire_FHWC124WB1.push({file:File.open('frontend/src/assets/products/airConditioner/Frigidaire_FHWC124WB1_2.jpg'),filename:'Frigidaire_FHWC124WB1_2.jpg'})
-# array_Frigidaire_FHWC124WB1.each do |img| 
-#     product_Frigidaire_FHWC124WB1.photos.attach(io:img[:file],filename:img[:filename])
-# end
+array_Frigidaire_FHWC124WB1 = []
+product_Frigidaire_FHWC124WB1 = Product.create!(product_name: "Frigidaire FHWC124WB1 Window Air Conditioner, 12000 BTU, White",description:"The Frigidaire 12,000 BTU window air conditioner keeps your room cool and comfortable with optimum circulation thanks to multi-directional airflow and three fan speeds. Easily install this air conditioner; this unit distributes the weight into two pieces using a slide-out chassis. Capture dust from the air and keep your air conditioner working efficiently with our easy-to-clean washable filter.",categories:"airConditioners, HEATING & COOLING & AIR QUALITY,Home & Kitchen",price:439.00,discount:32);
+array_Frigidaire_FHWC124WB1.push({file:File.open('frontend/src/assets/products/airConditioner/Frigidaire_FHWC124WB1_1.jpg'),filename:'Frigidaire_FHWC124WB1_1.jpg'})
+array_Frigidaire_FHWC124WB1.push({file:File.open('frontend/src/assets/products/airConditioner/Frigidaire_FHWC124WB1_2.jpg'),filename:'Frigidaire_FHWC124WB1_2.jpg'})
+array_Frigidaire_FHWC124WB1.each do |img| 
+    product_Frigidaire_FHWC124WB1.photos.attach(io:img[:file],filename:img[:filename])
+end
 
 # array_Whynter_12000 = []
 # product_Whynter_12000 = Product.create!(product_name: "Whynter 12,000 (7,000 BTU SACC) Elite Dual Hose Portable Air Conditioner Dehumidifier, Fan and Storage Bag, up to 400 sq ft, Grey",description:"Stay comfortable with this small portable air conditioner. Designed to align with environmental standards and reduce energy consumption, this portable dehumidifier and air conditioner includes CFC-free R-32 refrigerant and lead-free RoHS-compliant components. This dual hose air conditioner features auto-drain technology that uses and recycles moisture collected during the cooling process to produce cool air with a dehumidifying capacity of 82 pints per day.",categories:"airConditioners, HEATING & COOLING & AIR QUALITY,Home & Kitchen",price:398.51,discount:12);

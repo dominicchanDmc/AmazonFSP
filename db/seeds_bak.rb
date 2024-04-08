@@ -7,22 +7,22 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Destroying tables..."
-Rating.destroy_all
-CartItem.destroy_all
+# Rating.destroy_all
+# CartItem.destroy_all
 Product.destroy_all
 User.destroy_all
 
 puts "Resetting primary keys..."
-ActiveRecord::Base.connection.reset_pk_sequence!('ratings')
-ActiveRecord::Base.connection.reset_pk_sequence!('cartItems')
+# ActiveRecord::Base.connection.reset_pk_sequence!('ratings')
+# ActiveRecord::Base.connection.reset_pk_sequence!('cartItems')
 ActiveRecord::Base.connection.reset_pk_sequence!('products')
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
 puts "Creating users..."
-mike_1 = User.create!(username: 'mike_1', email: 'mike_1@google.com', password: '123456')
-peter = User.create!(username: 'peter', email: 'peter@google.com', password: '123456')
-#  mary = User.create!(username: 'mary', email: 'mary@google.com', password: '123456')
-#  may = User.create!(username: 'may', email: 'may@google.com', password: '123456')
+# mike_1 = User.create!(username: 'mike_1', email: 'mike_1@google.com', password: '123456')
+# peter = User.create!(username: 'peter', email: 'peter@google.com', password: '123456')
+ mary = User.create!(username: 'mary', email: 'mary@google.com', password: '123456')
+ may = User.create!(username: 'may', email: 'may@google.com', password: '123456')
 # rosalina = User.create!(username: 'rosalina', email: 'rosalina@google.com', password: '123456')
 # yoshi = User.create!(username: 'yoshi', email: 'yoshi@google.com', password: '123456')
 # daisy = User.create!(username: 'daisy', email: 'daisy@google.com', password: '123456')
@@ -31,19 +31,19 @@ peter = User.create!(username: 'peter', email: 'peter@google.com', password: '12
 # luigi = User.create!(username: 'luigi', email: 'luigi@google.com', password: '123456')
 
 
-# puts "Creating products..."
-# puts "Creating audio...................................................."
-# product_Sony_WH_CH720N = Product.create!(product_name: "Sony WH-CH720N Noise Canceling Wireless Headphones Bluetooth Over The Ear Headset with Microphone and Alexa Built-in, Black New",description:"Turn down the world's noise with the long-lasting noise cancellation performance. Featuring Dual Noise Sensor technology and an Integrated Processor V1, the WH-CH720N allows you to fully immerse yourself in music without any distractions. Ergonomically designed to be lightweight, comfortable, and with up to 35 hours of battery life, you’ll almost forget you’re wearing it.",categories:"electronic, audio,Headphones & earbuds",price:149.99,discount:0);
-# product_Sony_WH_CH720N_1 = File.open('frontend/src/assets/products/audio/Sony_WH_CH720N_1.jpg')
-# product_Sony_WH_CH720N_2 = File.open('frontend/src/assets/products/audio/Sony_WH_CH720N_2.jpg')
-# product_Sony_WH_CH720N.photos.attach(io: product_Sony_WH_CH720N_1, filename: 'Sony_WH_CH720N_1.jpg')
-# product_Sony_WH_CH720N.photos.attach(io: product_Sony_WH_CH720N_2, filename: 'Sony_WH_CH720N_2.jpg')
+puts "Creating products..."
+puts "Creating audio...................................................."
+product_Sony_WH_CH720N = Product.create!(product_name: "Sony WH-CH720N Noise Canceling Wireless Headphones Bluetooth Over The Ear Headset with Microphone and Alexa Built-in, Black New",description:"Turn down the world's noise with the long-lasting noise cancellation performance. Featuring Dual Noise Sensor technology and an Integrated Processor V1, the WH-CH720N allows you to fully immerse yourself in music without any distractions. Ergonomically designed to be lightweight, comfortable, and with up to 35 hours of battery life, you’ll almost forget you’re wearing it.",categories:"electronic, audio,Headphones & earbuds",price:149.99,discount:0);
+product_Sony_WH_CH720N_1 = File.open('frontend/src/assets/products/audio/Sony_WH_CH720N_1.jpg')
+product_Sony_WH_CH720N_2 = File.open('frontend/src/assets/products/audio/Sony_WH_CH720N_2.jpg')
+product_Sony_WH_CH720N.photos.attach(io: product_Sony_WH_CH720N_1, filename: 'Sony_WH_CH720N_1.jpg')
+product_Sony_WH_CH720N.photos.attach(io: product_Sony_WH_CH720N_2, filename: 'Sony_WH_CH720N_2.jpg')
 
-# product_JBL_Vibe_200TWS = Product.create!(product_name: "JBL Vibe 200TWS True Wireless Earbuds - Black, Small",description:"Amp up your routine with the sound you love! Get powerful, JBL Deep Bass Sound and all the freedom of true wireless for up to 20 hours with the JBL Vibe 200TWS. Stay in touch with your friends hands-free with a simple touch and in full comfort.",categories:"electronic,audio,Headphones & earbuds",price:49.95,discount:40);
-# product_JBL_Vibe_200TWS_1 = File.open('frontend/src/assets/products/audio/JBL_Vibe_200TWS_1.jpg')
-# product_JBL_Vibe_200TWS_2 = File.open('frontend/src/assets/products/audio/JBL_Vibe_200TWS_2.jpg')
-# product_JBL_Vibe_200TWS.photos.attach(io: product_JBL_Vibe_200TWS_1, filename: 'JBL_Vibe_200TWS_1.jpg')
-# product_JBL_Vibe_200TWS.photos.attach(io: product_JBL_Vibe_200TWS_2, filename: 'JBL_Vibe_200TWS_2.jpg')
+product_JBL_Vibe_200TWS = Product.create!(product_name: "JBL Vibe 200TWS True Wireless Earbuds - Black, Small",description:"Amp up your routine with the sound you love! Get powerful, JBL Deep Bass Sound and all the freedom of true wireless for up to 20 hours with the JBL Vibe 200TWS. Stay in touch with your friends hands-free with a simple touch and in full comfort.",categories:"electronic,audio,Headphones & earbuds",price:49.95,discount:40);
+product_JBL_Vibe_200TWS_1 = File.open('frontend/src/assets/products/audio/JBL_Vibe_200TWS_1.jpg')
+product_JBL_Vibe_200TWS_2 = File.open('frontend/src/assets/products/audio/JBL_Vibe_200TWS_2.jpg')
+product_JBL_Vibe_200TWS.photos.attach(io: product_JBL_Vibe_200TWS_1, filename: 'JBL_Vibe_200TWS_1.jpg')
+product_JBL_Vibe_200TWS.photos.attach(io: product_JBL_Vibe_200TWS_2, filename: 'JBL_Vibe_200TWS_2.jpg')
 
 # array_Sony_SRS_XB13 = []
 # product_Sony_SRS_XB13 = Product.create!(product_name: "Sony SRS-XB13 EXTRA BASS Wireless Bluetooth Portable Lightweight Compact Travel Speaker, IP67 Waterproof & Durable for Outdoor, 16 Hour Battery, USB Type-C, Removable Strap, and Speakerphone, Black",description:"Enjoy big sound with the super-compact SRS-XB13 wireless speaker, featuring EXTRA BASS™, an updated IP67 waterproof and dustproof design1,2, and up to 16 hours of battery life.3 Small enough to fit in a bag or cupholder, the XB13 also features a multiway strap to take it with you everywhere you go.",categories:"electronic,audio,Portable Speakers",price:59.99,discount:42);

@@ -42,33 +42,20 @@ export const fetchProduct = productId => (dispatch) => (
     )
   )
 )
-export const postRatingRequest = (ratingData) => async (dispatch) => {
-  try {
-    // const requestData = JSON.stringify({ rating: ratingData });
+// ACTION CREATORS
+export const receiveRating = rating => ({
+  type: RECEIVE_RATING,
+  rating
+})
+export const updateRatingAction = (reviewData) => ({
+  type: UPDATE_RATING,
+  reviewData
+});
 
-    const response = await ratingApiApiUtils.fetchPostRating(ratingData.productId, ratingData);
 
-    // if (response.status === 200) {
-      dispatch(postRating(ratingData.productId, response));
-      return { success: true };
-    // } else {
-    //   return { success: false, error: response.data.error };
-    // }
-  } catch (error) {
-    return { success: false, error: error.message }; // Return the caught error message
-  }
-};
 // SELECTORS
 export const selectAllproducts = state => state.entities.products
- 
-// export const getProducts = (state) => selectAllproducts(state) ? Object.values(selectAllproducts(state)) : [];
-
-export const getProduct = (productId) => (state) => selectAllproducts(state) ? selectAllproducts(state)[productId] : null;
-export const getProductRatings = (productId) => (state) =>{
-  const ratings =selectAllproducts(state) ? selectAllproducts(state)[productId]?.ratings : null;
-  // console.log(ratings);
-  }
-    
+     
 // REDUCER
 const productReducer = (state = {}, action) => {
   // const nextState = { ...state }  
@@ -78,7 +65,7 @@ const productReducer = (state = {}, action) => {
       return {...state, ...action.MARK} 
     case RECEIVE_PRODUCTS: 
       // return Object.assign(nextState, action.products)
-      return action.products;
+      return action.marks;
     case POST_RATING:
         // Update the MARK's rating data in your state
         const updatedProduct = {  
@@ -96,9 +83,9 @@ const productReducer = (state = {}, action) => {
     case REMOVE_RATING:
       let nextState ={};
       Object.keys(state).forEach(key=>{
-         nextState[key] = {...state[key],ratings:{...state[key].ratings}}
+         nextState[key] = {...state[key],ratings:{...state[key].marks}}
       })
-      const nextStateRatings = nextState[action.productId].ratings;
+      const nextStateRatings = nextState[action.productId].marks;
       delete nextStateRatings[action.ratingId];
       // nextState[action.productId].ratings = nextStateRatings;
       return {...nextState}; 

@@ -12,6 +12,15 @@ export const receiveProduct = MARK => ({
   MARK
 })
 
+export const removeFromCart = cartId => ({
+  type: REMOVE_FROM_CART,
+  cartId
+}); 
+export const addToCart = (cartItem) => ({  
+  type: ADD_TO_CART, 
+  cartItem 
+}); 
+
 // be careful - products parameter could be an array or object
 export const receiveProducts = products => ({
   type: RECEIVE_MARKS,
@@ -55,7 +64,14 @@ export const updateRatingAction = (reviewData) => ({
 
 // SELECTORS
 export const selectAllproducts = state => state.entities.products
-     
+ 
+// export const getProducts = (state) => selectAllproducts(state) ? Object.values(selectAllproducts(state)) : [];
+
+export const getmarks = (marksId) => (state) => selectAllmarkss(state) ? selectAllmarkss(state)[marksId] : null;
+export const getmarksRatings = (marksId) => (state) =>{
+  const ratings =selectAllproducts(state) ? selectAllproducts(state)[productId]?.ratings : null;
+  // console.log(ratings);
+  }
 // REDUCER
 const productReducer = (state = {}, action) => {
   // const nextState = { ...state }  
@@ -68,16 +84,15 @@ const productReducer = (state = {}, action) => {
       return action.marks;
     case POST_RATING:
         // Update the MARK's rating data in your state
-        const updatedProduct = {  
-          ...state[action.productId],   
+        const updatedMarks = {  
+          ...state[action.MarksId],   
           ratings: { 
-            ...state[action.productId].ratings, 
-            [action.ratingData.id]: action.ratingData,
+            ...state[action.MarksId].ratings
           }, 
         };    
         return {   
           ...state,  
-          [action.productId]: updatedProduct, 
+          [action.MarksId]: updatedMarks, 
         };     
          
     case REMOVE_RATING:

@@ -26,12 +26,15 @@ export const receiveProducts = products => ({
   type: RECEIVE_MARKS,
   products
 })
+export const fetchCartItemsByUserId = (userId) => async (dispatch) => {
+  try {
+    const cartItems = await cartItemApiUtils.fetchCartItemsByUserId(userId)
+    return dispatch(receiveCartItems(cartItems))
+  }catch (error) {
 
-export const postRating = (productId, ratingData) => ({
-  type: POST_RATING,
-  productId,
-  ratingData
-});
+  }
+}
+
 export const removeRating = (productId,ratingId) => ({
   type: REMOVE_RATING,
   productId,
@@ -41,7 +44,7 @@ export const removeRating = (productId,ratingId) => ({
 // THUNK ACTION CREATORS
 export const fetchProducts = (params) => async (dispatch) => {
   const products = await productApiUtils.fetchProducts(params)
-  return dispatch(receiveProducts(products))
+  return dispatch(fetchProducts(products))
 }
 
 export const fetchProduct = productId => (dispatch) => (
@@ -84,12 +87,6 @@ const productReducer = (state = {}, action) => {
       return action.marks;
     case POST_RATING:
         // Update the MARK's rating data in your state
-        const updatedMarks = {  
-          ...state[action.MarksId],   
-          ratings: { 
-            ...state[action.MarksId].ratings
-          }, 
-        };    
         return {   
           ...state,  
           [action.MarksId]: updatedMarks, 

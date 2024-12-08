@@ -7,10 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Destroying tables..."
-# Rating.destroy_all
-# CartItem.destroy_all
-# Product.destroy_all
-# User.destroy_all
+Rating.destroy_all
+CartItem.destroy_all
+Product.destroy_all
+User.destroy_all
 
 # puts "Resetting primary keys..."
 ActiveRecord::Base.connection.reset_pk_sequence!('ratings')
